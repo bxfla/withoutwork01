@@ -1,0 +1,121 @@
+<resources>
+
+    <string name="loading">加载中</string>
+    <string name="get_data">获取数据中</string>
+    <string name="first_download">请先下载试题</string>
+    <string name="pelease_select">请选择</string>
+    <string name="download_old">试题已下载</string>
+    <string name="download_ok">下载完成</string>
+    <string name="no_question">暂无报考题目</string>
+    <string name="remimber_password">记住密码</string>
+    <string name="selector_reach_max_image_hint">您已经选择%d张图片了!</string>
+    <string name="tip_take_photo">拍摄照片</string>
+    <string name="msg_no_camera">无法启动相机!</string>
+    <string name="camera_temp_file_error">图片错误</string>
+    <string name="selector_folder_all">所有图片</string>
+    <string name="selector_caption">选择图片</string>
+    <string name="selector_preview">预览</string>
+    <!--http://stackoverflow.com/questions/17502824/whats-wrong-with-this-format-string-->
+    <string name="selector_permission_error">权限错误，无法正常工作！</string>
+    <!-- 图片浏览 -->
+    <string name="only_choose_num">超出可选图片张数</string>
+    <string name="finish">完成</string>
+    <string name="invalidSD">sdcard无效或没有插入！</string>
+    <string name="photo">选择相册</string>
+    <string name="album">相册</string>
+    <string name="preview">预览</string>
+    <string name="unfinished">完成</string>
+    <string name="camera_cancel">取消</string>
+    <string name="no_photo">相册没有图片</string>
+    <string name="selector_action_done">完成(%1$d/%2$d)</string>
+
+    <string name="app_name">全员培训</string>
+    <string name="work_add">添加</string>
+    <string name="btn_login">登录</string>
+    <string name="register">注册</string>
+    <string name="title_tips">提示</string>
+    <string name="title_tips_confim">确定</string>
+    <string name="title_tips_cancel">取消</string>
+    <string name="function_list">功能列表</string>
+    <string name="moring_news">综合早报</string>
+    <string name="news">新闻资讯</string>
+    <string name="more_news">更多</string>
+    <string name="details">详情</string>
+    <string name="person_liable">责任人</string>
+    <string name="address">地点</string>
+    <string name="penalty">罚款</string>
+    <string name="time">时间</string>
+    <string name="reason">原因</string>
+    <!--日常检查-->
+    <string name="dailyinpection">日常检查</string>
+    <string name="Table_check">表格检查</string>
+    <string name="three_violations">三违</string>
+    <string name="hidden_trouble">隐患</string>
+    <string name="problem">问题</string>
+    <string name="honesty_system">诚信体系</string>
+    <string name="Safety_examination">安全体检</string>
+    <string name="safety_in_production">安全生产标准化</string>
+    <string name="other">其他</string>
+    <string name="deduction_senson">扣除原因</string>
+    <string name="deduction_num">扣除分数</string>
+    <string name="deduction">扣除</string>
+
+    <!--我的任务-->
+    <string name="mytasks">我的任务</string>
+    <string name="hidden_risk_management">隐患治理</string>
+    <string name="AB_hidden_risk_management">AB级隐患治理</string>
+    <string name="CD_hidden_risk_management">CD级隐患治理</string>
+    <string name="problem_rectification">问题整改</string>
+    <string name="risk_source_control">危险源管控</string>
+
+    <!--验收消单-->
+    <string name="acceptance_cancellation">验收消单</string>
+    <string name="AB_acceptance_cancellation">AB级隐患阶段验收</string>
+    <string name="CD_acceptance_cancellation">CD级隐患消单</string>
+    <string name="schedule">进度</string>
+    <string name="pass_through">通过</string>
+    <string name="no_pass_through">不通过</string>
+
+
+    <!--我的安全-->
+    <string name="my_safety">我的安全</string>
+    <string name="post_tabs">岗位选项卡</string>
+    <string name="risk_control">岗位风险管控</string>
+    <string name="harm_response">职业危害及应对</string>
+    <string name="post_emergency">岗位应急</string>
+    <string name="position_guide">岗位责任</string>
+    <string name="post_safety_system">岗位安全制度</string>
+
+    <!--安全承诺-->
+    <string name="safety_and_honesty">安全承诺</string>
+    <string name="manager_promised">矿长承诺</string>
+    <string name="personal_commitment">自我承诺</string>
+    <string name="credit_score">自我诚信得分</string>
+    <string name="credit_file">自我诚信档案</string>
+
+    <!--培训评价-->
+    <string name="training_evaluation">培训评价</string>
+    <string name="evaluation">自我评价</string>
+    <string name="impact_assessment">效果评价</string>
+
+    <!--教育培训-->
+    <string name="education_and_training">培训考试</string>
+    <string name="moni_training">模拟考试</string>
+    <string name="zaixian_stydy">在线学习</string>
+    <string name="zaixian_training">在线考试</string>
+    <string name="downlod">下载</string>
+    <string name="result">考试结果</string>
+    <string name="line_study">在线学习</string>
+    <string name="TorF">判断题</string>
+    <string name="onedelect">单选题</string>
+    <string name="moselect">多选题</string>
+    <string name="error">错题集</string>
+
+    <!--培训大数据-->
+    <string name="train_bigdata">培训大数据</string>
+    <string name="individual_learning">个人学习</string>
+    <string name="autonomic_learning">自主学习</string>
+
+    <string name="my_info">个人信息</string>
+    <string name="revise_pwd">修改密码</string>
+</resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_safetyandhonesty"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/whith"
+    tools:context="com.xb.powerplatform.safety_and_honesty.activity.SafetyAndHonestyActivity">
+
+    //头部
+    <com.xb.powerplatform.utilsclass.myViews.Header
+        android:id="@id/header"
+        style="@style/Heander"
+        app:header_title="@string/safety_and_honesty">
+    </com.xb.powerplatform.utilsclass.myViews.Header>
+
+    <LinearLayout
+        style="@style/linerlayout"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal">
+        <TextView
+            style="@style/TextView"
+            android:text="@string/manager_promised"/>
+    </LinearLayout>
+    <View style="@style/line"/>
+    <LinearLayout
+        style="@style/linerlayout"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal">
+        <TextView
+            style="@style/TextView"
+            android:text="@string/personal_commitment"/>
+    </LinearLayout>
+    <View style="@style/line"/>
+    <LinearLayout
+        style="@style/linerlayout"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal">
+        <TextView
+            style="@style/TextView"
+            android:text="@string/credit_score"/>
+    </LinearLayout>
+    <View style="@style/line"/>
+    <LinearLayout
+        style="@style/linerlayout"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal">
+        <TextView
+            style="@style/TextView"
+            android:text="@string/credit_file"/>
+    </LinearLayout>
+    <View style="@style/line"/>
+</LinearLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_cancellation"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.xb.powerplatform.acceptance_cancellation.activity.AcceptanceActivity">
+    <!--头部-->
+    <com.xb.powerplatform.utilsclass.myViews.Header
+        style="@style/Heander"
+        android:id="@+id/header"
+        app:header_title="@string/acceptance_cancellation">
+    </com.xb.powerplatform.utilsclass.myViews.Header>
+
+
+    <RadioGroup
+        android:id="@+id/radionGroup"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="15dp"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/rb1"
+            android:checked="true"
+            style="@style/activity1_radionbutton"
+            android:text="@string/AB_acceptance_cancellation">
+        </RadioButton>
+        <RadioButton
+            android:id="@+id/rb2"
+            style="@style/activity1_radionbutton"
+            android:text="@string/CD_acceptance_cancellation">
+        </RadioButton>
+    </RadioGroup>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v4.view.ViewPager>
+</LinearLayout>

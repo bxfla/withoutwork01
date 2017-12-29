@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_mysafety"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/whith"
+    tools:context="com.xb.powerplatform.my_safety.activity.MySafetyActivity">
+
+    //头部
+    <com.xb.powerplatform.utilsclass.myViews.Header
+        android:id="@+id/header"
+        style="@style/Heander"
+        app:header_title="@string/my_safety">
+    </com.xb.powerplatform.utilsclass.myViews.Header>
+
+    <LinearLayout
+        style="@style/linerlayout"
+        android:orientation="horizontal">
+        <TextView
+          style="@style/TextView"
+            android:text="@string/post_tabs"/>
+        <Spinner
+            android:id="@+id/mSpinner"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+        </Spinner>
+    </LinearLayout>
+    <View style="@style/line"/>
+    <LinearLayout
+        style="@style/linerlayout"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal">
+        <TextView
+            style="@style/TextView"
+            android:text="@string/risk_control"/>
+    </LinearLayout>
+    <View style="@style/line"/>
+    <LinearLayout
+        style="@style/linerlayout"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal">
+        <TextView
+            style="@style/TextView"
+            android:text="@string/harm_response"/>
+    </LinearLayout>
+    <View style="@style/line"/>
+    <LinearLayout
+        style="@style/linerlayout"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal">
+        <TextView
+            style="@style/TextView"
+            android:text="@string/post_emergency"/>
+    </LinearLayout>
+    <View style="@style/line"/>
+    <LinearLayout
+        style="@style/linerlayout"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal">
+        <TextView
+            style="@style/TextView"
+            android:text="@string/position_guide"/>
+    </LinearLayout>
+    <View style="@style/line"/>
+    <LinearLayout
+        style="@style/linerlayout"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal">
+        <TextView
+            style="@style/TextView"
+            android:text="@string/post_safety_system"/>
+    </LinearLayout>
+    <View style="@style/line"/>
+</LinearLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--选项卡-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv1"
+            style="@style/activity_edittext"
+            android:background="@color/holo_blue_light"/>
+        <TextView
+            android:id="@+id/tv2"
+            style="@style/activity_edittext"
+            android:layout_marginTop="20dp"
+            android:background="@color/burlywood"/>
+        <TextView
+            android:id="@+id/tv3"
+            style="@style/activity_edittext"
+            android:layout_marginTop="20dp"
+            android:background="@color/ziti"/>
+        <TextView
+            android:id="@+id/tv4"
+            style="@style/activity_edittext"
+            android:layout_marginTop="20dp"
+            android:background="@color/ziti"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_mytasks"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.xb.powerplatform.my_tasks.activity.MyTasksActivity">
+
+    <com.xb.powerplatform.utilsclass.myViews.Header
+         android:id="@+id/header"
+         style="@style/Heander"
+        app:header_title="@string/mytasks">
+    </com.xb.powerplatform.utilsclass.myViews.Header>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv1"
+            style="@style/activity_edittext"
+            android:layout_marginTop="20dp"
+            android:text="@string/hidden_risk_management"
+            android:background="@color/burlywood"/>
+        <TextView
+            android:id="@+id/tv2"
+            style="@style/activity_edittext"
+            android:layout_marginTop="20dp"
+            android:text="@string/problem_rectification"
+            android:background="@color/ziti"/>
+        <TextView
+            android:id="@+id/tv3"
+            style="@style/activity_edittext"
+            android:layout_marginTop="20dp"
+            android:text="@string/risk_source_control"
+            android:background="@color/gray"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.xb.powerplatform.utilsclass.myViews.Header
+        android:id="@+id/header"
+        app:header_is_left_iv_visiable="false"
+        app:header_title="@string/app_name"
+        style="@style/Heander">
+    </com.xb.powerplatform.utilsclass.myViews.Header>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.xb.powerplatform.utilsclass.myViews.NoScrollViewPager
+            android:id="@+id/mViewPage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="50dp">
+        </com.xb.powerplatform.utilsclass.myViews.NoScrollViewPager>
+        <RadioGroup
+            android:id="@+id/mRadionGroup"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/rb0"
+                style="@style/activity_radionbutton"
+                android:checked="true"
+                android:drawableTop="@drawable/btn_01_bg"
+                android:text="首页">
+            </RadioButton>
+            <RadioButton
+                android:id="@+id/rb1"
+                style="@style/activity_radionbutton"
+                android:drawableTop="@drawable/btn_02_bg"
+                android:text="个人中心">
+            </RadioButton>
+        </RadioGroup>
+    </RelativeLayout>
+</LinearLayout>

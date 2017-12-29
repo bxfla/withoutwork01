@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.xb.powerplatform">
+
+    <!-- Required  一些系统要求的权限，如访问网络等 -->
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:name=".utilsclass.base.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/NoAction">
+        <activity
+            android:name=".utilsclass.person.activity.LoginActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SelectPhoto.ImagesSelectorActivity" />
+        <activity android:name=".utilsclass.person.activity.RegisterActivity" />
+        <activity android:name=".utilsclass.person.activity.MainActivity" />
+        <activity android:name=".dailyinspection.activity.DailyInpectionActivity" />
+        <activity android:name=".my_tasks.activity.MyTasksActivity" />
+        <activity android:name=".acceptance_cancellation.activity.AcceptanceActivity" />
+        <activity android:name=".my_safety.activity.MySafetyActivity" />
+        <activity android:name=".safety_and_honesty.activity.SafetyAndHonestyActivity" />
+        <activity android:name=".training_evaluation.activity.TrainingEvaluationActivity" />
+        <activity android:name=".education_and_training.activity.EducationActivity" />
+        <activity android:name=".train_bigdata.activity.TrainBigDataActivity" />
+        <activity android:name=".moring_paper.activity.MoringPaperActivity" />
+        <activity android:name=".moring_paper.activity.MoringPaperXQActivity" />
+        <activity android:name=".news.activity.NewsActivity" />
+        <activity android:name=".dailyinspection.activity.DailyInpectionListActivity" />
+        <activity android:name=".dailyinspection.activity.DailyInpectionXQActivity" />
+        <activity
+            android:name=".dailyinspection.activity.DailyInpectionAddActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity android:name=".dailyinspection.activity.DailyInpectionTableXQActivity" />
+        <activity android:name=".my_tasks.activity.TaskaHonestActivity" />
+        <activity android:name=".my_tasks.activity.TasksProblemActivity" />
+        <activity android:name=".my_tasks.activity.TasksDangerousActivity" />
+        <activity android:name=".my_tasks.activity.MyTasksXQActivity" />
+        <activity android:name=".acceptance_cancellation.activity.AcceptanceFragment01Activity" />
+        <activity android:name=".acceptance_cancellation.activity.AcceptanceFragment02Activity" />
+        <activity android:name=".education_and_training.activity.EducationMoNiActivity" />
+        <activity android:name=".education_and_training.activity.AssessResultActivity" />
+        <activity android:name=".education_and_training.activity.EducationZaiXianActivity" />
+        <activity android:name=".education_and_training.activity.TorFActivity" />
+        <activity android:name=".education_and_training.activity.OneSelectActivity" />
+        <activity android:name=".education_and_training.activity.MoreSelectActivity" />
+        <activity android:name=".education_and_training.activity.ErrorActivity" />
+        <activity android:name=".CacheActivity" />
+        <activity android:name=".education_and_training.activity.RegularAssessActivity"/>
+        <activity android:name=".education_and_training.activity.MoNiAssessResultActivity"/>
+    </application>
+
+</manifest>

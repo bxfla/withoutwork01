@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/shouye">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/shouye"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <!--banner图-->
+                <ImageView
+                    android:id="@+id/mIvBanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    android:src="@drawable/banner" />
+                <!--功能列表-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="vertical">
+                    <!--功能列表分割线-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:background="@color/white"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="11dp"
+                            android:layout_height="11dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="4dp"
+                            android:background="@drawable/function_list" />
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="4dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/function_list"
+                            android:textSize="11dp" />
+                    </LinearLayout>
+                    <!--列表-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/white"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="85dp"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/rb1"
+                                style="@style/fragment0_radionbutton"
+                                android:drawableTop="@drawable/fragment0_rb1"
+                                android:text="日常检查" />
+
+                            <RadioButton
+                                android:id="@+id/rb2"
+                                style="@style/fragment0_radionbutton"
+                                android:drawableTop="@drawable/fragment0_rb2"
+                                android:text="我的任务" />
+
+                            <RadioButton
+                                android:id="@+id/rb3"
+                                style="@style/fragment0_radionbutton"
+                                android:drawableTop="@drawable/fragment0_rb3"
+                                android:text="验收消单" />
+
+                            <RadioButton
+                                android:id="@+id/rb4"
+                                style="@style/fragment0_radionbutton"
+                                android:drawableTop="@drawable/fragment0_rb4"
+                                android:text="我的安全" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="85dp"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/rb5"
+                                style="@style/fragment0_radionbutton"
+                                android:drawableTop="@drawable/fragment0_rb5"
+                                android:text="安全诚信" />
+
+                            <RadioButton
+                                android:id="@+id/rb6"
+                                style="@style/fragment0_radionbutton"
+                                android:drawableTop="@drawable/fragment0_rb6"
+                                android:text="培训评价" />
+
+                            <RadioButton
+                                android:id="@+id/rb7"
+                                style="@style/fragment0_radionbutton"
+                                android:drawableTop="@drawable/fragment0_rb7"
+                                android:text="教育培训" />
+
+                            <RadioButton
+                                android:id="@+id/rb8"
+                                style="@style/fragment0_radionbutton"
+                                android:drawableTop="@drawable/fragment0_rb8"
+                                android:text="培训大数据" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <!--综合早报-->
+                <RelativeLayout
+                    android:id="@+id/moringNews"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/white">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/moring_news"
+                        android:textSize="25dp" />
+                </RelativeLayout>
+                <!--新闻资讯-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="vertical">
+                    <!--信息列表分割线-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:background="@color/white"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="4dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/news"
+                            android:textSize="15dp" />
+
+                        <TextView
+                            android:id="@+id/moreNews"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="200dp"
+                            android:gravity="center"
+                            android:text="@string/more_news"
+                            android:textColor="@color/zhuangtai"
+                            android:textSize="15dp" />
+                    </LinearLayout>
+                    <!--列表-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:layout_marginTop="1dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="89dp"
+                            android:background="@color/white"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:gravity="center"
+                                android:paddingLeft="4dp"
+                                android:paddingRight="4dp"
+                                android:text="新闻标题"
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="49dp"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:paddingLeft="4dp"
+                                android:paddingRight="4dp"
+                                android:text="各市煤炭管理部门、各省属煤炭企业:为进一步加强全省煤炭生产事中事后监管，严防超能力生产，经研究，省煤炭局决定自即日起开展全省煤矿按核定能力组织生产专项检查。现将有关事项通知如下 "
+                                android:textSize="11dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="89dp"
+                            android:layout_marginTop="1dp"
+                            android:background="@color/white"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:gravity="center"
+                                android:paddingLeft="4dp"
+                                android:paddingRight="4dp"
+                                android:text="新闻标题"
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="49dp"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:paddingLeft="4dp"
+                                android:paddingRight="4dp"
+                                android:text="各市煤炭管理部门、各省属煤炭企业:为进一步加强全省煤炭生产事中事后监管，严防超能力生产，经研究，省煤炭局决定自即日起开展全省煤矿按核定能力组织生产专项检查。现将有关事项通知如下 "
+                                android:textSize="11dp"
+                                android:layout_marginBottom="15dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
