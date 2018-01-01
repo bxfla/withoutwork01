@@ -21,7 +21,7 @@ public class Constant {
     public static final String QUF = "quF";//试题F
     public static final String QUANSWER = "quAnswer";//答案
     public static final String QUANALYZE = "quAnalyze";//解析
-    public static final String MAJORNAME = "majorName";//专业名称
+    public static final String QUCATEGORY = "quCategory";//试题分类
     public static final String MAJORID = "majorId";//专业ID
     public static final String CLASSID = "classid";//班级ID
 

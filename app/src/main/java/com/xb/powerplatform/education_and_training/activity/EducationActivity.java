@@ -180,6 +180,7 @@ public class EducationActivity extends AppCompatActivity implements IView {
                 getData();
                 if (beanList.size() != 0) {
                     intent = new Intent(EducationActivity.this, EducationMoNiActivity.class);
+                    intent.putExtra("classId",classId);
                     intent.putExtra("list", (Serializable) beanList);
                     startActivity(intent);
                 } else {
@@ -290,6 +291,7 @@ public class EducationActivity extends AppCompatActivity implements IView {
                 String quD = assess.getBody().getList().get(i).getQuD();
                 String quE = assess.getBody().getList().get(i).getQuE();
                 String quF = assess.getBody().getList().get(i).getQuF();
+                String quCategory = assess.getBody().getList().get(i).getQuCategory();
                 String quType = assess.getBody().getList().get(i).getQuType();//类型 0单选 1多选 2判断
                 ContentValues values = new ContentValues();
                 values.put(Constant.ID, ID);
@@ -303,6 +305,7 @@ public class EducationActivity extends AppCompatActivity implements IView {
                 values.put(Constant.QUF, quF);
                 values.put(Constant.QUANSWER, quAnswer);
                 values.put(Constant.QUANALYZE, quAnalyze);
+                values.put(Constant.QUCATEGORY, quCategory);
                 values.put(Constant.CLASSID, classId);
                 db.insert(Constant.TABBLE_NAME, null, values);
                 values.clear();
@@ -311,10 +314,34 @@ public class EducationActivity extends AppCompatActivity implements IView {
             int radioNum=assess.getBody().getRule().getRadioNum();
             int multiNum=assess.getBody().getRule().getMultiNum();
             int judgeNum=assess.getBody().getRule().getJudgeNum();
+            int erLength=assess.getBody().getRule().getErLength();
+            int erPassMark=assess.getBody().getRule().getErPassMark();//及格分数
+            int erScoreRadioSafety=assess.getBody().getRule().getErScoreRadioSafety();//安全知识单选分值
+            int erScoreRadioLaws=assess.getBody().getRule().getErScoreRadioLaws();//法律法规单选分数
+            int erScoreRadioMajor=assess.getBody().getRule().getErScoreRadioMajor();//专业知识单选分数
+            int erScoreMultiSafety=assess.getBody().getRule().getErScoreMultiSafety();//多选安全知识分值
+            int erScoreMultiLaws=assess.getBody().getRule().getErScoreMultiLaws();//多选法律法规分数
+            int erScoreMultiMajor=assess.getBody().getRule().getErScoreMultiMajor();//多选专业知识分数
+            int erScoreJudgeSafety=assess.getBody().getRule().getErScoreJudgeSafety();//判断安全知识分值
+            int erScoreJudgeLaws=assess.getBody().getRule().getErScoreJudgeLaws();//判断法律法规分数
+            int erScoreJudgeMajor=assess.getBody().getRule().getErScoreJudgeMajor();//判断专业知识分数
             values.put(Constant.RADIONUM, radioNum);
             values.put(Constant.MULTINUM, multiNum);
             values.put(Constant.JUDGENUM, judgeNum);
             values.put(Constant.CLASSID, classId);
+
+            values.put(Constant.ERLENGTH, erLength);
+            values.put(Constant.ERPASSMARK, erPassMark);
+            values.put(Constant.ERSCORERADIOSAFETY, erScoreRadioSafety);
+            values.put(Constant.ERSCORERADIOLAWS, erScoreRadioLaws);
+            values.put(Constant.ERSCORERADIOMAJOR, erScoreRadioMajor);
+            values.put(Constant.ERSCOREMULTISAFETY, erScoreMultiSafety);
+            values.put(Constant.ERSCOREMULTILAWS, erScoreMultiLaws);
+            values.put(Constant.ERSCOREMULTIMAJOR, erScoreMultiMajor);
+            values.put(Constant.ERSCOREJUDGESAFETY, erScoreJudgeSafety);
+            values.put(Constant.ERSCOREJUDGELAWS, erScoreJudgeLaws);
+            values.put(Constant.ERSCOREJUDGEMAJOR, erScoreJudgeMajor);
+
             db.insert(Constant.TABBLE_NAME_RULE, null, values);
             values.clear();
 

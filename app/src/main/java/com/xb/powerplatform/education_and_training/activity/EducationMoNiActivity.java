@@ -3,6 +3,8 @@ package com.xb.powerplatform.education_and_training.activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,6 +18,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.xb.powerplatform.DB.DbManager;
+import com.xb.powerplatform.DB.MyDatabaseHelper;
 import com.xb.powerplatform.R;
 import com.xb.powerplatform.education_and_training.adapter.EducationMoNiAdapter;
 import com.xb.powerplatform.education_and_training.bean.assess;
@@ -57,6 +61,11 @@ public class EducationMoNiActivity extends BaseActivity {
     int second = 0;
     boolean isPause = false;
     int isFirst;
+
+    List<assess.BodyBean.RuleBean> listRb = new ArrayList<>();
+    MyDatabaseHelper helper;
+    SQLiteDatabase db;
+
     //停止计时
     private Handler handlerStopTime = new Handler() {
 
@@ -143,16 +152,24 @@ public class EducationMoNiActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
+        helper= DbManager.getInstance(this);
+        db = helper.getReadableDatabase();
         new StatusBarUtils().setWindowStatusBarColor(EducationMoNiActivity.this, R.color.color_bg_selected);
         Intent intent = getIntent();
         beanList = (List<assess.BodyBean.ListBean>) intent.getSerializableExtra("list");
+        String classId=intent.getStringExtra("classId");
+        Cursor cursor;
+        String sql1 = "select * from rule where classid='" + classId + "'";
+        cursor = DbManager.queryBySQL(db, sql1, null);
+        listRb = DbManager.cursorTorule(cursor);
+        int erLength=listRb.get(0).getErLength();
         title.setText(getResources().getString(R.string.moni_training));
-        right.setText("15:00");
+        right.setText(String.valueOf(erLength));
         for (int i = 0; i < beanList.size(); i++) {
             viewItems.add(getLayoutInflater().inflate(
                     R.layout.vote_submit_viewpager_item, null));
         }
-        adapter = new EducationMoNiAdapter(EducationMoNiActivity.this, viewItems, beanList);
+        adapter = new EducationMoNiAdapter(EducationMoNiActivity.this, viewItems, beanList,classId);
         voteSubmitViewpager.setAdapter(adapter);
         voteSubmitViewpager.getParent()
                 .requestDisallowInterceptTouchEvent(false);

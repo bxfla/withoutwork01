@@ -139,15 +139,15 @@ public class assess implements Serializable {
             private int erJudgeNumLaws;
             private int erJudgeNumMajor;
             private int erScoreRadioSafety;
-            private Object erScoreRadioLaws;
-            private Object erScoreRadioMajor;
+            private int erScoreRadioLaws;
+            private int erScoreRadioMajor;
             private int erScoreMultiSafety;
-            private Object erScoreMultiLaws;
-            private Object erScoreMultiMajor;
+            private int erScoreMultiLaws;
+            private int erScoreMultiMajor;
             private int erScoreJudgeSafety;
-            private Object erScoreJudgeLaws;
-            private Object erScoreJudgeMajor;
-            private Object flag;
+            private int erScoreJudgeLaws;
+            private int erScoreJudgeMajor;
+            private int flag;
             private int passCount;
             private String ruleType;
             private int radioNum;
@@ -155,11 +155,25 @@ public class assess implements Serializable {
             private int judgeNum;
             private String classId;
 
-            public RuleBean(int radioNum, int multiNum, int judgeNum,String classId) {
+            public RuleBean(int radioNum, int multiNum, int judgeNum, String classId, int erLength, int erPassMark,
+                            int erScoreRadioSafety, int erScoreRadioLaws, int erScoreRadioMajor,
+                            int erScoreMultiSafety, int erScoreMultiLaws, int erScoreMultiMajor,
+                            int erScoreJudgeSafety, int erScoreJudgeLaws, int erScoreJudgeMajor) {
                 this.radioNum=radioNum;
                 this.multiNum=multiNum;
                 this.judgeNum=judgeNum;
                 this.classId=classId;
+                this.erLength=erLength;
+                this.erPassMark=erPassMark;
+                this.erScoreRadioSafety=erScoreRadioSafety;
+                this.erScoreRadioLaws=erScoreRadioLaws;
+                this.erScoreRadioMajor=erScoreRadioMajor;
+                this.erScoreMultiSafety=erScoreMultiSafety;
+                this.erScoreMultiLaws=erScoreMultiLaws;
+                this.erScoreMultiMajor=erScoreMultiMajor;
+                this.erScoreJudgeSafety=erScoreJudgeSafety;
+                this.erScoreJudgeLaws=erScoreJudgeLaws;
+                this.erScoreJudgeMajor=erScoreJudgeMajor;
             }
 
             public String getId() {
@@ -346,19 +360,19 @@ public class assess implements Serializable {
                 this.erScoreRadioSafety = erScoreRadioSafety;
             }
 
-            public Object getErScoreRadioLaws() {
+            public int getErScoreRadioLaws() {
                 return erScoreRadioLaws;
             }
 
-            public void setErScoreRadioLaws(Object erScoreRadioLaws) {
+            public void setErScoreRadioLaws(int erScoreRadioLaws) {
                 this.erScoreRadioLaws = erScoreRadioLaws;
             }
 
-            public Object getErScoreRadioMajor() {
+            public int getErScoreRadioMajor() {
                 return erScoreRadioMajor;
             }
 
-            public void setErScoreRadioMajor(Object erScoreRadioMajor) {
+            public void setErScoreRadioMajor(int erScoreRadioMajor) {
                 this.erScoreRadioMajor = erScoreRadioMajor;
             }
 
@@ -370,19 +384,19 @@ public class assess implements Serializable {
                 this.erScoreMultiSafety = erScoreMultiSafety;
             }
 
-            public Object getErScoreMultiLaws() {
+            public int getErScoreMultiLaws() {
                 return erScoreMultiLaws;
             }
 
-            public void setErScoreMultiLaws(Object erScoreMultiLaws) {
+            public void setErScoreMultiLaws(int erScoreMultiLaws) {
                 this.erScoreMultiLaws = erScoreMultiLaws;
             }
 
-            public Object getErScoreMultiMajor() {
+            public int getErScoreMultiMajor() {
                 return erScoreMultiMajor;
             }
 
-            public void setErScoreMultiMajor(Object erScoreMultiMajor) {
+            public void setErScoreMultiMajor(int erScoreMultiMajor) {
                 this.erScoreMultiMajor = erScoreMultiMajor;
             }
 
@@ -394,19 +408,19 @@ public class assess implements Serializable {
                 this.erScoreJudgeSafety = erScoreJudgeSafety;
             }
 
-            public Object getErScoreJudgeLaws() {
+            public int getErScoreJudgeLaws() {
                 return erScoreJudgeLaws;
             }
 
-            public void setErScoreJudgeLaws(Object erScoreJudgeLaws) {
+            public void setErScoreJudgeLaws(int erScoreJudgeLaws) {
                 this.erScoreJudgeLaws = erScoreJudgeLaws;
             }
 
-            public Object getErScoreJudgeMajor() {
+            public int getErScoreJudgeMajor() {
                 return erScoreJudgeMajor;
             }
 
-            public void setErScoreJudgeMajor(Object erScoreJudgeMajor) {
+            public void setErScoreJudgeMajor(int erScoreJudgeMajor) {
                 this.erScoreJudgeMajor = erScoreJudgeMajor;
             }
 
@@ -414,7 +428,7 @@ public class assess implements Serializable {
                 return flag;
             }
 
-            public void setFlag(Object flag) {
+            public void setFlag(int flag) {
                 this.flag = flag;
             }
 
@@ -507,7 +521,22 @@ public class assess implements Serializable {
             private String classsId;
             private Object flag;
 
-            public ListBean(String id, String quType, String quContent, String quA, String quB, String quC, String quD, String quE, String quF, String quAnswer, String quAnalyze,String classsId) {
+//            public ListBean(String id, String quType, String quContent, String quA, String quB, String quC, String quD, String quE, String quF, String quAnswer, String quAnalyze,String classsId) {
+//                this.id = id;
+//                this.quType = quType;
+//                this.quContent = quContent;
+//                this.quA = quA;
+//                this.quB = quB;
+//                this.quC = quC;
+//                this.quD = quD;
+//                this.quE = quE;
+//                this.quF = quF;
+//                this.quAnswer = quAnswer;
+//                this.quAnalyze = quAnalyze;
+//                this.classsId=classsId;
+//            }
+
+            public ListBean(String id, String quType, String quContent, String quA, String quB, String quC, String quD, String quE, String quF, String quAnswer, String quAnalyze, String quCategory, String classId) {
                 this.id = id;
                 this.quType = quType;
                 this.quContent = quContent;
@@ -519,7 +548,8 @@ public class assess implements Serializable {
                 this.quF = quF;
                 this.quAnswer = quAnswer;
                 this.quAnalyze = quAnalyze;
-                this.classsId=classsId;
+                this.quCategory=quCategory;
+                this.classsId=classId;
             }
 
             public String getClasssId() {

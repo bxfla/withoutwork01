@@ -22,14 +22,20 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                 +"("+Constant.ID+","+Constant.QUTYPE+","+Constant.QUCONTENT
                 +","+Constant.QUA+","+Constant.QUB+","+Constant.QUC+","+Constant.QUD
                 +","+Constant.QUE+","+Constant.QUF+","+Constant.QUANSWER+","+Constant.QUANALYZE
-                +","+Constant.CLASSID+")";
+                +","+Constant.QUCATEGORY+","+Constant.CLASSID+")";
         Log.i("xyz",sql);
         db.execSQL(sql);
 
         //创建考试规则表
         String sql_rule = "create table "+Constant.TABBLE_NAME_RULE
                 +"("+Constant.ID+","+Constant.RADIONUM+","+Constant.MULTINUM
-                +","+Constant.JUDGENUM+","+Constant.CLASSID+")";
+                +","+Constant.JUDGENUM+","+Constant.CLASSID+","+Constant.ERLENGTH+","+Constant.ERPASSMARK
+                +","+Constant.ERRADIONUMSAFETY+","+Constant.ERRADIONUMLAWS+","+Constant.ERRADIONUMMAJOR
+                +","+Constant.ERMULTINUMSAFETY+","+Constant.ERMULTINUMLAWS+","+Constant.ERMULTINUMMAJOR
+                +","+Constant.ERJUDGENUMSAFETY+","+Constant.ERJUDGENUMLAWS+","+Constant.ERJUDGENUMMAJOR
+                +","+Constant.ERSCORERADIOSAFETY+","+Constant.ERSCORERADIOLAWS+","+Constant.ERSCORERADIOMAJOR
+                +","+Constant.ERSCOREMULTISAFETY+","+Constant.ERSCOREMULTILAWS+","+Constant.ERSCOREMULTIMAJOR
+                +","+Constant.ERSCOREJUDGESAFETY+","+Constant.ERSCOREJUDGELAWS+","+Constant.ERSCOREJUDGEMAJOR+")";
         Log.i("xyz",sql);
         db.execSQL(sql_rule);
 
@@ -44,7 +50,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
         //创建报考班级表
         String sql_class = "create table "+Constant.TABBLE_CLASS_NAME
-                +"("+Constant.CLASSID+","+Constant.CLASSNAME+","+Constant.DWOSTATIC+")";
+                +"("+Constant.CLASSID+","+Constant.CLASSNAME+","+Constant.DWOSTATIC +")";
         Log.i("xyz",sql_class);
         db.execSQL(sql_class);
 

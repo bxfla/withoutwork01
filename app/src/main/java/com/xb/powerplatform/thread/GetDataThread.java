@@ -52,9 +52,10 @@ public class GetDataThread {
                     String quE = cursor.getString(cursor.getColumnIndex(Constant.QUE));
                     String quF = cursor.getString(cursor.getColumnIndex(Constant.QUF));
                     String quAnalyze = cursor.getString(cursor.getColumnIndex(Constant.QUANALYZE));
+                    String quCategory = cursor.getString(cursor.getColumnIndex(Constant.QUCATEGORY));
                     String classId = cursor.getString(cursor.getColumnIndex(Constant.CLASSID));
                     assess.BodyBean.ListBean resultBean = new assess.BodyBean.ListBean
-                            (ID, quType, quContent, quA, quB, quC, quD, quE, quF, quAnswer, quAnalyze, classId);
+                            (ID, quType, quContent, quA, quB, quC, quD, quE, quF, quAnswer, quAnalyze,quCategory, classId);
                     beanList.add(resultBean);
                 }
                 for (int i = 0; i < beanList.size(); i++) {
@@ -99,9 +100,10 @@ public class GetDataThread {
                     String quE = cursor.getString(cursor.getColumnIndex(Constant.QUE));
                     String quF = cursor.getString(cursor.getColumnIndex(Constant.QUF));
                     String quAnalyze = cursor.getString(cursor.getColumnIndex(Constant.QUANALYZE));
+                    String quCategory = cursor.getString(cursor.getColumnIndex(Constant.QUCATEGORY));
                     String classId = cursor.getString(cursor.getColumnIndex(Constant.CLASSID));
                     assess.BodyBean.ListBean resultBean = new assess.BodyBean.ListBean
-                            (ID, quType, quContent, quA, quB, quC, quD, quE, quF, quAnswer, quAnalyze, classId);
+                            (ID, quType, quContent, quA, quB, quC, quD, quE, quF, quAnswer,quCategory, quAnalyze, classId);
                     beanList.add(resultBean);
                 }
                 for (int i = 0; i < beanList.size(); i++) {
@@ -147,9 +149,10 @@ public class GetDataThread {
                     String quE = cursor.getString(cursor.getColumnIndex(Constant.QUE));
                     String quF = cursor.getString(cursor.getColumnIndex(Constant.QUF));
                     String quAnalyze = cursor.getString(cursor.getColumnIndex(Constant.QUANALYZE));
+                    String quCategory = cursor.getString(cursor.getColumnIndex(Constant.QUCATEGORY));
                     String classId = cursor.getString(cursor.getColumnIndex(Constant.CLASSID));
                     assess.BodyBean.ListBean resultBean = new assess.BodyBean.ListBean
-                            (ID, quType, quContent, quA, quB, quC, quD, quE, quF, quAnswer, quAnalyze, classId);
+                            (ID, quType, quContent, quA, quB, quC, quD, quE, quF, quAnswer, quAnalyze,quCategory, classId);
                     beanList.add(resultBean);
                 }
                 for (int i = 0; i < beanList.size(); i++) {
@@ -194,9 +197,10 @@ public class GetDataThread {
                     String quE = cursor.getString(cursor.getColumnIndex(Constant.QUE));
                     String quF = cursor.getString(cursor.getColumnIndex(Constant.QUF));
                     String quAnalyze = cursor.getString(cursor.getColumnIndex(Constant.QUANALYZE));
+                    String quCategory = cursor.getString(cursor.getColumnIndex(Constant.QUCATEGORY));
                     String classId = cursor.getString(cursor.getColumnIndex(Constant.CLASSID));
                     assess.BodyBean.ListBean resultBean = new assess.BodyBean.ListBean
-                            (ID, quType, quContent, quA, quB, quC, quD, quE, quF, quAnswer, quAnalyze, classId);
+                            (ID, quType, quContent, quA, quB, quC, quD, quE, quF, quAnswer, quAnalyze,quCategory, classId);
                     beanList.add(resultBean);
                 }
                 for (int i = 0; i < beanList.size(); i++) {

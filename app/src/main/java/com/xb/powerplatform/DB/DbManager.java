@@ -51,9 +51,10 @@ public class DbManager {
             String quE = cursor.getString(cursor.getColumnIndex(Constant.QUE));
             String quF = cursor.getString(cursor.getColumnIndex(Constant.QUF));
             String quAnalyze = cursor.getString(cursor.getColumnIndex(Constant.QUANALYZE));
+            String quCategory = cursor.getString(cursor.getColumnIndex(Constant.QUCATEGORY));
             String classId = cursor.getString(cursor.getColumnIndex(Constant.CLASSID));
             assess.BodyBean.ListBean resultBean = new assess.BodyBean.ListBean
-                    (ID,quType,quContent,quA,quB,quC,quD,quE,quF,quAnswer,quAnalyze,classId);
+                    (ID,quType,quContent,quA,quB,quC,quD,quE,quF,quAnswer,quAnalyze,quCategory,classId);
             list.add(resultBean);
         }
         return list;
@@ -81,16 +82,25 @@ public class DbManager {
     public static List<assess.BodyBean.RuleBean> cursorTorule(Cursor cursor){
         List<assess.BodyBean.RuleBean> list = new ArrayList<>();
         while (cursor.moveToNext()){
-//            // 根据参数指定的字段来读取字段下标
-//            int index = cursor.getColumnIndex(Constant.ID);
-            // 根据参数中指定的字段下标来获取指定的数据
-//            int id = cursor.getInt(index);
             int radioNum = cursor.getInt(cursor.getColumnIndex(Constant.RADIONUM));
             int multiNum = cursor.getInt(cursor.getColumnIndex(Constant.MULTINUM));
             int judgeNum = cursor.getInt(cursor.getColumnIndex(Constant.JUDGENUM));
+            int erLength = cursor.getInt(cursor.getColumnIndex(Constant.ERLENGTH));
+            int erPassMark = cursor.getInt(cursor.getColumnIndex(Constant.ERPASSMARK));
+            int erScoreRadioSafety = cursor.getInt(cursor.getColumnIndex(Constant.ERSCORERADIOSAFETY));
+            int erScoreRadioLaws = cursor.getInt(cursor.getColumnIndex(Constant.ERSCORERADIOLAWS));
+            int erScoreRadioMajor = cursor.getInt(cursor.getColumnIndex(Constant.ERSCORERADIOMAJOR));
+            int erScoreMultiSafety = cursor.getInt(cursor.getColumnIndex(Constant.ERSCOREMULTISAFETY));
+            int erScoreMultiLaws = cursor.getInt(cursor.getColumnIndex(Constant.ERSCOREMULTILAWS));
+            int erScoreMultiMajor = cursor.getInt(cursor.getColumnIndex(Constant.ERSCOREMULTIMAJOR));
+            int erScoreJudgeSafety = cursor.getInt(cursor.getColumnIndex(Constant.ERSCOREJUDGESAFETY));
+            int erScoreJudgeLaws = cursor.getInt(cursor.getColumnIndex(Constant.ERSCOREJUDGELAWS));
+            int erScoreJudgeMajor = cursor.getInt(cursor.getColumnIndex(Constant.ERSCOREJUDGEMAJOR));
             String classId = cursor.getString(cursor.getColumnIndex(Constant.CLASSID));
             assess.BodyBean.RuleBean resultBean = new assess.BodyBean.RuleBean
-                    (radioNum,multiNum,judgeNum,classId);
+                    (radioNum,multiNum,judgeNum,classId,erLength,erPassMark,erScoreRadioSafety,erScoreRadioLaws
+                    ,erScoreRadioMajor,erScoreMultiSafety,erScoreMultiLaws,erScoreMultiMajor,erScoreJudgeSafety
+                    ,erScoreJudgeLaws,erScoreJudgeMajor);
             list.add(resultBean);
         }
         return list;
