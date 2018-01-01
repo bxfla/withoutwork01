@@ -57,6 +57,7 @@ public class EducationMoNiAdapter extends PagerAdapter {
     MyDatabaseHelper errorHelper;
     SQLiteDatabase db;
     String classId;
+    int erPassMark;
 
     public EducationMoNiAdapter(EducationMoNiActivity context, List<View> viewItems, List<assess.BodyBean.ListBean> beanList
             , String classId) {
@@ -423,78 +424,79 @@ public class EducationMoNiAdapter extends PagerAdapter {
 
     //启动得分activity
     public void upData() {
-        Cursor cursor;
         String sql1 = "select * from rule where classid='" + classId + "'";
+        Cursor cursor;
+        errorHelper = DbManager.getInstance(mContext);
+        db = errorHelper.getReadableDatabase();
         cursor = DbManager.queryBySQL(db, sql1, null);
-        listRb = DbManager.cursorTorule(cursor);
-        int radioSafety = listRb.get(0).getErScoreRadioSafety();//单选安全知识分数
-        int radioLaws = listRb.get(0).getErScoreRadioLaws();//单选法律法规分数
-        int radioMajor = listRb.get(0).getErScoreRadioMajor();//单选安全知识分数
-        int multiSafety = listRb.get(0).getErScoreMultiSafety();//多选安全知识分数
-        int multiLaws = listRb.get(0).getErScoreMultiLaws();//多选法律法规分数
-        int multiMajor = listRb.get(0).getErScoreMultiMajor();//多选安全知识分数
-        int judgeSafety = listRb.get(0).getErScoreJudgeSafety();
-        int judgeLaws = listRb.get(0).getErScoreJudgeLaws();
-        int judgeMajor = listRb.get(0).getErScoreJudgeMajor();
-        int erPassMark = listRb.get(0).getErPassMark();
-        int erLength = listRb.get(0).getErLength();
-        for (int i = 0; i < beanList.size(); i++) {
-            if (dataItems.get(i).getQuType().equals("0")) {
-                if (dataItems.get(i).getQuCategory().equals("0")) {
-                    if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                        code += radioSafety;
+//        if (listRb.size()==0){
+//            code=0;
+//        }else {
+            listRb = DbManager.cursorTorule(cursor);
+            int radioSafety = listRb.get(0).getErScoreRadioSafety();//单选安全知识分数
+            int radioLaws = listRb.get(0).getErScoreRadioLaws();//单选法律法规分数
+            int radioMajor = listRb.get(0).getErScoreRadioMajor();//单选安全知识分数
+            int multiSafety = listRb.get(0).getErScoreMultiSafety();//多选安全知识分数
+            int multiLaws = listRb.get(0).getErScoreMultiLaws();//多选法律法规分数
+            int multiMajor = listRb.get(0).getErScoreMultiMajor();//多选安全知识分数
+            int judgeSafety = listRb.get(0).getErScoreJudgeSafety();
+            int judgeLaws = listRb.get(0).getErScoreJudgeLaws();
+            int judgeMajor = listRb.get(0).getErScoreJudgeMajor();
+            erPassMark = listRb.get(0).getErPassMark();
+            int erLength = listRb.get(0).getErLength();
+            for (int i = 0; i < beanList.size(); i++) {
+                if (dataItems.get(i).getQuType().equals("0")) {
+                    if (dataItems.get(i).getQuCategory().equals("0")) {
+                        if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
+                            code += radioSafety;
+                        }
                     }
-                }
-                if (dataItems.get(i).getQuCategory().equals("1")) {
-                    if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                        code += radioLaws;
+                    if (dataItems.get(i).getQuCategory().equals("1")) {
+                        if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
+                            code += radioLaws;
+                        }
                     }
-                }
-                if (dataItems.get(i).getQuCategory().equals("2")) {
-                    if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                        code += radioMajor;
+                    if (dataItems.get(i).getQuCategory().equals("2")) {
+                        if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
+                            code += radioMajor;
+                        }
                     }
-                }
-            } else if (dataItems.get(i).getQuType().equals("1")) {
-                if (dataItems.get(i).getQuCategory().equals("0")) {
-                    if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                        code += multiSafety;
+                } else if (dataItems.get(i).getQuType().equals("1")) {
+                    if (dataItems.get(i).getQuCategory().equals("0")) {
+                        if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
+                            code += multiSafety;
+                        }
                     }
-                }
-                if (dataItems.get(i).getQuCategory().equals("1")) {
-                    if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                        code += multiLaws;
+                    if (dataItems.get(i).getQuCategory().equals("1")) {
+                        if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
+                            code += multiLaws;
+                        }
                     }
-                }
-                if (dataItems.get(i).getQuCategory().equals("2")) {
-                    if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                        code += multiMajor;
+                    if (dataItems.get(i).getQuCategory().equals("2")) {
+                        if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
+                            code += multiMajor;
+                        }
                     }
-                }
-            } else if (dataItems.get(i).getQuType().equals("2")) {
-                if (dataItems.get(i).getQuCategory().equals("0")) {
-                    if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                        code += judgeSafety;
+                } else if (dataItems.get(i).getQuType().equals("2")) {
+                    if (dataItems.get(i).getQuCategory().equals("0")) {
+                        if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
+                            code += judgeSafety;
+                        }
                     }
-                }
-                if (dataItems.get(i).getQuCategory().equals("1")) {
-                    if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                        code += judgeLaws;
+                    if (dataItems.get(i).getQuCategory().equals("1")) {
+                        if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
+                            code += judgeLaws;
+                        }
                     }
-                }
-                if (dataItems.get(i).getQuCategory().equals("2")) {
-                    if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                        code += judgeMajor;
+                    if (dataItems.get(i).getQuCategory().equals("2")) {
+                        if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
+                            code += judgeMajor;
+                        }
                     }
                 }
             }
-        }
-//        String cont=beanList.toString();
-//        for (int i=0;i<beanList.size();i++){
-//            if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())){
-//                code+=1;
-//            }
-//        }
+        //}
+
         Intent intent = new Intent(mContext, MoNiAssessResultActivity.class);
         Bundle bundle = new Bundle();
         bundle.putInt("score", code);

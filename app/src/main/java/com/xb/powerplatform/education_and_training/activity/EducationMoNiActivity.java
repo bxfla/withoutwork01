@@ -3,7 +3,6 @@ package com.xb.powerplatform.education_and_training.activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -57,7 +56,7 @@ public class EducationMoNiActivity extends BaseActivity {
     EducationMoNiAdapter adapter;
     Timer timer;
     TimerTask timerTask;
-    int minute = 100;
+    int minute;
     int second = 0;
     boolean isPause = false;
     int isFirst;
@@ -158,13 +157,8 @@ public class EducationMoNiActivity extends BaseActivity {
         Intent intent = getIntent();
         beanList = (List<assess.BodyBean.ListBean>) intent.getSerializableExtra("list");
         String classId=intent.getStringExtra("classId");
-        Cursor cursor;
-        String sql1 = "select * from rule where classid='" + classId + "'";
-        cursor = DbManager.queryBySQL(db, sql1, null);
-        listRb = DbManager.cursorTorule(cursor);
-        int erLength=listRb.get(0).getErLength();
+        minute= Integer.parseInt(intent.getStringExtra("erLength"));
         title.setText(getResources().getString(R.string.moni_training));
-        right.setText(String.valueOf(erLength));
         for (int i = 0; i < beanList.size(); i++) {
             viewItems.add(getLayoutInflater().inflate(
                     R.layout.vote_submit_viewpager_item, null));

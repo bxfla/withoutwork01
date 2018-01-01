@@ -73,10 +73,11 @@ public class EducationActivity extends AppCompatActivity implements IView {
     List<String> listIdd = new ArrayList<>();
 
     List<assess.BodyBean.RuleBean> listrule = new ArrayList<>();
-
+    List<assess.BodyBean.RuleBean> listRb = new ArrayList<>();
     SharedPreferencesHelper preference;
     private String classId;
     String classId1;
+    int erLength;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,31 +123,40 @@ public class EducationActivity extends AppCompatActivity implements IView {
         String sql1 = "select * from rule where classid='" + classId + "'";
         cursor = DbManager.queryBySQL(db, sql1, null);
         listrule = DbManager.cursorTorule(cursor);
-        int raNum=listrule.get(0).getRadioNum();
-        int muNum=listrule.get(0).getMultiNum();
-        int juNum=listrule.get(0).getJudgeNum();
+        if (listrule.size()==0){
+            Toast.makeText(this, getResources().getString(R.string.first_download), Toast.LENGTH_SHORT).show();
+        }else {
+            int raNum=listrule.get(0).getRadioNum();
+            int muNum=listrule.get(0).getMultiNum();
+            int juNum=listrule.get(0).getJudgeNum();
 
-        String sqlR = "select * from moni where classid='" + classId + "' and quType='0' order by random() limit '"+raNum+"'";// order by random() limit 100
-        cursor = DbManager.queryBySQL(db, sqlR, null);
-        beanListR = DbManager.cursorToPerson(cursor);
+            String sqlR = "select * from moni where classid='" + classId + "' and quType='0' order by random() limit '"+raNum+"'";// order by random() limit 100
+            cursor = DbManager.queryBySQL(db, sqlR, null);
+            beanListR = DbManager.cursorToPerson(cursor);
 
-        String sqlM = "select * from moni where classid='" + classId + "' and quType='1' order by random() limit '"+muNum+"'";// order by random() limit 100
-        cursor = DbManager.queryBySQL(db, sqlM, null);
-        beanListM = DbManager.cursorToPerson(cursor);
+            String sqlM = "select * from moni where classid='" + classId + "' and quType='1' order by random() limit '"+muNum+"'";// order by random() limit 100
+            cursor = DbManager.queryBySQL(db, sqlM, null);
+            beanListM = DbManager.cursorToPerson(cursor);
 
-        String sqlJ = "select * from moni where classid='" + classId + "' and quType='2' order by random() limit '"+juNum+"'";// order by random() limit 100
-        cursor = DbManager.queryBySQL(db, sqlJ, null);
-        beanListJ = DbManager.cursorToPerson(cursor);
+            String sqlJ = "select * from moni where classid='" + classId + "' and quType='2' order by random() limit '"+juNum+"'";// order by random() limit 100
+            cursor = DbManager.queryBySQL(db, sqlJ, null);
+            beanListJ = DbManager.cursorToPerson(cursor);
 
-        for (int i=0;i<beanListR.size();i++){
-            beanList.add(beanListR.get(i));
+            for (int i=0;i<beanListR.size();i++){
+                beanList.add(beanListR.get(i));
+            }
+            for (int i=0;i<beanListM.size();i++){
+                beanList.add(beanListM.get(i));
+            }
+            for (int i=0;i<beanListJ.size();i++){
+                beanList.add(beanListJ.get(i));
+            }
         }
-        for (int i=0;i<beanListM.size();i++){
-            beanList.add(beanListM.get(i));
-        }
-        for (int i=0;i<beanListJ.size();i++){
-            beanList.add(beanListJ.get(i));
-        }
+        String sqlerLength = "select * from rule where classid='" + classId + "'";
+        cursor = DbManager.queryBySQL(db, sqlerLength, null);
+        listRb = DbManager.cursorTorule(cursor);
+        erLength=listRb.get(0).getErLength();
+
     }
 
     //查询数据库获得试题
@@ -181,6 +191,7 @@ public class EducationActivity extends AppCompatActivity implements IView {
                 if (beanList.size() != 0) {
                     intent = new Intent(EducationActivity.this, EducationMoNiActivity.class);
                     intent.putExtra("classId",classId);
+                    intent.putExtra("erLength",String.valueOf(erLength));
                     intent.putExtra("list", (Serializable) beanList);
                     startActivity(intent);
                 } else {
