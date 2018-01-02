@@ -46,7 +46,7 @@ public class EducationActivity extends AppCompatActivity implements IView {
     @Bind(R.id.btn2)
     Button btn2;
     @Bind(R.id.btn3)
-    Button btn3;
+    ImageView btn3;
     @Bind(R.id.left)
     ImageView left;
     @Bind(R.id.title)
@@ -55,7 +55,6 @@ public class EducationActivity extends AppCompatActivity implements IView {
     TextView right;
     private MyDatabaseHelper helper;
     SQLiteDatabase db;
-    List<String> list = new ArrayList<String>();
     List<assess.BodyBean.ListBean> beanListR = new ArrayList<assess.BodyBean.ListBean>();
     List<assess.BodyBean.ListBean> beanListM = new ArrayList<assess.BodyBean.ListBean>();
     List<assess.BodyBean.ListBean> beanListJ = new ArrayList<assess.BodyBean.ListBean>();
@@ -94,15 +93,12 @@ public class EducationActivity extends AppCompatActivity implements IView {
         right.setText(getResources().getString(R.string.downlod));
 
         preference = new SharedPreferencesHelper(this, "login");
-
-        list.add("https://pic4.zhimg.com/03b2d57be62b30f158f48f388c8f3f33_b.png");
-        list.add("https://pic1.zhimg.com/4373a4f045e5e9ae16ebd6a624bf6228_b.png");
         //设置播放时间间隔
         rellPagerView.setPlayDelay(3000);
         //设置透明度
         rellPagerView.setAnimationDurtion(500);
         //设置适配器
-        rellPagerView.setAdapter(new TestNormalAdapter(rellPagerView, list));
+        rellPagerView.setAdapter(new TestNormalAdapter());
 
         presenter = new Presenterimpl(this, this);
 
@@ -155,8 +151,11 @@ public class EducationActivity extends AppCompatActivity implements IView {
         String sqlerLength = "select * from rule where classid='" + classId + "'";
         cursor = DbManager.queryBySQL(db, sqlerLength, null);
         listRb = DbManager.cursorTorule(cursor);
-        erLength=listRb.get(0).getErLength();
-
+        if (listRb.size()==0){
+            Toast.makeText(this, getResources().getString(R.string.first_download), Toast.LENGTH_SHORT).show();
+        }else {
+            erLength=listRb.get(0).getErLength();
+        }
     }
 
     //查询数据库获得试题

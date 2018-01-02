@@ -8,6 +8,10 @@
     android:background="@color/white"
     tools:context="com.xb.powerplatform.CacheActivity">
 
+    <com.xb.powerplatform.utilsclass.myViews.Header
+        android:id="@+id/header"
+        style="@style/Heander">
+    </com.xb.powerplatform.utilsclass.myViews.Header>
 
     <ImageView
         android:layout_width="200dp"

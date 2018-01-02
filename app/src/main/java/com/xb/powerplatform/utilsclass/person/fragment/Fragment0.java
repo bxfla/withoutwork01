@@ -14,8 +14,6 @@ import android.widget.TextView;
 import com.xb.powerplatform.CacheActivity;
 import com.xb.powerplatform.R;
 import com.xb.powerplatform.education_and_training.activity.EducationActivity;
-import com.xb.powerplatform.moring_paper.activity.MoringPaperActivity;
-import com.xb.powerplatform.news.activity.NewsActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -77,56 +75,68 @@ public class Fragment0 extends Fragment {
             //日常检查
             case R.id.rb1:
                 intent=new Intent(getActivity(), CacheActivity.class);
+                intent.putExtra("title",rb1.getText().toString());
 //                intent = new Intent(getActivity(), DailyInpectionActivity.class);
                 startActivity(intent);
                 break;
             //我的任务
             case R.id.rb2:
                 intent=new Intent(getActivity(), CacheActivity.class);
+                intent.putExtra("title",rb2.getText().toString());
 //                intent = new Intent(getActivity(), MyTasksActivity.class);
                 startActivity(intent);
                 break;
             //验收消单
             case R.id.rb3:
                 intent=new Intent(getActivity(), CacheActivity.class);
+                intent.putExtra("title",rb3.getText().toString());
 //                intent = new Intent(getActivity(), AcceptanceActivity.class);
                 startActivity(intent);
                 break;
             //我的安全
             case R.id.rb4:
                 intent=new Intent(getActivity(), CacheActivity.class);
+                intent.putExtra("title",rb4.getText().toString());
 //                intent = new Intent(getActivity(), MySafetyActivity.class);
                 startActivity(intent);
                 break;
             //诚信安全
             case R.id.rb5:
                 intent=new Intent(getActivity(), CacheActivity.class);
+                intent.putExtra("title",rb5.getText().toString());
 //                intent = new Intent(getActivity(), SafetyAndHonestyActivity.class);
                 startActivity(intent);
                 break;
             //培训评价
            case R.id.rb6:
                intent=new Intent(getActivity(), CacheActivity.class);
+               intent.putExtra("title",rb6.getText().toString());
 //                intent = new Intent(getActivity(), TrainingEvaluationActivity.class);
                 startActivity(intent);
                 break;
            //教育培训
             case R.id.rb7:
                 intent = new Intent(getActivity(), EducationActivity.class);
+                intent.putExtra("title",rb7.getText().toString());
                 startActivity(intent);
                 break;
             //培训大数据
             case R.id.rb8:
                 intent=new Intent(getActivity(), CacheActivity.class);
+                intent.putExtra("title",rb8.getText().toString());
 //                intent = new Intent(getActivity(), TrainBigDataActivity.class);
                 startActivity(intent);
                 break;
             case R.id.moringNews:
-                intent = new Intent(getActivity(), MoringPaperActivity.class);
+                intent=new Intent(getActivity(), CacheActivity.class);
+                intent.putExtra("title","综合早报");
+//                intent = new Intent(getActivity(), MoringPaperActivity.class);
                 startActivity(intent);
                 break;
             case R.id.moreNews:
-                intent = new Intent(getActivity(), NewsActivity.class);
+                intent=new Intent(getActivity(), CacheActivity.class);
+                intent.putExtra("title",getResources().getString(R.string.more_news));
+//                intent = new Intent(getActivity(), NewsActivity.class);
                 startActivity(intent);
                 break;
         }

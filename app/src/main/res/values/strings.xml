@@ -39,7 +39,7 @@
     <string name="function_list">功能列表</string>
     <string name="moring_news">综合早报</string>
     <string name="news">新闻资讯</string>
-    <string name="more_news">更多</string>
+    <string name="more_news">更多>></string>
     <string name="details">详情</string>
     <string name="person_liable">责任人</string>
     <string name="address">地点</string>
@@ -86,8 +86,8 @@
     <string name="position_guide">岗位责任</string>
     <string name="post_safety_system">岗位安全制度</string>
 
-    <!--安全承诺-->
-    <string name="safety_and_honesty">安全承诺</string>
+    <!--安全诚信-->
+    <string name="safety_and_honesty">安全诚信</string>
     <string name="manager_promised">矿长承诺</string>
     <string name="personal_commitment">自我承诺</string>
     <string name="credit_score">自我诚信得分</string>
