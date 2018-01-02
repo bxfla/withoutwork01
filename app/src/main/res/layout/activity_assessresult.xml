@@ -9,10 +9,46 @@
     tools:context="com.xb.powerplatform.education_and_training.activity.AssessResultActivity">
 
     <com.xb.powerplatform.utilsclass.myViews.Header
+        android:visibility="gone"
         android:id="@+id/header"
         style="@style/Heander"
         app:header_title="@string/result">
     </com.xb.powerplatform.utilsclass.myViews.Header>
+    <RelativeLayout
+        android:background="@color/color_bg_selected"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/icon_back"
+            android:contentDescription="@string/app_name"
+            android:layout_marginLeft="10dip" />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="150dip"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/result"
+            android:textColor="@color/white"
+            android:textSize="18.0sp" />
+        <TextView
+            android:id="@+id/right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/white"
+            android:textSize="17sp" />
+    </RelativeLayout>
 
     <ImageView
         android:layout_width="wrap_content"

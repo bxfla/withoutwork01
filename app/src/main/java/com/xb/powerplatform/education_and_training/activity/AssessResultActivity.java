@@ -1,7 +1,10 @@
 package com.xb.powerplatform.education_and_training.activity;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,15 +17,15 @@ import com.xb.powerplatform.education_and_training.bean.result;
 import com.xb.powerplatform.education_and_training.presenter.ResultPresenter;
 import com.xb.powerplatform.education_and_training.presenter.impl.ResultPresenterimpl;
 import com.xb.powerplatform.education_and_training.view.ResultView;
-import com.xb.powerplatform.utilsclass.base.BaseActivity;
 import com.xb.powerplatform.utilsclass.myViews.Header;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import static com.xb.powerplatform.SharedPreferencesHelper.saveData;
 
-public class AssessResultActivity extends BaseActivity implements ResultView{
+public class AssessResultActivity extends AppCompatActivity implements ResultView {
 
     String score, passnum;
     @Bind(R.id.header)
@@ -33,6 +36,10 @@ public class AssessResultActivity extends BaseActivity implements ResultView{
     TextView tvScore;
     @Bind(R.id.imageView)
     ImageView imageView;
+    @Bind(R.id.left)
+    ImageView left;
+    @Bind(R.id.title)
+    TextView title;
 
     private MyDatabaseHelper helper;
     SQLiteDatabase db;
@@ -44,6 +51,7 @@ public class AssessResultActivity extends BaseActivity implements ResultView{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_assessresult);
         ButterKnife.bind(this);
         helper = DbManager.getInstance(AssessResultActivity.this);
         db = helper.getReadableDatabase();
@@ -54,10 +62,10 @@ public class AssessResultActivity extends BaseActivity implements ResultView{
         tvScore.setText(score);
         setImage();
         preference = new SharedPreferencesHelper(this, "login");
-        classId= preference.getData(this,"classId","");
-        String cred= preference.getData(this,"crednumber","");
+        classId = preference.getData(this, "classId", "");
+        String cred = preference.getData(this, "crednumber", "");
         presenter = new ResultPresenterimpl(this, this);
-        presenter.getPresenteerData(classId,cred,score);
+        presenter.getPresenteerData(classId, cred, score);
     }
 
     private void setImage() {
@@ -71,28 +79,27 @@ public class AssessResultActivity extends BaseActivity implements ResultView{
     }
 
     @Override
-    protected int provideContentViewId() {
-        return R.layout.activity_assessresult;
-    }
-
-    @Override
-    protected boolean isHasHeader() {
-        return true;
-    }
-
-    @Override
-    protected void rightClient() {
-
-    }
-
-    @Override
     public void getViewData(result result) {
         //删除下载考试目录
-        String sql = "delete from dwoClassName where classid='"+classId+"'";
+        String sql = "delete from dwoClassName where classid='" + classId + "'";
         db.execSQL(sql);
-        String sql1 = "delete from moni where classid='"+classId+"'";
+        String sql1 = "delete from moni where classid='" + classId + "'";
         db.execSQL(sql1);
-        saveData(this,"classId","");//考试ID
+        saveData(this, "classId", "");//考试ID
         Toast.makeText(this, result.getMsg(), Toast.LENGTH_SHORT).show();
+    }
+
+    @OnClick(R.id.left)
+    public void onViewClicked() {
+        Intent intent=new Intent(AssessResultActivity.this,EducationActivity.class);
+        startActivity(intent);
+        finish();
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        Intent intent=new Intent(AssessResultActivity.this,EducationActivity.class);
+        startActivity(intent);
+        finish();
+        return super.onKeyDown(keyCode, event);
     }
 }

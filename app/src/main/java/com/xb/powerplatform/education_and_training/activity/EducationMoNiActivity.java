@@ -157,7 +157,8 @@ public class EducationMoNiActivity extends BaseActivity {
         Intent intent = getIntent();
         beanList = (List<assess.BodyBean.ListBean>) intent.getSerializableExtra("list");
         String classId=intent.getStringExtra("classId");
-        minute= Integer.parseInt(intent.getStringExtra("erLength"));
+        int minute1= Integer.parseInt(intent.getStringExtra("erLength"));
+        minute=minute1;
         title.setText(getResources().getString(R.string.moni_training));
         for (int i = 0; i < beanList.size(); i++) {
             viewItems.add(getLayoutInflater().inflate(
