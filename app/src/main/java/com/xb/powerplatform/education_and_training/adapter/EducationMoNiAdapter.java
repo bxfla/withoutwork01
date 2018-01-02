@@ -428,8 +428,6 @@ public class EducationMoNiAdapter extends PagerAdapter {
 
     //启动得分activity
     public void upData() {
-        int num = beanList.size();
-        String con = beanList.toString();
         String sql1 = "select * from rule where classid='" + classId + "'";
         Cursor cursor;
         errorHelper = DbManager.getInstance(mContext);

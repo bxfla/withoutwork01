@@ -18,6 +18,7 @@ import com.xb.powerplatform.education_and_training.presenter.ResultPresenter;
 import com.xb.powerplatform.education_and_training.presenter.impl.ResultPresenterimpl;
 import com.xb.powerplatform.education_and_training.view.ResultView;
 import com.xb.powerplatform.utilsclass.myViews.Header;
+import com.xb.powerplatform.utilsclass.myViews.StatusBarUtils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -52,6 +53,7 @@ public class AssessResultActivity extends AppCompatActivity implements ResultVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assessresult);
+        new StatusBarUtils().setWindowStatusBarColor(AssessResultActivity.this, R.color.color_bg_selected);
         ButterKnife.bind(this);
         helper = DbManager.getInstance(AssessResultActivity.this);
         db = helper.getReadableDatabase();
