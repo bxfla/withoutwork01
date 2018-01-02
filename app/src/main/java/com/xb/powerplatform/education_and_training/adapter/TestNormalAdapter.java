@@ -15,9 +15,9 @@ public class TestNormalAdapter extends StaticPagerAdapter {
     //List<String> list=new ArrayList<String>();
 
     private int[] imgs = {
-            R.drawable.image01,
-            R.drawable.image02,
-            R.drawable.banner,
+            R.drawable.im1,
+            R.drawable.im2,
+            R.drawable.im3,
     };
 
     @Override
