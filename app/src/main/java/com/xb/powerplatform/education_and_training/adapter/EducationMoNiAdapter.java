@@ -232,143 +232,147 @@ public class EducationMoNiAdapter extends PagerAdapter {
 
     //保存答案到list
     private void addAnswerToList(ViewHolder viewHolder, int mPosition1, int mPosition) {
-        //单选
-        if (viewHolder.rbA.isChecked()) {
-            answer = "A";
-        } else if (viewHolder.rbB.isChecked()) {
-            answer = "B";
-        } else if (viewHolder.rbC.isChecked()) {
-            answer = "C";
-        } else if (viewHolder.rbD.isChecked()) {
-            answer = "D";
-        } else if (viewHolder.rbE.isChecked()) {
-            answer = "E";
-        } else if (viewHolder.rbF.isChecked()) {
-            answer = "F";
-        }
-
-        //多选
-        if (viewHolder.cbA.isChecked() && viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "ABCDEF";
-        } else if (viewHolder.cbA.isChecked() && viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked()) {
-            answer = "ABCDE";
-        } else if (viewHolder.cbA.isChecked() && viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "ABCDF";
-        } else if (viewHolder.cbA.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "ACDEF";
-        } else if (viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "BCDEF";
-        } else if (viewHolder.cbA.isChecked() && viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked()) {
-            answer = "ABCD";
-        } else if (viewHolder.cbA.isChecked() && viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbE.isChecked()) {
-            answer = "ABCE";
-        } else if (viewHolder.cbA.isChecked() && viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "ABCF";
-        } else if (viewHolder.cbA.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked()) {
-            answer = "ACDE";
-        } else if (viewHolder.cbA.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "ACDF";
-        } else if (viewHolder.cbA.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "ADEF";
-        } else if (viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked()) {
-            answer = "BCDE";
-        } else if (viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "BCDF";
-        } else if (viewHolder.cbB.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "BDEF";
-        } else if (viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "CDEF";
-        } else if (viewHolder.cbA.isChecked() && viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked()) {
-            answer = "ABC";
-        } else if (viewHolder.cbA.isChecked() && viewHolder.cbB.isChecked() && viewHolder.cbD.isChecked()) {
-            answer = "ABD";
-        } else if (viewHolder.cbA.isChecked() && viewHolder.cbB.isChecked() && viewHolder.cbE.isChecked()) {
-            answer = "ABE";
-        } else if (viewHolder.cbA.isChecked() && viewHolder.cbB.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "ABF";
-        } else if (viewHolder.cbA.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked()) {
-            answer = "ACD";
-        } else if (viewHolder.cbA.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbE.isChecked()) {
-            answer = "ACE";
-        } else if (viewHolder.cbA.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "ACF";
-        } else if (viewHolder.cbA.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked()) {
-            answer = "ADE";
-        } else if (viewHolder.cbA.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "ADF";
-        } else if (viewHolder.cbA.isChecked() && viewHolder.cbE.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "AEF";
-        } else if (viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked()) {
-            answer = "BCD";
-        } else if (viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbE.isChecked()) {
-            answer = "BCE";
-        } else if (viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "BCF";
-        } else if (viewHolder.cbB.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked()) {
-            answer = "BDE";
-        } else if (viewHolder.cbB.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "BDF";
-        } else if (viewHolder.cbB.isChecked() && viewHolder.cbE.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "BEF";
-        } else if (viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked()) {
-            answer = "CDE";
-        } else if (viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "CDF";
-        } else if (viewHolder.cbC.isChecked() && viewHolder.cbE.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "CEF";
-        } else if (viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "DEF";
-        } else if (viewHolder.cbA.isChecked() && viewHolder.cbB.isChecked()) {
-            answer = "AB";
-        } else if (viewHolder.cbA.isChecked() && viewHolder.cbC.isChecked()) {
-            answer = "AC";
-        } else if (viewHolder.cbA.isChecked() && viewHolder.cbD.isChecked()) {
-            answer = "AD";
-        } else if (viewHolder.cbA.isChecked() && viewHolder.cbE.isChecked()) {
-            answer = "AE";
-        } else if (viewHolder.cbA.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "AF";
-        } else if (viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked()) {
-            answer = "BC";
-        } else if (viewHolder.cbB.isChecked() && viewHolder.cbD.isChecked()) {
-            answer = "BD";
-        } else if (viewHolder.cbB.isChecked() && viewHolder.cbE.isChecked()) {
-            answer = "BE";
-        } else if (viewHolder.cbB.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "BF";
-        } else if (viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked()) {
-            answer = "CD";
-        } else if (viewHolder.cbC.isChecked() && viewHolder.cbE.isChecked()) {
-            answer = "CE";
-        } else if (viewHolder.cbC.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "CF";
-        } else if (viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked()) {
-            answer = "DE";
-        } else if (viewHolder.cbD.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "DF";
-        } else if (viewHolder.cbE.isChecked() && viewHolder.cbF.isChecked()) {
-            answer = "EF";
-        } else if (viewHolder.cbA.isChecked()) {
-            answer = "A";
-        } else if (viewHolder.cbB.isChecked()) {
-            answer = "B";
-        } else if (viewHolder.cbC.isChecked()) {
-            answer = "C";
-        } else if (viewHolder.cbD.isChecked()) {
-            answer = "D";
-        } else if (viewHolder.cbE.isChecked()) {
-            answer = "E";
-        } else if (viewHolder.cbF.isChecked()) {
-            answer = "F";
-        }
-        if (answer != null) {
-            if (!answer.equals(dataItems.get(mPosition1).getQuAnswer())) {
-                addErrorDb(mPosition1);
+        if (beanList.size() < mPosition) {
+            //单选
+            if (viewHolder.rbA.isChecked()) {
+                answer = "A";
+            } else if (viewHolder.rbB.isChecked()) {
+                answer = "B";
+            } else if (viewHolder.rbC.isChecked()) {
+                answer = "C";
+            } else if (viewHolder.rbD.isChecked()) {
+                answer = "D";
+            } else if (viewHolder.rbE.isChecked()) {
+                answer = "E";
+            } else if (viewHolder.rbF.isChecked()) {
+                answer = "F";
             }
-            beanList.add(answer);
-            mContext.setCurrentView(mPosition);
+
+            //多选
+            if (viewHolder.cbA.isChecked() && viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "ABCDEF";
+            } else if (viewHolder.cbA.isChecked() && viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked()) {
+                answer = "ABCDE";
+            } else if (viewHolder.cbA.isChecked() && viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "ABCDF";
+            } else if (viewHolder.cbA.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "ACDEF";
+            } else if (viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "BCDEF";
+            } else if (viewHolder.cbA.isChecked() && viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked()) {
+                answer = "ABCD";
+            } else if (viewHolder.cbA.isChecked() && viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbE.isChecked()) {
+                answer = "ABCE";
+            } else if (viewHolder.cbA.isChecked() && viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "ABCF";
+            } else if (viewHolder.cbA.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked()) {
+                answer = "ACDE";
+            } else if (viewHolder.cbA.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "ACDF";
+            } else if (viewHolder.cbA.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "ADEF";
+            } else if (viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked()) {
+                answer = "BCDE";
+            } else if (viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "BCDF";
+            } else if (viewHolder.cbB.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "BDEF";
+            } else if (viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "CDEF";
+            } else if (viewHolder.cbA.isChecked() && viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked()) {
+                answer = "ABC";
+            } else if (viewHolder.cbA.isChecked() && viewHolder.cbB.isChecked() && viewHolder.cbD.isChecked()) {
+                answer = "ABD";
+            } else if (viewHolder.cbA.isChecked() && viewHolder.cbB.isChecked() && viewHolder.cbE.isChecked()) {
+                answer = "ABE";
+            } else if (viewHolder.cbA.isChecked() && viewHolder.cbB.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "ABF";
+            } else if (viewHolder.cbA.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked()) {
+                answer = "ACD";
+            } else if (viewHolder.cbA.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbE.isChecked()) {
+                answer = "ACE";
+            } else if (viewHolder.cbA.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "ACF";
+            } else if (viewHolder.cbA.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked()) {
+                answer = "ADE";
+            } else if (viewHolder.cbA.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "ADF";
+            } else if (viewHolder.cbA.isChecked() && viewHolder.cbE.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "AEF";
+            } else if (viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked()) {
+                answer = "BCD";
+            } else if (viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbE.isChecked()) {
+                answer = "BCE";
+            } else if (viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "BCF";
+            } else if (viewHolder.cbB.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked()) {
+                answer = "BDE";
+            } else if (viewHolder.cbB.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "BDF";
+            } else if (viewHolder.cbB.isChecked() && viewHolder.cbE.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "BEF";
+            } else if (viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked()) {
+                answer = "CDE";
+            } else if (viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "CDF";
+            } else if (viewHolder.cbC.isChecked() && viewHolder.cbE.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "CEF";
+            } else if (viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "DEF";
+            } else if (viewHolder.cbA.isChecked() && viewHolder.cbB.isChecked()) {
+                answer = "AB";
+            } else if (viewHolder.cbA.isChecked() && viewHolder.cbC.isChecked()) {
+                answer = "AC";
+            } else if (viewHolder.cbA.isChecked() && viewHolder.cbD.isChecked()) {
+                answer = "AD";
+            } else if (viewHolder.cbA.isChecked() && viewHolder.cbE.isChecked()) {
+                answer = "AE";
+            } else if (viewHolder.cbA.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "AF";
+            } else if (viewHolder.cbB.isChecked() && viewHolder.cbC.isChecked()) {
+                answer = "BC";
+            } else if (viewHolder.cbB.isChecked() && viewHolder.cbD.isChecked()) {
+                answer = "BD";
+            } else if (viewHolder.cbB.isChecked() && viewHolder.cbE.isChecked()) {
+                answer = "BE";
+            } else if (viewHolder.cbB.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "BF";
+            } else if (viewHolder.cbC.isChecked() && viewHolder.cbD.isChecked()) {
+                answer = "CD";
+            } else if (viewHolder.cbC.isChecked() && viewHolder.cbE.isChecked()) {
+                answer = "CE";
+            } else if (viewHolder.cbC.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "CF";
+            } else if (viewHolder.cbD.isChecked() && viewHolder.cbE.isChecked()) {
+                answer = "DE";
+            } else if (viewHolder.cbD.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "DF";
+            } else if (viewHolder.cbE.isChecked() && viewHolder.cbF.isChecked()) {
+                answer = "EF";
+            } else if (viewHolder.cbA.isChecked()) {
+                answer = "A";
+            } else if (viewHolder.cbB.isChecked()) {
+                answer = "B";
+            } else if (viewHolder.cbC.isChecked()) {
+                answer = "C";
+            } else if (viewHolder.cbD.isChecked()) {
+                answer = "D";
+            } else if (viewHolder.cbE.isChecked()) {
+                answer = "E";
+            } else if (viewHolder.cbF.isChecked()) {
+                answer = "F";
+            }
+            if (answer != null) {
+                if (!answer.equals(dataItems.get(mPosition1).getQuAnswer())) {
+                    addErrorDb(mPosition1);
+                }
+                beanList.add(answer);
+                mContext.setCurrentView(mPosition);
+            } else {
+                Toast.makeText(mContext, "请先选择选项", Toast.LENGTH_SHORT).show();
+            }
         } else {
-            Toast.makeText(mContext, "请先选择选项", Toast.LENGTH_SHORT).show();
+            mContext.setCurrentView(mPosition);
         }
     }
 
@@ -424,6 +428,8 @@ public class EducationMoNiAdapter extends PagerAdapter {
 
     //启动得分activity
     public void upData() {
+        int num = beanList.size();
+        String con = beanList.toString();
         String sql1 = "select * from rule where classid='" + classId + "'";
         Cursor cursor;
         errorHelper = DbManager.getInstance(mContext);
@@ -432,69 +438,69 @@ public class EducationMoNiAdapter extends PagerAdapter {
 //        if (listRb.size()==0){
 //            code=0;
 //        }else {
-            listRb = DbManager.cursorTorule(cursor);
-            int radioSafety = listRb.get(0).getErScoreRadioSafety();//单选安全知识分数
-            int radioLaws = listRb.get(0).getErScoreRadioLaws();//单选法律法规分数
-            int radioMajor = listRb.get(0).getErScoreRadioMajor();//单选安全知识分数
-            int multiSafety = listRb.get(0).getErScoreMultiSafety();//多选安全知识分数
-            int multiLaws = listRb.get(0).getErScoreMultiLaws();//多选法律法规分数
-            int multiMajor = listRb.get(0).getErScoreMultiMajor();//多选安全知识分数
-            int judgeSafety = listRb.get(0).getErScoreJudgeSafety();
-            int judgeLaws = listRb.get(0).getErScoreJudgeLaws();
-            int judgeMajor = listRb.get(0).getErScoreJudgeMajor();
-            erPassMark = listRb.get(0).getErPassMark();
-            int erLength = listRb.get(0).getErLength();
-            for (int i = 0; i < beanList.size(); i++) {
-                if (dataItems.get(i).getQuType().equals("0")) {
-                    if (dataItems.get(i).getQuCategory().equals("0")) {
-                        if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                            code += radioSafety;
-                        }
+        listRb = DbManager.cursorTorule(cursor);
+        int radioSafety = listRb.get(0).getErScoreRadioSafety();//单选安全知识分数
+        int radioLaws = listRb.get(0).getErScoreRadioLaws();//单选法律法规分数
+        int radioMajor = listRb.get(0).getErScoreRadioMajor();//单选安全知识分数
+        int multiSafety = listRb.get(0).getErScoreMultiSafety();//多选安全知识分数
+        int multiLaws = listRb.get(0).getErScoreMultiLaws();//多选法律法规分数
+        int multiMajor = listRb.get(0).getErScoreMultiMajor();//多选安全知识分数
+        int judgeSafety = listRb.get(0).getErScoreJudgeSafety();
+        int judgeLaws = listRb.get(0).getErScoreJudgeLaws();
+        int judgeMajor = listRb.get(0).getErScoreJudgeMajor();
+        erPassMark = listRb.get(0).getErPassMark();
+        int erLength = listRb.get(0).getErLength();
+        for (int i = 0; i < beanList.size(); i++) {
+            if (dataItems.get(i).getQuType().equals("0")) {
+                if (dataItems.get(i).getQuCategory().equals("0")) {
+                    if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
+                        code += radioSafety;
                     }
-                    if (dataItems.get(i).getQuCategory().equals("1")) {
-                        if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                            code += radioLaws;
-                        }
+                }
+                if (dataItems.get(i).getQuCategory().equals("1")) {
+                    if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
+                        code += radioLaws;
                     }
-                    if (dataItems.get(i).getQuCategory().equals("2")) {
-                        if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                            code += radioMajor;
-                        }
+                }
+                if (dataItems.get(i).getQuCategory().equals("2")) {
+                    if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
+                        code += radioMajor;
                     }
-                } else if (dataItems.get(i).getQuType().equals("1")) {
-                    if (dataItems.get(i).getQuCategory().equals("0")) {
-                        if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                            code += multiSafety;
-                        }
+                }
+            } else if (dataItems.get(i).getQuType().equals("1")) {
+                if (dataItems.get(i).getQuCategory().equals("0")) {
+                    if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
+                        code += multiSafety;
                     }
-                    if (dataItems.get(i).getQuCategory().equals("1")) {
-                        if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                            code += multiLaws;
-                        }
+                }
+                if (dataItems.get(i).getQuCategory().equals("1")) {
+                    if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
+                        code += multiLaws;
                     }
-                    if (dataItems.get(i).getQuCategory().equals("2")) {
-                        if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                            code += multiMajor;
-                        }
+                }
+                if (dataItems.get(i).getQuCategory().equals("2")) {
+                    if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
+                        code += multiMajor;
                     }
-                } else if (dataItems.get(i).getQuType().equals("2")) {
-                    if (dataItems.get(i).getQuCategory().equals("0")) {
-                        if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                            code += judgeSafety;
-                        }
+                }
+            } else if (dataItems.get(i).getQuType().equals("2")) {
+                if (dataItems.get(i).getQuCategory().equals("0")) {
+                    if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
+                        code += judgeSafety;
                     }
-                    if (dataItems.get(i).getQuCategory().equals("1")) {
-                        if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                            code += judgeLaws;
-                        }
+                }
+                if (dataItems.get(i).getQuCategory().equals("1")) {
+                    if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
+                        code += judgeLaws;
                     }
-                    if (dataItems.get(i).getQuCategory().equals("2")) {
-                        if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                            code += judgeMajor;
-                        }
+                }
+                if (dataItems.get(i).getQuCategory().equals("2")) {
+                    if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
+                        code += judgeMajor;
                     }
                 }
             }
+        }
         //}
 
         Intent intent = new Intent(mContext, MoNiAssessResultActivity.class);
