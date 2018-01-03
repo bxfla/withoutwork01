@@ -66,6 +66,37 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="85dp"
+                            android:layout_marginBottom="8dp"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/rb7"
+                                style="@style/fragment0_radionbutton"
+                                android:drawableTop="@drawable/fragment0_rb7"
+                                android:text="@string/education_and_training" />
+
+                            <RadioButton
+                                android:id="@+id/rb6"
+                                style="@style/fragment0_radionbutton"
+                                android:drawableTop="@drawable/fragment0_rb6"
+                                android:text="@string/training_evaluation" />
+
+                            <RadioButton
+                                android:id="@+id/rb5"
+                                style="@style/fragment0_radionbutton"
+                                android:drawableTop="@drawable/fragment0_rb5"
+                                android:text="@string/safety_and_honesty" />
+
+                            <RadioButton
+                                android:id="@+id/rb8"
+                                style="@style/fragment0_radionbutton"
+                                android:drawableTop="@drawable/fragment0_rb8"
+                                android:text="@string/train_bigdata" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="85dp"
                             android:layout_marginTop="8dp"
                             android:orientation="horizontal">
 
@@ -92,37 +123,6 @@
                                 style="@style/fragment0_radionbutton"
                                 android:drawableTop="@drawable/fragment0_rb4"
                                 android:text="@string/my_safety" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="85dp"
-                            android:layout_marginBottom="8dp"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/rb5"
-                                style="@style/fragment0_radionbutton"
-                                android:drawableTop="@drawable/fragment0_rb5"
-                                android:text="@string/safety_and_honesty" />
-
-                            <RadioButton
-                                android:id="@+id/rb6"
-                                style="@style/fragment0_radionbutton"
-                                android:drawableTop="@drawable/fragment0_rb6"
-                                android:text="@string/training_evaluation" />
-
-                            <RadioButton
-                                android:id="@+id/rb7"
-                                style="@style/fragment0_radionbutton"
-                                android:drawableTop="@drawable/fragment0_rb7"
-                                android:text="@string/education_and_training" />
-
-                            <RadioButton
-                                android:id="@+id/rb8"
-                                style="@style/fragment0_radionbutton"
-                                android:drawableTop="@drawable/fragment0_rb8"
-                                android:text="@string/train_bigdata" />
-
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>

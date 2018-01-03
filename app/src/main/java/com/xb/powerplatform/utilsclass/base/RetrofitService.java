@@ -1,10 +1,11 @@
 package com.xb.powerplatform.utilsclass.base;
 
 import com.xb.powerplatform.education_and_training.bean.RegularAssess;
-import com.xb.powerplatform.education_and_training.bean.result;
 import com.xb.powerplatform.education_and_training.bean.assess;
+import com.xb.powerplatform.education_and_training.bean.result;
 import com.xb.powerplatform.utilsclass.person.entity.User;
 import com.xb.powerplatform.utilsclass.person.entity.register;
+import com.xb.powerplatform.utilsclass.person.entity.upApp;
 
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -55,5 +56,11 @@ public interface RetrofitService {
     @GET("getScore")
     Observable<result> upResultAssess(@Query("classId") String classId, @Query("cred") String cred
     , @Query("score") String score);
+
+    /**
+     * 更新APP
+     */
+    @GET("version_update")
+    Observable<upApp> upApp ();
 
 }

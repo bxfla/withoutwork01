@@ -27,6 +27,7 @@ import com.xb.powerplatform.education_and_training.presenter.IPresenter;
 import com.xb.powerplatform.education_and_training.presenter.impl.Presenterimpl;
 import com.xb.powerplatform.education_and_training.view.IView;
 import com.xb.powerplatform.utilsclass.myViews.StatusBarUtils;
+import com.xb.powerplatform.utilsclass.utils.AlertDialogUtil;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -35,6 +36,8 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static com.xb.powerplatform.R.string.no_question;
 
 public class EducationActivity extends AppCompatActivity implements IView {
 
@@ -77,6 +80,7 @@ public class EducationActivity extends AppCompatActivity implements IView {
     private String classId;
     String classId1;
     int erLength;
+    private AlertDialogUtil alertDialogUtil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,7 +124,8 @@ public class EducationActivity extends AppCompatActivity implements IView {
         cursor = DbManager.queryBySQL(db, sql1, null);
         listrule = DbManager.cursorTorule(cursor);
         if (listrule.size()==0){
-            Toast.makeText(this, getResources().getString(R.string.first_download), Toast.LENGTH_SHORT).show();
+            alertDialogUtil= new AlertDialogUtil(this);
+            alertDialogUtil.showSmallDialog(getResources().getString(R.string.first_download));
         }else {
             int raNum=listrule.get(0).getRadioNum();
             int muNum=listrule.get(0).getMultiNum();
@@ -152,7 +157,8 @@ public class EducationActivity extends AppCompatActivity implements IView {
         cursor = DbManager.queryBySQL(db, sqlerLength, null);
         listRb = DbManager.cursorTorule(cursor);
         if (listRb.size()==0){
-            Toast.makeText(this, getResources().getString(R.string.first_download), Toast.LENGTH_SHORT).show();
+//            alertDialogUtil= new AlertDialogUtil(this);
+//            alertDialogUtil.showSmallDialog(getResources().getString(R.string.first_download));
         }else {
             erLength=listRb.get(0).getErLength();
         }
@@ -189,13 +195,15 @@ public class EducationActivity extends AppCompatActivity implements IView {
                 getData();
                 if (beanList.size() != 0) {
                     intent = new Intent(EducationActivity.this, EducationMoNiActivity.class);
-                    intent.putExtra("classId",classId);
-                    intent.putExtra("erLength",String.valueOf(erLength));
+                    intent.putExtra("classId", classId);
+                    intent.putExtra("erLength", String.valueOf(erLength));
                     intent.putExtra("list", (Serializable) beanList);
                     startActivity(intent);
-                } else {
-                    Toast.makeText(this, getResources().getString(R.string.first_download), Toast.LENGTH_SHORT).show();
                 }
+//                } else {
+//                    alertDialogUtil= new AlertDialogUtil(this);
+//                    alertDialogUtil.showSmallDialog(getResources().getString(R.string.first_download));
+//                }
                 break;
             case R.id.btn2:
                 getData();
@@ -203,9 +211,11 @@ public class EducationActivity extends AppCompatActivity implements IView {
                     intent = new Intent(EducationActivity.this, EducationZaiXianActivity.class);
                     intent.putExtra("classId", classId);
                     startActivity(intent);
-                } else {
-                    Toast.makeText(this, getResources().getString(R.string.first_download), Toast.LENGTH_SHORT).show();
                 }
+//                } else {
+//                    alertDialogUtil= new AlertDialogUtil(this);
+//                    alertDialogUtil.showSmallDialog(getResources().getString(R.string.first_download));
+//                }
                 break;
             case R.id.btn3:
                 classId1 = preference.getData(this, "classId", "");
@@ -213,7 +223,8 @@ public class EducationActivity extends AppCompatActivity implements IView {
                     intent = new Intent(EducationActivity.this, RegularAssessActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(this, "暂无考试班级", Toast.LENGTH_SHORT).show();
+                    alertDialogUtil= new AlertDialogUtil(this);
+                    alertDialogUtil.showSmallDialog(getResources().getString(no_question));
                 }
                 break;
             case R.id.left:
@@ -222,7 +233,8 @@ public class EducationActivity extends AppCompatActivity implements IView {
             case R.id.title:
                 getDwoClassNameData();
                 if (listNamed.size() == 0) {
-                    Toast.makeText(EducationActivity.this, getResources().getString(R.string.first_download), Toast.LENGTH_SHORT).show();
+                    alertDialogUtil= new AlertDialogUtil(this);
+                    alertDialogUtil.showSmallDialog(getResources().getString(R.string.first_download));
                 } else {
                     final String[] arrName = (String[]) listNamed.toArray(new String[listNamed.size()]);
                     final String[] arrId = (String[]) listIdd.toArray(new String[listIdd.size()]);
@@ -248,7 +260,8 @@ public class EducationActivity extends AppCompatActivity implements IView {
                 final String[] arrName = (String[]) listName.toArray(new String[listName.size()]);
                 final String[] arrId = (String[]) listId.toArray(new String[listId.size()]);
                 if (listName.size() == 0) {
-                    Toast.makeText(this, getResources().getString(R.string.no_question), Toast.LENGTH_SHORT).show();
+                    alertDialogUtil= new AlertDialogUtil(this);
+                    alertDialogUtil.showSmallDialog(getResources().getString(no_question));
                 } else {
                     //dialog
                     new AlertDialog.Builder(this)
@@ -264,9 +277,8 @@ public class EducationActivity extends AppCompatActivity implements IView {
                                             classId=arrId[which];
                                             getDwoClassNameData();
                                             if (listNamed.contains(arrName[which])) {
-                                                Toast.makeText(EducationActivity.this,
-                                                        getResources().getString(R.string.download_old),
-                                                        Toast.LENGTH_SHORT).show();
+                                                alertDialogUtil= new AlertDialogUtil(EducationActivity.this);
+                                                alertDialogUtil.showSmallDialog(getResources().getString(R.string.download_old));
                                             } else {
                                                 classId=arrId[which];
                                                 String dwoStatic = "Yes";
@@ -357,7 +369,7 @@ public class EducationActivity extends AppCompatActivity implements IView {
 
             Toast.makeText(this, getResources().getString(R.string.download_ok), Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, getResources().getString(R.string.no_question), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(no_question), Toast.LENGTH_SHORT).show();
         }
     }
 

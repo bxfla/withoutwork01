@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_myinform"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.xb.powerplatform.utilsclass.person.activity.MyInformActivity">
+
+    <com.xb.powerplatform.utilsclass.myViews.Header
+        android:id="@+id/header"
+        style="@style/Heander"
+        app:header_title="@string/my_infoorm">
+    </com.xb.powerplatform.utilsclass.myViews.Header>
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        style="@style/linerlayout"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="姓名"
+            android:gravity="center_vertical"
+            android:textSize="16dp" />
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="16dp" />
+    </LinearLayout>
+    <View style="@style/line"></View>
+    <LinearLayout
+        android:id="@+id/ll2"
+        style="@style/linerlayout"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="身份证号"
+            android:gravity="center_vertical"
+            android:textSize="16dp" />
+        <TextView
+            android:id="@+id/tvIdcard"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="16dp" />
+    </LinearLayout>
+    <View style="@style/line"></View>
+    <LinearLayout
+        android:id="@+id/ll3"
+        style="@style/linerlayout"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="考试记录"
+            android:gravity="center_vertical"
+            android:textSize="16dp" />
+        <TextView
+            android:id="@+id/tvAssessLine"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="16dp" />
+    </LinearLayout>
+    <View style="@style/line"></View>
+</LinearLayout>

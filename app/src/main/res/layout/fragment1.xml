@@ -43,9 +43,6 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <View
-        style="@style/line"/>
-
     <LinearLayout
         android:layout_marginTop="1dp"
         android:layout_width="match_parent"
@@ -53,6 +50,7 @@
         android:orientation="vertical">
         //个人信息
         <LinearLayout
+            android:id="@+id/myinform"
             style="@style/linerlayout"
             android:background="@color/whith">
             <ImageView
@@ -79,6 +77,7 @@
             android:background="@color/shouye"/>
         //修改密码
         <LinearLayout
+            android:id="@+id/checkpwd"
            style="@style/linerlayout"
             android:layout_marginTop="1dp"
             android:background="@color/whith">
@@ -87,6 +86,34 @@
                 android:layout_height="15dp"
                 android:layout_marginRight="4dp"
                 android:src="@drawable/checkpwd"
+                android:layout_centerVertical="true"/>
+            <TextView
+                style="@style/TextView"
+                android:text="@string/revise_pwd"
+                android:gravity="center_vertical"
+                android:textColor="@color/xiaohei"/>
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="15dp"
+                android:src="@drawable/go"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/shouye"/>
+        //检测更新
+        <LinearLayout
+            android:id="@+id/upApp"
+            style="@style/linerlayout"
+            android:layout_marginTop="1dp"
+            android:background="@color/whith">
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="15dp"
+                android:layout_marginRight="4dp"
+                android:src="@drawable/upapp"
                 android:layout_centerVertical="true"/>
             <TextView
                 style="@style/TextView"

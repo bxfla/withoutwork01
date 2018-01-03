@@ -66,8 +66,11 @@
         <activity android:name=".education_and_training.activity.MoreSelectActivity" />
         <activity android:name=".education_and_training.activity.ErrorActivity" />
         <activity android:name=".CacheActivity" />
-        <activity android:name=".education_and_training.activity.RegularAssessActivity"/>
-        <activity android:name=".education_and_training.activity.MoNiAssessResultActivity"/>
+        <activity android:name=".education_and_training.activity.RegularAssessActivity" />
+        <activity android:name=".education_and_training.activity.MoNiAssessResultActivity" />
+        <activity android:name=".utilsclass.person.activity.MyInformActivity" />
+        <activity android:name=".utilsclass.person.activity.AssessLineActivity" />
+        <activity android:name=".utilsclass.person.activity.CheckPwdActivity"></activity>
     </application>
 
 </manifest>
