@@ -1,8 +1,10 @@
 package com.xb.powerplatform.utilsclass.person.fragment;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -74,10 +76,9 @@ public class Fragment1 extends Fragment implements UpAppView{
         presenter.upApp();
         view = inflater.inflate(R.layout.fragment1, container, false);
         ButterKnife.bind(this, view);
-        String name = preference.getData(getActivity(), "enrolName", "");
-        String Idcard = preference.getData(getActivity(), "crednumber", "");
-        tvName.setText(name);
-        tvIdcard.setText(Idcard);
+        SharedPreferences preferences=getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
+        String read=preferences.getString("read", "");
+        tvIdcard.setText(read);
         return view;
     }
 

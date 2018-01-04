@@ -12,6 +12,7 @@ import com.xb.powerplatform.R;
 import com.xb.powerplatform.moring_paper.activity.MoringPaperXQActivity;
 import com.xb.powerplatform.utilsclass.base.MyApplication;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
@@ -22,6 +23,7 @@ import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 public class AssessLineAdapter extends RecyclerView.Adapter<AssessLineAdapter.ViewHolder> {
     Context context;
+    List<String>mList=new ArrayList<>();
     static class ViewHolder extends RecyclerView.ViewHolder{
         TextView textView;
         public ViewHolder(View itemView) {
@@ -30,7 +32,7 @@ public class AssessLineAdapter extends RecyclerView.Adapter<AssessLineAdapter.Vi
         }
     }
     public AssessLineAdapter(Context context, List<String> mList){
-        // this.mList=mList;
+         this.mList=mList;
         this.context=context;
     }
 
@@ -53,14 +55,11 @@ public class AssessLineAdapter extends RecyclerView.Adapter<AssessLineAdapter.Vi
 
     @Override
     public void onBindViewHolder(AssessLineAdapter.ViewHolder holder, int position) {
-        holder.textView.setText("各区域水雾帘要迎向风流、封闭全断面，转载点喷雾对\n" +
-                "\"准转载点，要固定牢固、施雾化效果好，掘进皮带连续化运\\n\" +\n" +
-                "\"输也必须安装转载点喷雾。防尘设施检查时要全部开启并，\\n\" +\n" +
-                "\"大巷自动喷雾正常使用。");
+        holder.textView.setText(mList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return 20;
+        return mList.size();
     }
 }

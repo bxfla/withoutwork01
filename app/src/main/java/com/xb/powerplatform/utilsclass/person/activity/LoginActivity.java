@@ -1,6 +1,7 @@
 package com.xb.powerplatform.utilsclass.person.activity;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
@@ -34,8 +35,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static com.xb.powerplatform.SharedPreferencesHelper.saveData;
-
 
 /**
  * 登录activity
@@ -58,6 +57,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
     CheckBox chechBox;
 
     String name,password;
+    List<String> list=new ArrayList<>();
 
     private static boolean isExit = false;
     SharedPreferencesHelper preference;
@@ -103,18 +103,31 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @Override
     public void setUser(User user) {
+        SharedPreferences preferences=getSharedPreferences("user", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=preferences.edit();
+        String read=user.getBody().getUserInfo().getCmpiCrednumber();
+        editor.putString("read", read);
+        editor.commit();
         if (String.valueOf(user.isSuccess()).equals("true")){
-            if (user.getBody().getBmList()!=null){
+            if (user.getBody().getBmList().size()!=0){
                 int line=user.getBody().getBmList().size();
                 for (int i=0;i<line;i++){
-                    saveData(this,"crednumber",user.getBody().getBmList().get(i).getCrednumber());//身份证号
-                    saveData(this,"enrolName",user.getBody().getBmList().get(i).getEnrolName());//姓名
-                    saveData(this,"majorId",user.getBody().getBmList().get(i).getMajorId());//个人ID
-                    String cont=user.getBody().getExamClass().classId;
-                    if (cont!=null){
-                        saveData(this,"classId",user.getBody().getExamClass().getClassId());//考试ID
-                    }else {
+                    String examState=user.getBody().getBmList().get(i).getExamState();
+                    if (examState.equals("2")){
+                        list.add(user.getBody().getBmList().get(i).getClassName());
                     }
+//                    SharedPreferences preferences=getSharedPreferences("user", Context.MODE_PRIVATE);
+//                    SharedPreferences.Editor editor=preferences.edit();
+//                    String name=user.getBody().getBmList().get(i).getEnrolName();
+//                    String read=user.getBody().getBmList().get(i).getCrednumber();
+//                    editor.putString("name", name);
+//                    editor.putString("read", read);
+//                    editor.commit();
+//                    String cont=user.getBody().getExamClass().classId;
+//                    if (cont!=null){
+//                        saveData(this,"classId",user.getBody().getExamClass().getClassId());//考试ID
+//                    }else {
+//                    }
                     String classId = user.getBody().getBmList().get(i).getClassId();
                     String className = user.getBody().getBmList().get(i).getClassName();//题目
                     String dwoStatic="No";
@@ -125,10 +138,8 @@ public class LoginActivity extends BaseActivity implements LoginView {
                     db.insert(Constant.TABBLE_CLASS_NAME, null, values);
                     values.clear();
                 }
+                preference.saveList("classold",list);
             }else {
-                saveData(this,"crednumber",user.getBody().getBmList().get(0).getCrednumber());//身份证号
-                saveData(this,"enrolName",user.getBody().getBmList().get(0).getEnrolName());//姓名
-                saveData(this,"majorId",user.getBody().getBmList().get(0).getMajorId());//个人ID
             }
             intent = new Intent(this, MainActivity.class);
             startActivity(intent);

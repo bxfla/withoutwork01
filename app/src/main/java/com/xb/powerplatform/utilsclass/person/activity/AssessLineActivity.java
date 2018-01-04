@@ -1,5 +1,6 @@
 package com.xb.powerplatform.utilsclass.person.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,6 +30,8 @@ public class AssessLineActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
+        Intent intent=getIntent();
+        list=intent.getStringArrayListExtra("list");
         LinearLayoutManager manager = new LinearLayoutManager(MyApplication.getContextObject());
         recycleView.setLayoutManager(manager);
         recycleView.addItemDecoration(new DividerItemDecoration(getResources().getColor(R.color.line)
