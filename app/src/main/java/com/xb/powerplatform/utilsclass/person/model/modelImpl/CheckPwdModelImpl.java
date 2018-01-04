@@ -7,7 +7,7 @@ import com.xb.powerplatform.utilsclass.base.BaseRequestBackLisenter;
 import com.xb.powerplatform.utilsclass.base.Constant;
 import com.xb.powerplatform.utilsclass.base.MySubscriberbean;
 import com.xb.powerplatform.utilsclass.base.RetrofitService;
-import com.xb.powerplatform.utilsclass.person.entity.register;
+import com.xb.powerplatform.utilsclass.person.entity.checkPwd;
 import com.xb.powerplatform.utilsclass.person.model.CheckPwdModel;
 import com.xb.powerplatform.utilsclass.utils.HttpUtils;
 
@@ -19,11 +19,11 @@ public class CheckPwdModelImpl implements CheckPwdModel {
 
     @Override
     public void getCheckPwdData(String httpTag, String phone, String username, String password, Context context, final BaseModeBackLisenter baseModeBackLisenter) {
-        HttpUtils.initlist(HttpUtils.getService(RetrofitService.class).Register(phone, username,password)
-                ,new MySubscriberbean(httpTag,context, Constant.REGISTER, new BaseRequestBackLisenter<register>() {
+        HttpUtils.initlist(HttpUtils.getService(RetrofitService.class).checkPwd(phone, username,password)
+                ,new MySubscriberbean(httpTag,context, Constant.CHECK, new BaseRequestBackLisenter<checkPwd>() {
                     @Override
-                    public void success(register register) {
-                        baseModeBackLisenter.success(register);
+                    public void success(checkPwd checkpwd) {
+                        baseModeBackLisenter.success(checkpwd);
                     }
 
                     @Override

@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.xb.powerplatform.utilsclass.base.BaseModeBackLisenter;
 import com.xb.powerplatform.utilsclass.base.Constant;
-import com.xb.powerplatform.utilsclass.person.entity.register;
+import com.xb.powerplatform.utilsclass.person.entity.checkPwd;
 import com.xb.powerplatform.utilsclass.person.model.CheckPwdModel;
 import com.xb.powerplatform.utilsclass.person.model.modelImpl.CheckPwdModelImpl;
 import com.xb.powerplatform.utilsclass.person.presenter.CheckPwdPresenter;
@@ -30,10 +30,10 @@ public class CheckPwdPresenterImpl implements CheckPwdPresenter {
 
     @Override
     public void CheckPwd(String phone, String cred, String Password) {
-        model.getCheckPwdData(Constant.LOGIN_HTTP_TAG, phone, cred, Password, context, new BaseModeBackLisenter() {
+        model.getCheckPwdData(Constant.CHECK, phone, cred, Password, context, new BaseModeBackLisenter() {
             @Override
             public void success(Object o) {
-                view.getCheckPwdData((register) o);
+                view.getCheckPwdData((checkPwd) o);
             }
 
             @Override

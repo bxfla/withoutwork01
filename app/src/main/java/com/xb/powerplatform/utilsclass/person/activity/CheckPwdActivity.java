@@ -1,6 +1,8 @@
 package com.xb.powerplatform.utilsclass.person.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Looper;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -8,10 +10,12 @@ import android.widget.Toast;
 import com.xb.powerplatform.R;
 import com.xb.powerplatform.utilsclass.base.BaseActivity;
 import com.xb.powerplatform.utilsclass.myViews.Header;
-import com.xb.powerplatform.utilsclass.person.entity.register;
+import com.xb.powerplatform.utilsclass.myViews.showMyToast;
+import com.xb.powerplatform.utilsclass.person.entity.checkPwd;
 import com.xb.powerplatform.utilsclass.person.presenter.CheckPwdPresenter;
 import com.xb.powerplatform.utilsclass.person.presenter.presenterImpl.CheckPwdPresenterImpl;
 import com.xb.powerplatform.utilsclass.person.view.CheckPwdView;
+import com.xb.powerplatform.utilsclass.utils.ProgressDialogUtil;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -31,6 +35,7 @@ public class CheckPwdActivity extends BaseActivity implements CheckPwdView{
     EditText etNewPwd;
     @Bind(R.id.btn)
     Button btn;
+    showMyToast showmytoast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,12 +68,24 @@ public class CheckPwdActivity extends BaseActivity implements CheckPwdView{
             presenter.CheckPwd(etName.getText().toString(),
                     etIdcard.getText().toString(),etNewPwd.getText().toString());
         }else {
-            Toast.makeText(this, "注册信息 不能为空", Toast.LENGTH_SHORT).show();
+            ProgressDialogUtil.startLoad(this,getResources().getString(R.string.cannot_isnull));
         }
     }
 
     @Override
-    public void getCheckPwdData(register register) {
-
+    public void getCheckPwdData(checkPwd checkpwd) {
+        if (String.valueOf(checkpwd.isSuccess()).equals("true")){
+            Intent intent=new Intent(this,LoginActivity.class);
+            startActivity(intent);
+            Looper.loop();
+            Toast toast=Toast.makeText(CheckPwdActivity.this,"修改成功", Toast.LENGTH_LONG);
+            showmytoast.showToast(toast,1000);
+            Looper.prepare();
+        }else {
+            Looper.loop();
+            Toast toast=Toast.makeText(CheckPwdActivity.this,"修改失败", Toast.LENGTH_LONG);
+            showmytoast.showToast(toast,1000);
+            Looper.prepare();
+        }
     }
 }

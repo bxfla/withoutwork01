@@ -13,5 +13,6 @@ public class Constant {
     public static final String REGISTER="注册中...";
     public static final String LOGIN="登陆中...";
     public static final String UPRESULT="提交成绩";
+    public static final String CHECK="修改中";
 
 }

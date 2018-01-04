@@ -10,7 +10,7 @@ import com.xb.powerplatform.utilsclass.base.BaseModeBackLisenter;
 
 public interface CheckPwdModel {
     /**
-     * 注册方法
+     * 修改密码方法
      * @param username
      * @param password
      * @param context

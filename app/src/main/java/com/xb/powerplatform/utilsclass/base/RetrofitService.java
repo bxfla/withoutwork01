@@ -4,6 +4,7 @@ import com.xb.powerplatform.education_and_training.bean.RegularAssess;
 import com.xb.powerplatform.education_and_training.bean.assess;
 import com.xb.powerplatform.education_and_training.bean.result;
 import com.xb.powerplatform.utilsclass.person.entity.User;
+import com.xb.powerplatform.utilsclass.person.entity.checkPwd;
 import com.xb.powerplatform.utilsclass.person.entity.register;
 import com.xb.powerplatform.utilsclass.person.entity.upApp;
 
@@ -62,5 +63,16 @@ public interface RetrofitService {
      */
     @GET("version_update")
     Observable<upApp> upApp ();
+
+    /**
+     * 修改密码
+     * @param num
+     * @param cred
+     * @param pwd
+     * @return
+     */
+    @POST("resetPwd")
+    Observable<checkPwd> checkPwd(@Query("num") String num,
+                                  @Query("cred") String cred, @Query("pwd") String pwd);
 
 }
