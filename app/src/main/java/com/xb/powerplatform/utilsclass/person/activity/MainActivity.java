@@ -78,6 +78,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     List<Fragment> list=new ArrayList<Fragment>();
 
     UpAppPresenter presenter;
+    String version;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,6 +151,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     @Override
     public void setUser(upApp upapp) {
+        version=upapp.getVersion();
         String version1=preference.getData(this,"upApp","");
         if (version1.length()==0){
             saveData(this,"upApp",upapp.getVersion());//程序版本
@@ -255,6 +257,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setDataAndType(Uri.parse("file://" + apkfile.toString()), "application/vnd.android.package-archive");
         startActivity(i);
+        saveData(this,"upApp",version);//程序版本
     }
 
 }

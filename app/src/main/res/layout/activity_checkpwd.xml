@@ -25,8 +25,8 @@
             android:text="手机号"
             android:gravity="center_vertical"
             android:textSize="16dp" />
-        <TextView
-            android:id="@+id/tvName"
+        <EditText
+            android:id="@+id/etName"
             android:layout_weight="2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -45,8 +45,8 @@
             android:text="身份证号"
             android:gravity="center_vertical"
             android:textSize="16dp" />
-        <TextView
-            android:id="@+id/tvIdcard"
+        <EditText
+            android:id="@+id/etIdcard"
             android:layout_weight="2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -65,8 +65,8 @@
             android:text="新密码"
             android:gravity="center_vertical"
             android:textSize="16dp" />
-        <TextView
-            android:id="@+id/tvNewPwd"
+        <EditText
+            android:id="@+id/etNewPwd"
             android:layout_weight="2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -74,5 +74,18 @@
             android:textSize="16dp" />
     </LinearLayout>
     <View style="@style/line"></View>
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="45dp"
+        android:textSize="17dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:background="@color/color_bg_selected"
+        android:text="@string/title_tips_confim"/>
 
 </LinearLayout>
