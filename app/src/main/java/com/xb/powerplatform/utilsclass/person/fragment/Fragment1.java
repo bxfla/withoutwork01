@@ -40,8 +40,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static com.xb.powerplatform.SharedPreferencesHelper.saveData;
-
 /**
  * Created by dell on 2017/8/1.
  */
@@ -105,9 +103,13 @@ public class Fragment1 extends Fragment implements UpAppView{
                 startActivity(intent);
                 break;
             case R.id.upApp:
-                String version1=preference.getData(getActivity(),"upApp","");
+                SharedPreferences preferences=getActivity().getSharedPreferences("userup", Context.MODE_PRIVATE);
+                String version1=preferences.getString("version", "");
                 if (version1.length()==0){
-                    saveData(getActivity(),"upApp",version);//程序版本
+                    SharedPreferences preferences1=getActivity().getSharedPreferences("userup", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor=preferences1.edit();
+                    editor.putString("version", version);
+                    editor.commit();
                 }else {
                     if (version1.equals(version)){
                         alertDialogUtil= new AlertDialogUtil(getActivity());

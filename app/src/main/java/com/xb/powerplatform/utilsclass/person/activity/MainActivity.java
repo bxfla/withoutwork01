@@ -1,8 +1,10 @@
 package com.xb.powerplatform.utilsclass.person.activity;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -152,9 +154,15 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     @Override
     public void setUser(upApp upapp) {
         version=upapp.getVersion();
-        String version1=preference.getData(this,"upApp","");
+        SharedPreferences preferences=getSharedPreferences("userup", Context.MODE_PRIVATE);
+        String version1=preferences.getString("version", "");
+        //String version1=preference.getData(this,"upApp","");
         if (version1.length()==0){
-            saveData(this,"upApp",upapp.getVersion());//程序版本
+            SharedPreferences preferences1=getSharedPreferences("userup", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor=preferences1.edit();
+            String version=upapp.getVersion();
+            editor.putString("version", version);
+            editor.commit();
         }else {
             if (version1.equals(upapp.getVersion())){
                 //
