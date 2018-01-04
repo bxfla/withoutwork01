@@ -6,7 +6,7 @@ package com.xb.powerplatform.utilsclass.base;
 
 public class Constant {
     public static final String BASE_URL2="http://v.juhe.cn/jztk/";
-    public static final String BASE_URL="http://60.208.87.82:8080/a/mobile/";
+    public static final String BASE_URL="http://124.133.227.214:59/a/mobile/";
     public static final String LOGIN_HTTP_TAG="10001";//登录
     public static final String DOWNLOAD="下载中";
     public static final String GETDATA="获取数据中";

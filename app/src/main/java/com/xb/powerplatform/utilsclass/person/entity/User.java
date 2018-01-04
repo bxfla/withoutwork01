@@ -14,7 +14,7 @@ public class User implements Serializable {
      * success : true
      * errorCode : -1
      * msg : 登录成功！
-     * body : {"bmList":[{"id":"702bc7b9a01b4d98b3e786a53529de31","isNewRecord":false,"remarks":null,"createDate":"2018-01-04 04:37:28","updateDate":"2018-01-04 04:37:28","staffId":"b5b7db289f7648e8bf939887ef6b06d8","staffName":null,"crednumber":"370828199310201356","enrolName":"胡肖峰","enrolGender":"男","birthday":null,"nation":"汉族","address":"山东济宁","edu":"专科或同等学历","political":"","health":"健康","photo":"/images/5b6d712d-163a-410b-aa93-6302b16000f0.jpg","printState":"0","staff":null,"org":"总公司","cmpiMname":null,"company":"唐口煤业","department":"充填中心","team":"班组一","worktype":{"id":"2d7bc688984c4cec9f182e1bd08ff8e5","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"workCategory":null,"name":"人行车跟车信号工","workType":"4","flag":null},"workpost":{"id":"5224a33517e14295b82c9ed87ff367de","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"workCategory":null,"name":"总经理助理","workType":"5","flag":null},"cmpiWorktype":null,"cmpiTitleprof":"19291cbf84e4485087f9bfd6c8a16152","titleprof":{"id":"19291cbf84e4485087f9bfd6c8a16152","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"name":"正高级"},"classId":"a202f7c69ede47719687be389321fb27","classType":null,"className":"2017年12月29日普通班级 1500 第1期","majorId":"e1159c61cd494ddabec9ccc42464c58b","classList":null,"classExamState":null,"icCard":"","enrolTime":"2018-01-04","enrolEndTime":null,"isOpenExam":"0","examState":"0","isPhoneExam":"0","isAchieve":null,"signCount":0,"signRuleCount":0,"phone":null,"times":null,"score":null,"passScore":null,"searchBy":null,"erRepeatExamCount":null,"examCount":null}],"userInfo":{"id":"901afb893df84313b2caace23d3837f2","isNewRecord":false,"remarks":null,"createDate":"2017-12-28 07:06:31","updateDate":"2018-01-04 04:37:28","group":{"id":"1","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"parentIds":null,"name":"总公司","sort":30,"area":null,"code":null,"type":"2","grade":null,"address":null,"zipCode":null,"master":null,"phone":null,"fax":null,"email":null,"useable":null,"primaryPerson":null,"deputyPerson":null,"childDeptList":null,"parentId":"0"},"company":{"id":"1cfee864a9944b07b3741d678dc8a903","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"parentIds":null,"name":"唐口煤业","sort":30,"area":null,"code":null,"type":"2","grade":null,"address":null,"zipCode":null,"master":null,"phone":null,"fax":null,"email":null,"useable":null,"primaryPerson":null,"deputyPerson":null,"childDeptList":null,"parentId":"0"},"cmpiUtype":null,"department":{"id":"df86f86aa900469d98e5d06f914fe7e6","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"parentIds":null,"name":"充填中心","sort":30,"area":null,"code":null,"type":"2","grade":null,"address":null,"zipCode":null,"master":null,"phone":null,"fax":null,"email":null,"useable":null,"primaryPerson":null,"deputyPerson":null,"childDeptList":null,"parentId":"0"},"team":{"id":"922e8a07e3ea49869aaa5ca404040072","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"parentIds":null,"name":"班组一","sort":30,"area":null,"code":null,"type":"2","grade":null,"address":null,"zipCode":null,"master":null,"phone":null,"fax":null,"email":null,"useable":null,"primaryPerson":null,"deputyPerson":null,"childDeptList":null,"parentId":"0"},"cmpiName":"胡肖峰","cmpiSex":"男","cmpiCredtype":null,"cmpiBdate":null,"cmpiCrednumber":"370828199310201356","cmpiTitleprof":"19291cbf84e4485087f9bfd6c8a16152","titleprof":{"id":"19291cbf84e4485087f9bfd6c8a16152","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"name":"正高级"},"cmpiAge":null,"cmpiPhone":null,"cmpiEducation":"专科或同等学历","worktype":{"id":"2d7bc688984c4cec9f182e1bd08ff8e5","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"workCategory":null,"name":"人行车跟车信号工","workType":null,"flag":null},"cmpiWorkType":"2d7bc688984c4cec9f182e1bd08ff8e5","cmpiPost":"5224a33517e14295b82c9ed87ff367de","post":{"id":"5224a33517e14295b82c9ed87ff367de","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"workCategory":null,"name":"总经理助理","workType":null,"flag":null},"hygiene":null,"partTimeJob":null,"entryDate":null,"changeTime":null,"nation":"汉族","address":"山东济宁","health":"健康","pictureUrl":"/images/5b6d712d-163a-410b-aa93-6302b16000f0.jpg","classInfo":null,"examScore":null,"trainInfo":null,"changeStartTime":null,"changeEndTime":null},"examClass":{}}
+     * body : {"bmList":[{"id":"702bc7b9a01b4d98b3e786a53529de31","isNewRecord":false,"remarks":null,"createDate":"2018-01-04 04:37:28","updateDate":"2018-01-04 06:55:45","staffId":"b5b7db289f7648e8bf939887ef6b06d8","staffName":null,"crednumber":"370828199310201356","enrolName":"胡肖峰","enrolGender":"男","birthday":null,"nation":"汉族","address":"山东济宁","edu":"专科或同等学历","political":"","health":"健康","photo":"/images/5b6d712d-163a-410b-aa93-6302b16000f0.jpg","printState":"0","staff":null,"org":"总公司","cmpiMname":null,"company":"唐口煤业","department":"充填中心","team":"班组一","worktype":{"id":"2d7bc688984c4cec9f182e1bd08ff8e5","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"workCategory":null,"name":"人行车跟车信号工","workType":"4","flag":null},"workpost":{"id":"5224a33517e14295b82c9ed87ff367de","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"workCategory":null,"name":"总经理助理","workType":"5","flag":null},"cmpiWorktype":null,"cmpiTitleprof":"19291cbf84e4485087f9bfd6c8a16152","titleprof":{"id":"19291cbf84e4485087f9bfd6c8a16152","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"name":"正高级"},"classId":"a202f7c69ede47719687be389321fb27","classType":null,"className":"2017年12月29日普通班级 1500 第1期","majorId":"e1159c61cd494ddabec9ccc42464c58b","classList":null,"classExamState":null,"icCard":"","enrolTime":"2018-01-04","enrolEndTime":null,"isOpenExam":"0","examState":"0","isPhoneExam":"1","isAchieve":null,"signCount":0,"signRuleCount":0,"phone":null,"times":null,"score":null,"passScore":null,"searchBy":null,"erRepeatExamCount":null,"examCount":null}],"user":{"userId":"90b664caa9c64091986921c0012bfc6f","cred":"370828199310201356"},"examClass":{"classId":"a202f7c69ede47719687be389321fb27","className":"2017年12月29日普通班级 1500 第1期"}}
      */
 
     private boolean success;
@@ -56,21 +56,21 @@ public class User implements Serializable {
 
     public static class BodyBean {
         /**
-         * bmList : [{"id":"702bc7b9a01b4d98b3e786a53529de31","isNewRecord":false,"remarks":null,"createDate":"2018-01-04 04:37:28","updateDate":"2018-01-04 04:37:28","staffId":"b5b7db289f7648e8bf939887ef6b06d8","staffName":null,"crednumber":"370828199310201356","enrolName":"胡肖峰","enrolGender":"男","birthday":null,"nation":"汉族","address":"山东济宁","edu":"专科或同等学历","political":"","health":"健康","photo":"/images/5b6d712d-163a-410b-aa93-6302b16000f0.jpg","printState":"0","staff":null,"org":"总公司","cmpiMname":null,"company":"唐口煤业","department":"充填中心","team":"班组一","worktype":{"id":"2d7bc688984c4cec9f182e1bd08ff8e5","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"workCategory":null,"name":"人行车跟车信号工","workType":"4","flag":null},"workpost":{"id":"5224a33517e14295b82c9ed87ff367de","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"workCategory":null,"name":"总经理助理","workType":"5","flag":null},"cmpiWorktype":null,"cmpiTitleprof":"19291cbf84e4485087f9bfd6c8a16152","titleprof":{"id":"19291cbf84e4485087f9bfd6c8a16152","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"name":"正高级"},"classId":"a202f7c69ede47719687be389321fb27","classType":null,"className":"2017年12月29日普通班级 1500 第1期","majorId":"e1159c61cd494ddabec9ccc42464c58b","classList":null,"classExamState":null,"icCard":"","enrolTime":"2018-01-04","enrolEndTime":null,"isOpenExam":"0","examState":"0","isPhoneExam":"0","isAchieve":null,"signCount":0,"signRuleCount":0,"phone":null,"times":null,"score":null,"passScore":null,"searchBy":null,"erRepeatExamCount":null,"examCount":null}]
-         * userInfo : {"id":"901afb893df84313b2caace23d3837f2","isNewRecord":false,"remarks":null,"createDate":"2017-12-28 07:06:31","updateDate":"2018-01-04 04:37:28","group":{"id":"1","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"parentIds":null,"name":"总公司","sort":30,"area":null,"code":null,"type":"2","grade":null,"address":null,"zipCode":null,"master":null,"phone":null,"fax":null,"email":null,"useable":null,"primaryPerson":null,"deputyPerson":null,"childDeptList":null,"parentId":"0"},"company":{"id":"1cfee864a9944b07b3741d678dc8a903","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"parentIds":null,"name":"唐口煤业","sort":30,"area":null,"code":null,"type":"2","grade":null,"address":null,"zipCode":null,"master":null,"phone":null,"fax":null,"email":null,"useable":null,"primaryPerson":null,"deputyPerson":null,"childDeptList":null,"parentId":"0"},"cmpiUtype":null,"department":{"id":"df86f86aa900469d98e5d06f914fe7e6","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"parentIds":null,"name":"充填中心","sort":30,"area":null,"code":null,"type":"2","grade":null,"address":null,"zipCode":null,"master":null,"phone":null,"fax":null,"email":null,"useable":null,"primaryPerson":null,"deputyPerson":null,"childDeptList":null,"parentId":"0"},"team":{"id":"922e8a07e3ea49869aaa5ca404040072","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"parentIds":null,"name":"班组一","sort":30,"area":null,"code":null,"type":"2","grade":null,"address":null,"zipCode":null,"master":null,"phone":null,"fax":null,"email":null,"useable":null,"primaryPerson":null,"deputyPerson":null,"childDeptList":null,"parentId":"0"},"cmpiName":"胡肖峰","cmpiSex":"男","cmpiCredtype":null,"cmpiBdate":null,"cmpiCrednumber":"370828199310201356","cmpiTitleprof":"19291cbf84e4485087f9bfd6c8a16152","titleprof":{"id":"19291cbf84e4485087f9bfd6c8a16152","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"name":"正高级"},"cmpiAge":null,"cmpiPhone":null,"cmpiEducation":"专科或同等学历","worktype":{"id":"2d7bc688984c4cec9f182e1bd08ff8e5","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"workCategory":null,"name":"人行车跟车信号工","workType":null,"flag":null},"cmpiWorkType":"2d7bc688984c4cec9f182e1bd08ff8e5","cmpiPost":"5224a33517e14295b82c9ed87ff367de","post":{"id":"5224a33517e14295b82c9ed87ff367de","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"workCategory":null,"name":"总经理助理","workType":null,"flag":null},"hygiene":null,"partTimeJob":null,"entryDate":null,"changeTime":null,"nation":"汉族","address":"山东济宁","health":"健康","pictureUrl":"/images/5b6d712d-163a-410b-aa93-6302b16000f0.jpg","classInfo":null,"examScore":null,"trainInfo":null,"changeStartTime":null,"changeEndTime":null}
-         * examClass : {}
+         * bmList : [{"id":"702bc7b9a01b4d98b3e786a53529de31","isNewRecord":false,"remarks":null,"createDate":"2018-01-04 04:37:28","updateDate":"2018-01-04 06:55:45","staffId":"b5b7db289f7648e8bf939887ef6b06d8","staffName":null,"crednumber":"370828199310201356","enrolName":"胡肖峰","enrolGender":"男","birthday":null,"nation":"汉族","address":"山东济宁","edu":"专科或同等学历","political":"","health":"健康","photo":"/images/5b6d712d-163a-410b-aa93-6302b16000f0.jpg","printState":"0","staff":null,"org":"总公司","cmpiMname":null,"company":"唐口煤业","department":"充填中心","team":"班组一","worktype":{"id":"2d7bc688984c4cec9f182e1bd08ff8e5","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"workCategory":null,"name":"人行车跟车信号工","workType":"4","flag":null},"workpost":{"id":"5224a33517e14295b82c9ed87ff367de","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"workCategory":null,"name":"总经理助理","workType":"5","flag":null},"cmpiWorktype":null,"cmpiTitleprof":"19291cbf84e4485087f9bfd6c8a16152","titleprof":{"id":"19291cbf84e4485087f9bfd6c8a16152","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"name":"正高级"},"classId":"a202f7c69ede47719687be389321fb27","classType":null,"className":"2017年12月29日普通班级 1500 第1期","majorId":"e1159c61cd494ddabec9ccc42464c58b","classList":null,"classExamState":null,"icCard":"","enrolTime":"2018-01-04","enrolEndTime":null,"isOpenExam":"0","examState":"0","isPhoneExam":"1","isAchieve":null,"signCount":0,"signRuleCount":0,"phone":null,"times":null,"score":null,"passScore":null,"searchBy":null,"erRepeatExamCount":null,"examCount":null}]
+         * user : {"userId":"90b664caa9c64091986921c0012bfc6f","cred":"370828199310201356"}
+         * examClass : {"classId":"a202f7c69ede47719687be389321fb27","className":"2017年12月29日普通班级 1500 第1期"}
          */
 
-        private UserInfoBean userInfo;
+        private UserBean user;
         private ExamClassBean examClass;
         private List<BmListBean> bmList;
 
-        public UserInfoBean getUserInfo() {
-            return userInfo;
+        public UserBean getUser() {
+            return user;
         }
 
-        public void setUserInfo(UserInfoBean userInfo) {
-            this.userInfo = userInfo;
+        public void setUser(UserBean user) {
+            this.user = user;
         }
 
         public ExamClassBean getExamClass() {
@@ -89,1203 +89,56 @@ public class User implements Serializable {
             this.bmList = bmList;
         }
 
-        public static class UserInfoBean {
+        public static class UserBean {
             /**
-             * id : 901afb893df84313b2caace23d3837f2
-             * isNewRecord : false
-             * remarks : null
-             * createDate : 2017-12-28 07:06:31
-             * updateDate : 2018-01-04 04:37:28
-             * group : {"id":"1","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"parentIds":null,"name":"总公司","sort":30,"area":null,"code":null,"type":"2","grade":null,"address":null,"zipCode":null,"master":null,"phone":null,"fax":null,"email":null,"useable":null,"primaryPerson":null,"deputyPerson":null,"childDeptList":null,"parentId":"0"}
-             * company : {"id":"1cfee864a9944b07b3741d678dc8a903","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"parentIds":null,"name":"唐口煤业","sort":30,"area":null,"code":null,"type":"2","grade":null,"address":null,"zipCode":null,"master":null,"phone":null,"fax":null,"email":null,"useable":null,"primaryPerson":null,"deputyPerson":null,"childDeptList":null,"parentId":"0"}
-             * cmpiUtype : null
-             * department : {"id":"df86f86aa900469d98e5d06f914fe7e6","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"parentIds":null,"name":"充填中心","sort":30,"area":null,"code":null,"type":"2","grade":null,"address":null,"zipCode":null,"master":null,"phone":null,"fax":null,"email":null,"useable":null,"primaryPerson":null,"deputyPerson":null,"childDeptList":null,"parentId":"0"}
-             * team : {"id":"922e8a07e3ea49869aaa5ca404040072","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"parentIds":null,"name":"班组一","sort":30,"area":null,"code":null,"type":"2","grade":null,"address":null,"zipCode":null,"master":null,"phone":null,"fax":null,"email":null,"useable":null,"primaryPerson":null,"deputyPerson":null,"childDeptList":null,"parentId":"0"}
-             * cmpiName : 胡肖峰
-             * cmpiSex : 男
-             * cmpiCredtype : null
-             * cmpiBdate : null
-             * cmpiCrednumber : 370828199310201356
-             * cmpiTitleprof : 19291cbf84e4485087f9bfd6c8a16152
-             * titleprof : {"id":"19291cbf84e4485087f9bfd6c8a16152","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"name":"正高级"}
-             * cmpiAge : null
-             * cmpiPhone : null
-             * cmpiEducation : 专科或同等学历
-             * worktype : {"id":"2d7bc688984c4cec9f182e1bd08ff8e5","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"workCategory":null,"name":"人行车跟车信号工","workType":null,"flag":null}
-             * cmpiWorkType : 2d7bc688984c4cec9f182e1bd08ff8e5
-             * cmpiPost : 5224a33517e14295b82c9ed87ff367de
-             * post : {"id":"5224a33517e14295b82c9ed87ff367de","isNewRecord":false,"remarks":null,"createDate":null,"updateDate":null,"workCategory":null,"name":"总经理助理","workType":null,"flag":null}
-             * hygiene : null
-             * partTimeJob : null
-             * entryDate : null
-             * changeTime : null
-             * nation : 汉族
-             * address : 山东济宁
-             * health : 健康
-             * pictureUrl : /images/5b6d712d-163a-410b-aa93-6302b16000f0.jpg
-             * classInfo : null
-             * examScore : null
-             * trainInfo : null
-             * changeStartTime : null
-             * changeEndTime : null
+             * userId : 90b664caa9c64091986921c0012bfc6f
+             * cred : 370828199310201356
              */
 
-            private String id;
-            private boolean isNewRecord;
-            private String cmpiCrednumber;
-            private Object remarks;
+            private String userId;
+            private String cred;
 
-            public boolean isNewRecord() {
-                return isNewRecord;
+            public String getUserId() {
+                return userId;
             }
 
-            public void setNewRecord(boolean newRecord) {
-                isNewRecord = newRecord;
+            public void setUserId(String userId) {
+                this.userId = userId;
             }
 
-            public String getCmpiCrednumber() {
-                return cmpiCrednumber;
+            public String getCred() {
+                return cred;
             }
 
-            public void setCmpiCrednumber(String cmpiCrednumber) {
-                this.cmpiCrednumber = cmpiCrednumber;
-            }
-
-            public String getId() {
-                return id;
-            }
-
-            public void setId(String id) {
-                this.id = id;
-            }
-
-            public boolean isIsNewRecord() {
-                return isNewRecord;
-            }
-
-            public void setIsNewRecord(boolean isNewRecord) {
-                this.isNewRecord = isNewRecord;
-            }
-
-            public Object getRemarks() {
-                return remarks;
-            }
-
-            public void setRemarks(Object remarks) {
-                this.remarks = remarks;
-            }
-
-            public static class GroupBean {
-                /**
-                 * id : 1
-                 * isNewRecord : false
-                 * remarks : null
-                 * createDate : null
-                 * updateDate : null
-                 * parentIds : null
-                 * name : 总公司
-                 * sort : 30
-                 * area : null
-                 * code : null
-                 * type : 2
-                 * grade : null
-                 * address : null
-                 * zipCode : null
-                 * master : null
-                 * phone : null
-                 * fax : null
-                 * email : null
-                 * useable : null
-                 * primaryPerson : null
-                 * deputyPerson : null
-                 * childDeptList : null
-                 * parentId : 0
-                 */
-
-                private String id;
-                private boolean isNewRecord;
-                private Object remarks;
-                private Object createDate;
-                private Object updateDate;
-                private Object parentIds;
-                private String name;
-                private int sort;
-                private Object area;
-                private Object code;
-                private String type;
-                private Object grade;
-                private Object address;
-                private Object zipCode;
-                private Object master;
-                private Object phone;
-                private Object fax;
-                private Object email;
-                private Object useable;
-                private Object primaryPerson;
-                private Object deputyPerson;
-                private Object childDeptList;
-                private String parentId;
-
-                public String getId() {
-                    return id;
-                }
-
-                public void setId(String id) {
-                    this.id = id;
-                }
-
-                public boolean isIsNewRecord() {
-                    return isNewRecord;
-                }
-
-                public void setIsNewRecord(boolean isNewRecord) {
-                    this.isNewRecord = isNewRecord;
-                }
-
-                public Object getRemarks() {
-                    return remarks;
-                }
-
-                public void setRemarks(Object remarks) {
-                    this.remarks = remarks;
-                }
-
-                public Object getCreateDate() {
-                    return createDate;
-                }
-
-                public void setCreateDate(Object createDate) {
-                    this.createDate = createDate;
-                }
-
-                public Object getUpdateDate() {
-                    return updateDate;
-                }
-
-                public void setUpdateDate(Object updateDate) {
-                    this.updateDate = updateDate;
-                }
-
-                public Object getParentIds() {
-                    return parentIds;
-                }
-
-                public void setParentIds(Object parentIds) {
-                    this.parentIds = parentIds;
-                }
-
-                public String getName() {
-                    return name;
-                }
-
-                public void setName(String name) {
-                    this.name = name;
-                }
-
-                public int getSort() {
-                    return sort;
-                }
-
-                public void setSort(int sort) {
-                    this.sort = sort;
-                }
-
-                public Object getArea() {
-                    return area;
-                }
-
-                public void setArea(Object area) {
-                    this.area = area;
-                }
-
-                public Object getCode() {
-                    return code;
-                }
-
-                public void setCode(Object code) {
-                    this.code = code;
-                }
-
-                public String getType() {
-                    return type;
-                }
-
-                public void setType(String type) {
-                    this.type = type;
-                }
-
-                public Object getGrade() {
-                    return grade;
-                }
-
-                public void setGrade(Object grade) {
-                    this.grade = grade;
-                }
-
-                public Object getAddress() {
-                    return address;
-                }
-
-                public void setAddress(Object address) {
-                    this.address = address;
-                }
-
-                public Object getZipCode() {
-                    return zipCode;
-                }
-
-                public void setZipCode(Object zipCode) {
-                    this.zipCode = zipCode;
-                }
-
-                public Object getMaster() {
-                    return master;
-                }
-
-                public void setMaster(Object master) {
-                    this.master = master;
-                }
-
-                public Object getPhone() {
-                    return phone;
-                }
-
-                public void setPhone(Object phone) {
-                    this.phone = phone;
-                }
-
-                public Object getFax() {
-                    return fax;
-                }
-
-                public void setFax(Object fax) {
-                    this.fax = fax;
-                }
-
-                public Object getEmail() {
-                    return email;
-                }
-
-                public void setEmail(Object email) {
-                    this.email = email;
-                }
-
-                public Object getUseable() {
-                    return useable;
-                }
-
-                public void setUseable(Object useable) {
-                    this.useable = useable;
-                }
-
-                public Object getPrimaryPerson() {
-                    return primaryPerson;
-                }
-
-                public void setPrimaryPerson(Object primaryPerson) {
-                    this.primaryPerson = primaryPerson;
-                }
-
-                public Object getDeputyPerson() {
-                    return deputyPerson;
-                }
-
-                public void setDeputyPerson(Object deputyPerson) {
-                    this.deputyPerson = deputyPerson;
-                }
-
-                public Object getChildDeptList() {
-                    return childDeptList;
-                }
-
-                public void setChildDeptList(Object childDeptList) {
-                    this.childDeptList = childDeptList;
-                }
-
-                public String getParentId() {
-                    return parentId;
-                }
-
-                public void setParentId(String parentId) {
-                    this.parentId = parentId;
-                }
-            }
-
-            public static class CompanyBean {
-                /**
-                 * id : 1cfee864a9944b07b3741d678dc8a903
-                 * isNewRecord : false
-                 * remarks : null
-                 * createDate : null
-                 * updateDate : null
-                 * parentIds : null
-                 * name : 唐口煤业
-                 * sort : 30
-                 * area : null
-                 * code : null
-                 * type : 2
-                 * grade : null
-                 * address : null
-                 * zipCode : null
-                 * master : null
-                 * phone : null
-                 * fax : null
-                 * email : null
-                 * useable : null
-                 * primaryPerson : null
-                 * deputyPerson : null
-                 * childDeptList : null
-                 * parentId : 0
-                 */
-
-                private String id;
-                private boolean isNewRecord;
-                private Object remarks;
-                private Object createDate;
-                private Object updateDate;
-                private Object parentIds;
-                private String name;
-                private int sort;
-                private Object area;
-                private Object code;
-                private String type;
-                private Object grade;
-                private Object address;
-                private Object zipCode;
-                private Object master;
-                private Object phone;
-                private Object fax;
-                private Object email;
-                private Object useable;
-                private Object primaryPerson;
-                private Object deputyPerson;
-                private Object childDeptList;
-                private String parentId;
-
-                public String getId() {
-                    return id;
-                }
-
-                public void setId(String id) {
-                    this.id = id;
-                }
-
-                public boolean isIsNewRecord() {
-                    return isNewRecord;
-                }
-
-                public void setIsNewRecord(boolean isNewRecord) {
-                    this.isNewRecord = isNewRecord;
-                }
-
-                public Object getRemarks() {
-                    return remarks;
-                }
-
-                public void setRemarks(Object remarks) {
-                    this.remarks = remarks;
-                }
-
-                public Object getCreateDate() {
-                    return createDate;
-                }
-
-                public void setCreateDate(Object createDate) {
-                    this.createDate = createDate;
-                }
-
-                public Object getUpdateDate() {
-                    return updateDate;
-                }
-
-                public void setUpdateDate(Object updateDate) {
-                    this.updateDate = updateDate;
-                }
-
-                public Object getParentIds() {
-                    return parentIds;
-                }
-
-                public void setParentIds(Object parentIds) {
-                    this.parentIds = parentIds;
-                }
-
-                public String getName() {
-                    return name;
-                }
-
-                public void setName(String name) {
-                    this.name = name;
-                }
-
-                public int getSort() {
-                    return sort;
-                }
-
-                public void setSort(int sort) {
-                    this.sort = sort;
-                }
-
-                public Object getArea() {
-                    return area;
-                }
-
-                public void setArea(Object area) {
-                    this.area = area;
-                }
-
-                public Object getCode() {
-                    return code;
-                }
-
-                public void setCode(Object code) {
-                    this.code = code;
-                }
-
-                public String getType() {
-                    return type;
-                }
-
-                public void setType(String type) {
-                    this.type = type;
-                }
-
-                public Object getGrade() {
-                    return grade;
-                }
-
-                public void setGrade(Object grade) {
-                    this.grade = grade;
-                }
-
-                public Object getAddress() {
-                    return address;
-                }
-
-                public void setAddress(Object address) {
-                    this.address = address;
-                }
-
-                public Object getZipCode() {
-                    return zipCode;
-                }
-
-                public void setZipCode(Object zipCode) {
-                    this.zipCode = zipCode;
-                }
-
-                public Object getMaster() {
-                    return master;
-                }
-
-                public void setMaster(Object master) {
-                    this.master = master;
-                }
-
-                public Object getPhone() {
-                    return phone;
-                }
-
-                public void setPhone(Object phone) {
-                    this.phone = phone;
-                }
-
-                public Object getFax() {
-                    return fax;
-                }
-
-                public void setFax(Object fax) {
-                    this.fax = fax;
-                }
-
-                public Object getEmail() {
-                    return email;
-                }
-
-                public void setEmail(Object email) {
-                    this.email = email;
-                }
-
-                public Object getUseable() {
-                    return useable;
-                }
-
-                public void setUseable(Object useable) {
-                    this.useable = useable;
-                }
-
-                public Object getPrimaryPerson() {
-                    return primaryPerson;
-                }
-
-                public void setPrimaryPerson(Object primaryPerson) {
-                    this.primaryPerson = primaryPerson;
-                }
-
-                public Object getDeputyPerson() {
-                    return deputyPerson;
-                }
-
-                public void setDeputyPerson(Object deputyPerson) {
-                    this.deputyPerson = deputyPerson;
-                }
-
-                public Object getChildDeptList() {
-                    return childDeptList;
-                }
-
-                public void setChildDeptList(Object childDeptList) {
-                    this.childDeptList = childDeptList;
-                }
-
-                public String getParentId() {
-                    return parentId;
-                }
-
-                public void setParentId(String parentId) {
-                    this.parentId = parentId;
-                }
-            }
-
-            public static class DepartmentBean {
-                /**
-                 * id : df86f86aa900469d98e5d06f914fe7e6
-                 * isNewRecord : false
-                 * remarks : null
-                 * createDate : null
-                 * updateDate : null
-                 * parentIds : null
-                 * name : 充填中心
-                 * sort : 30
-                 * area : null
-                 * code : null
-                 * type : 2
-                 * grade : null
-                 * address : null
-                 * zipCode : null
-                 * master : null
-                 * phone : null
-                 * fax : null
-                 * email : null
-                 * useable : null
-                 * primaryPerson : null
-                 * deputyPerson : null
-                 * childDeptList : null
-                 * parentId : 0
-                 */
-
-                private String id;
-                private boolean isNewRecord;
-                private Object remarks;
-                private Object createDate;
-                private Object updateDate;
-                private Object parentIds;
-                private String name;
-                private int sort;
-                private Object area;
-                private Object code;
-                private String type;
-                private Object grade;
-                private Object address;
-                private Object zipCode;
-                private Object master;
-                private Object phone;
-                private Object fax;
-                private Object email;
-                private Object useable;
-                private Object primaryPerson;
-                private Object deputyPerson;
-                private Object childDeptList;
-                private String parentId;
-
-                public String getId() {
-                    return id;
-                }
-
-                public void setId(String id) {
-                    this.id = id;
-                }
-
-                public boolean isIsNewRecord() {
-                    return isNewRecord;
-                }
-
-                public void setIsNewRecord(boolean isNewRecord) {
-                    this.isNewRecord = isNewRecord;
-                }
-
-                public Object getRemarks() {
-                    return remarks;
-                }
-
-                public void setRemarks(Object remarks) {
-                    this.remarks = remarks;
-                }
-
-                public Object getCreateDate() {
-                    return createDate;
-                }
-
-                public void setCreateDate(Object createDate) {
-                    this.createDate = createDate;
-                }
-
-                public Object getUpdateDate() {
-                    return updateDate;
-                }
-
-                public void setUpdateDate(Object updateDate) {
-                    this.updateDate = updateDate;
-                }
-
-                public Object getParentIds() {
-                    return parentIds;
-                }
-
-                public void setParentIds(Object parentIds) {
-                    this.parentIds = parentIds;
-                }
-
-                public String getName() {
-                    return name;
-                }
-
-                public void setName(String name) {
-                    this.name = name;
-                }
-
-                public int getSort() {
-                    return sort;
-                }
-
-                public void setSort(int sort) {
-                    this.sort = sort;
-                }
-
-                public Object getArea() {
-                    return area;
-                }
-
-                public void setArea(Object area) {
-                    this.area = area;
-                }
-
-                public Object getCode() {
-                    return code;
-                }
-
-                public void setCode(Object code) {
-                    this.code = code;
-                }
-
-                public String getType() {
-                    return type;
-                }
-
-                public void setType(String type) {
-                    this.type = type;
-                }
-
-                public Object getGrade() {
-                    return grade;
-                }
-
-                public void setGrade(Object grade) {
-                    this.grade = grade;
-                }
-
-                public Object getAddress() {
-                    return address;
-                }
-
-                public void setAddress(Object address) {
-                    this.address = address;
-                }
-
-                public Object getZipCode() {
-                    return zipCode;
-                }
-
-                public void setZipCode(Object zipCode) {
-                    this.zipCode = zipCode;
-                }
-
-                public Object getMaster() {
-                    return master;
-                }
-
-                public void setMaster(Object master) {
-                    this.master = master;
-                }
-
-                public Object getPhone() {
-                    return phone;
-                }
-
-                public void setPhone(Object phone) {
-                    this.phone = phone;
-                }
-
-                public Object getFax() {
-                    return fax;
-                }
-
-                public void setFax(Object fax) {
-                    this.fax = fax;
-                }
-
-                public Object getEmail() {
-                    return email;
-                }
-
-                public void setEmail(Object email) {
-                    this.email = email;
-                }
-
-                public Object getUseable() {
-                    return useable;
-                }
-
-                public void setUseable(Object useable) {
-                    this.useable = useable;
-                }
-
-                public Object getPrimaryPerson() {
-                    return primaryPerson;
-                }
-
-                public void setPrimaryPerson(Object primaryPerson) {
-                    this.primaryPerson = primaryPerson;
-                }
-
-                public Object getDeputyPerson() {
-                    return deputyPerson;
-                }
-
-                public void setDeputyPerson(Object deputyPerson) {
-                    this.deputyPerson = deputyPerson;
-                }
-
-                public Object getChildDeptList() {
-                    return childDeptList;
-                }
-
-                public void setChildDeptList(Object childDeptList) {
-                    this.childDeptList = childDeptList;
-                }
-
-                public String getParentId() {
-                    return parentId;
-                }
-
-                public void setParentId(String parentId) {
-                    this.parentId = parentId;
-                }
-            }
-
-            public static class TeamBean {
-                /**
-                 * id : 922e8a07e3ea49869aaa5ca404040072
-                 * isNewRecord : false
-                 * remarks : null
-                 * createDate : null
-                 * updateDate : null
-                 * parentIds : null
-                 * name : 班组一
-                 * sort : 30
-                 * area : null
-                 * code : null
-                 * type : 2
-                 * grade : null
-                 * address : null
-                 * zipCode : null
-                 * master : null
-                 * phone : null
-                 * fax : null
-                 * email : null
-                 * useable : null
-                 * primaryPerson : null
-                 * deputyPerson : null
-                 * childDeptList : null
-                 * parentId : 0
-                 */
-
-                private String id;
-                private boolean isNewRecord;
-                private Object remarks;
-                private Object createDate;
-                private Object updateDate;
-                private Object parentIds;
-                private String name;
-                private int sort;
-                private Object area;
-                private Object code;
-                private String type;
-                private Object grade;
-                private Object address;
-                private Object zipCode;
-                private Object master;
-                private Object phone;
-                private Object fax;
-                private Object email;
-                private Object useable;
-                private Object primaryPerson;
-                private Object deputyPerson;
-                private Object childDeptList;
-                private String parentId;
-
-                public String getId() {
-                    return id;
-                }
-
-                public void setId(String id) {
-                    this.id = id;
-                }
-
-                public boolean isIsNewRecord() {
-                    return isNewRecord;
-                }
-
-                public void setIsNewRecord(boolean isNewRecord) {
-                    this.isNewRecord = isNewRecord;
-                }
-
-                public Object getRemarks() {
-                    return remarks;
-                }
-
-                public void setRemarks(Object remarks) {
-                    this.remarks = remarks;
-                }
-
-                public Object getCreateDate() {
-                    return createDate;
-                }
-
-                public void setCreateDate(Object createDate) {
-                    this.createDate = createDate;
-                }
-
-                public Object getUpdateDate() {
-                    return updateDate;
-                }
-
-                public void setUpdateDate(Object updateDate) {
-                    this.updateDate = updateDate;
-                }
-
-                public Object getParentIds() {
-                    return parentIds;
-                }
-
-                public void setParentIds(Object parentIds) {
-                    this.parentIds = parentIds;
-                }
-
-                public String getName() {
-                    return name;
-                }
-
-                public void setName(String name) {
-                    this.name = name;
-                }
-
-                public int getSort() {
-                    return sort;
-                }
-
-                public void setSort(int sort) {
-                    this.sort = sort;
-                }
-
-                public Object getArea() {
-                    return area;
-                }
-
-                public void setArea(Object area) {
-                    this.area = area;
-                }
-
-                public Object getCode() {
-                    return code;
-                }
-
-                public void setCode(Object code) {
-                    this.code = code;
-                }
-
-                public String getType() {
-                    return type;
-                }
-
-                public void setType(String type) {
-                    this.type = type;
-                }
-
-                public Object getGrade() {
-                    return grade;
-                }
-
-                public void setGrade(Object grade) {
-                    this.grade = grade;
-                }
-
-                public Object getAddress() {
-                    return address;
-                }
-
-                public void setAddress(Object address) {
-                    this.address = address;
-                }
-
-                public Object getZipCode() {
-                    return zipCode;
-                }
-
-                public void setZipCode(Object zipCode) {
-                    this.zipCode = zipCode;
-                }
-
-                public Object getMaster() {
-                    return master;
-                }
-
-                public void setMaster(Object master) {
-                    this.master = master;
-                }
-
-                public Object getPhone() {
-                    return phone;
-                }
-
-                public void setPhone(Object phone) {
-                    this.phone = phone;
-                }
-
-                public Object getFax() {
-                    return fax;
-                }
-
-                public void setFax(Object fax) {
-                    this.fax = fax;
-                }
-
-                public Object getEmail() {
-                    return email;
-                }
-
-                public void setEmail(Object email) {
-                    this.email = email;
-                }
-
-                public Object getUseable() {
-                    return useable;
-                }
-
-                public void setUseable(Object useable) {
-                    this.useable = useable;
-                }
-
-                public Object getPrimaryPerson() {
-                    return primaryPerson;
-                }
-
-                public void setPrimaryPerson(Object primaryPerson) {
-                    this.primaryPerson = primaryPerson;
-                }
-
-                public Object getDeputyPerson() {
-                    return deputyPerson;
-                }
-
-                public void setDeputyPerson(Object deputyPerson) {
-                    this.deputyPerson = deputyPerson;
-                }
-
-                public Object getChildDeptList() {
-                    return childDeptList;
-                }
-
-                public void setChildDeptList(Object childDeptList) {
-                    this.childDeptList = childDeptList;
-                }
-
-                public String getParentId() {
-                    return parentId;
-                }
-
-                public void setParentId(String parentId) {
-                    this.parentId = parentId;
-                }
-            }
-
-            public static class TitleprofBean {
-                /**
-                 * id : 19291cbf84e4485087f9bfd6c8a16152
-                 * isNewRecord : false
-                 * remarks : null
-                 * createDate : null
-                 * updateDate : null
-                 * name : 正高级
-                 */
-
-                private String id;
-                private boolean isNewRecord;
-                private Object remarks;
-                private Object createDate;
-                private Object updateDate;
-                private String name;
-
-                public String getId() {
-                    return id;
-                }
-
-                public void setId(String id) {
-                    this.id = id;
-                }
-
-                public boolean isIsNewRecord() {
-                    return isNewRecord;
-                }
-
-                public void setIsNewRecord(boolean isNewRecord) {
-                    this.isNewRecord = isNewRecord;
-                }
-
-                public Object getRemarks() {
-                    return remarks;
-                }
-
-                public void setRemarks(Object remarks) {
-                    this.remarks = remarks;
-                }
-
-                public Object getCreateDate() {
-                    return createDate;
-                }
-
-                public void setCreateDate(Object createDate) {
-                    this.createDate = createDate;
-                }
-
-                public Object getUpdateDate() {
-                    return updateDate;
-                }
-
-                public void setUpdateDate(Object updateDate) {
-                    this.updateDate = updateDate;
-                }
-
-                public String getName() {
-                    return name;
-                }
-
-                public void setName(String name) {
-                    this.name = name;
-                }
-            }
-
-            public static class WorktypeBean {
-                /**
-                 * id : 2d7bc688984c4cec9f182e1bd08ff8e5
-                 * isNewRecord : false
-                 * remarks : null
-                 * createDate : null
-                 * updateDate : null
-                 * workCategory : null
-                 * name : 人行车跟车信号工
-                 * workType : null
-                 * flag : null
-                 */
-
-                private String id;
-                private boolean isNewRecord;
-                private Object remarks;
-                private Object createDate;
-                private Object updateDate;
-                private Object workCategory;
-                private String name;
-                private Object workType;
-                private Object flag;
-
-                public String getId() {
-                    return id;
-                }
-
-                public void setId(String id) {
-                    this.id = id;
-                }
-
-                public boolean isIsNewRecord() {
-                    return isNewRecord;
-                }
-
-                public void setIsNewRecord(boolean isNewRecord) {
-                    this.isNewRecord = isNewRecord;
-                }
-
-                public Object getRemarks() {
-                    return remarks;
-                }
-
-                public void setRemarks(Object remarks) {
-                    this.remarks = remarks;
-                }
-
-                public Object getCreateDate() {
-                    return createDate;
-                }
-
-                public void setCreateDate(Object createDate) {
-                    this.createDate = createDate;
-                }
-
-                public Object getUpdateDate() {
-                    return updateDate;
-                }
-
-                public void setUpdateDate(Object updateDate) {
-                    this.updateDate = updateDate;
-                }
-
-                public Object getWorkCategory() {
-                    return workCategory;
-                }
-
-                public void setWorkCategory(Object workCategory) {
-                    this.workCategory = workCategory;
-                }
-
-                public String getName() {
-                    return name;
-                }
-
-                public void setName(String name) {
-                    this.name = name;
-                }
-
-                public Object getWorkType() {
-                    return workType;
-                }
-
-                public void setWorkType(Object workType) {
-                    this.workType = workType;
-                }
-
-                public Object getFlag() {
-                    return flag;
-                }
-
-                public void setFlag(Object flag) {
-                    this.flag = flag;
-                }
-            }
-
-            public static class PostBean {
+            public void setCred(String cred) {
+                this.cred = cred;
             }
         }
 
         public static class ExamClassBean {
+            /**
+             * classId : a202f7c69ede47719687be389321fb27
+             * className : 2017年12月29日普通班级 1500 第1期
+             */
+
+            private String classId;
+            private String className;
+
+            public String getClassId() {
+                return classId;
+            }
+
+            public void setClassId(String classId) {
+                this.classId = classId;
+            }
+
+            public String getClassName() {
+                return className;
+            }
+
+            public void setClassName(String className) {
+                this.className = className;
+            }
         }
 
         public static class BmListBean {
@@ -1294,7 +147,7 @@ public class User implements Serializable {
              * isNewRecord : false
              * remarks : null
              * createDate : 2018-01-04 04:37:28
-             * updateDate : 2018-01-04 04:37:28
+             * updateDate : 2018-01-04 06:55:45
              * staffId : b5b7db289f7648e8bf939887ef6b06d8
              * staffName : null
              * crednumber : 370828199310201356
@@ -1330,7 +183,7 @@ public class User implements Serializable {
              * enrolEndTime : null
              * isOpenExam : 0
              * examState : 0
-             * isPhoneExam : 0
+             * isPhoneExam : 1
              * isAchieve : null
              * signCount : 0
              * signRuleCount : 0
@@ -1367,11 +220,11 @@ public class User implements Serializable {
             private String company;
             private String department;
             private String team;
-            private WorktypeBeanX worktype;
+            private WorktypeBean worktype;
             private WorkpostBean workpost;
             private Object cmpiWorktype;
             private String cmpiTitleprof;
-            private TitleprofBeanX titleprof;
+            private TitleprofBean titleprof;
             private String classId;
             private Object classType;
             private String className;
@@ -1587,11 +440,11 @@ public class User implements Serializable {
                 this.team = team;
             }
 
-            public WorktypeBeanX getWorktype() {
+            public WorktypeBean getWorktype() {
                 return worktype;
             }
 
-            public void setWorktype(WorktypeBeanX worktype) {
+            public void setWorktype(WorktypeBean worktype) {
                 this.worktype = worktype;
             }
 
@@ -1619,11 +472,11 @@ public class User implements Serializable {
                 this.cmpiTitleprof = cmpiTitleprof;
             }
 
-            public TitleprofBeanX getTitleprof() {
+            public TitleprofBean getTitleprof() {
                 return titleprof;
             }
 
-            public void setTitleprof(TitleprofBeanX titleprof) {
+            public void setTitleprof(TitleprofBean titleprof) {
                 this.titleprof = titleprof;
             }
 
@@ -1803,7 +656,7 @@ public class User implements Serializable {
                 this.examCount = examCount;
             }
 
-            public static class WorktypeBeanX {
+            public static class WorktypeBean {
                 /**
                  * id : 2d7bc688984c4cec9f182e1bd08ff8e5
                  * isNewRecord : false
@@ -1995,7 +848,7 @@ public class User implements Serializable {
                 }
             }
 
-            public static class TitleprofBeanX {
+            public static class TitleprofBean {
                 /**
                  * id : 19291cbf84e4485087f9bfd6c8a16152
                  * isNewRecord : false

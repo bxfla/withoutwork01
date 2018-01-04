@@ -105,7 +105,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
     public void setUser(User user) {
         SharedPreferences preferences=getSharedPreferences("user", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor=preferences.edit();
-        String read=user.getBody().getUserInfo().getCmpiCrednumber();
+        String read=user.getBody().getUser().getCred();
         editor.putString("read", read);
         editor.commit();
         if (String.valueOf(user.isSuccess()).equals("true")){
