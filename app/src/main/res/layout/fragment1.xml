@@ -117,7 +117,7 @@
                 android:layout_centerVertical="true"/>
             <TextView
                 style="@style/TextView"
-                android:text="@string/revise_pwd"
+                android:text="@string/up_App"
                 android:gravity="center_vertical"
                 android:textColor="@color/xiaohei"/>
             <ImageView

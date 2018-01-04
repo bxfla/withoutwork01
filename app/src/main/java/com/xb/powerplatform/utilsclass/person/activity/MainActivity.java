@@ -28,7 +28,6 @@ import com.xb.powerplatform.utilsclass.person.fragment.Fragment1;
 import com.xb.powerplatform.utilsclass.person.presenter.UpAppPresenter;
 import com.xb.powerplatform.utilsclass.person.presenter.presenterImpl.UpAppPresenterImpl;
 import com.xb.powerplatform.utilsclass.person.view.UpAppView;
-import com.xb.powerplatform.utilsclass.utils.AlertDialogUtil;
 import com.xb.powerplatform.utilsclass.utils.ProgressDialogUtil;
 
 import java.io.File;
@@ -51,12 +50,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     SharedPreferencesHelper preference;
     /* 下载保存路径 */
     private String mSavePath;
-    /* 记录进度条数量 */
-    private int progress;
-    /* 下载中 */
-    private static final int DOWNLOAD = 1;
-    /* 下载结束 */
-    private static final int DOWNLOAD_FINISH = 2;
     /* 是否取消更新 */
     private boolean cancelUpdate = false;
 
@@ -85,7 +78,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     List<Fragment> list=new ArrayList<Fragment>();
 
     UpAppPresenter presenter;
-    AlertDialogUtil util;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
