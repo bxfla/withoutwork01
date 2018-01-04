@@ -93,6 +93,22 @@
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"/>
     </LinearLayout>
+    //密码
+    <LinearLayout
+        style="@style/linerlayout">
+        <ImageView
+            style="@style/ImaheView"
+            android:src="@drawable/password"/>
+        <EditText
+            android:id="@+id/et_password1"
+            style="@style/EditText"
+            android:hint="再次输入密码"/>
+    </LinearLayout>
+    //分割线
+    <View
+        style="@style/line"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"/>
     //注册按钮
     <LinearLayout
         style="@style/linerlayout">

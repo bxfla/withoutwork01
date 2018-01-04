@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
+import android.text.method.PasswordTransformationMethod;
 import android.view.KeyEvent;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -34,6 +35,8 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static com.xb.powerplatform.SharedPreferencesHelper.saveData;
 
 
 /**
@@ -103,11 +106,6 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @Override
     public void setUser(User user) {
-        SharedPreferences preferences=getSharedPreferences("user", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor=preferences.edit();
-        String read=user.getBody().getUser().getCred();
-        editor.putString("read", read);
-        editor.commit();
         if (String.valueOf(user.isSuccess()).equals("true")){
             if (user.getBody().getBmList().size()!=0){
                 int line=user.getBody().getBmList().size();
@@ -116,18 +114,11 @@ public class LoginActivity extends BaseActivity implements LoginView {
                     if (examState.equals("2")){
                         list.add(user.getBody().getBmList().get(i).getClassName());
                     }
-//                    SharedPreferences preferences=getSharedPreferences("user", Context.MODE_PRIVATE);
-//                    SharedPreferences.Editor editor=preferences.edit();
-//                    String name=user.getBody().getBmList().get(i).getEnrolName();
-//                    String read=user.getBody().getBmList().get(i).getCrednumber();
-//                    editor.putString("name", name);
-//                    editor.putString("read", read);
-//                    editor.commit();
-//                    String cont=user.getBody().getExamClass().classId;
-//                    if (cont!=null){
-//                        saveData(this,"classId",user.getBody().getExamClass().getClassId());//考试ID
-//                    }else {
-//                    }
+                    String cont=user.getBody().getExamClass().getClassId();
+                    if (cont!=null){
+                        saveData(this,"classId",user.getBody().getExamClass().getClassId());//考试ID
+                    }else {
+                    }
                     String classId = user.getBody().getBmList().get(i).getClassId();
                     String className = user.getBody().getBmList().get(i).getClassName();//题目
                     String dwoStatic="No";
@@ -143,6 +134,11 @@ public class LoginActivity extends BaseActivity implements LoginView {
             }
             intent = new Intent(this, MainActivity.class);
             startActivity(intent);
+            SharedPreferences preferences=getSharedPreferences("user", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor=preferences.edit();
+            String read=user.getBody().getUser().getCred();
+            editor.putString("read", read);
+            editor.commit();
             finish();
         }else {
             Toast.makeText(this, user.getMsg(), Toast.LENGTH_SHORT).show();
@@ -154,6 +150,8 @@ public class LoginActivity extends BaseActivity implements LoginView {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+
+        etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
 
         helper = DbManager.getInstance(LoginActivity.this);
         db = helper.getReadableDatabase();

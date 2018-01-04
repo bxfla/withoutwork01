@@ -44,7 +44,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                 +"("+Constant.ID+","+Constant.QUTYPE+","+Constant.QUCONTENT
                 +","+Constant.QUA+","+Constant.QUB+","+Constant.QUC+","+Constant.QUD
                 +","+Constant.QUE+","+Constant.QUF+","+Constant.QUANSWER+","+Constant.QUANALYZE
-                +","+Constant.CLASSID+")";
+                +","+Constant.CLASSID+","+Constant.QUCATEGORY+")";
         Log.i("xyz",sql_error);
         db.execSQL(sql_error);
 

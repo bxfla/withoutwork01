@@ -393,6 +393,7 @@ public class EducationMoNiAdapter extends PagerAdapter {
         values.put(Constant.QUANSWER, dataItems.get(mPosition1).getQuAnswer());
         values.put(Constant.QUANALYZE, dataItems.get(mPosition1).getQuAnalyze());
         values.put(Constant.CLASSID, dataItems.get(mPosition1).getClasssId());
+        values.put(Constant.CLASSID, dataItems.get(mPosition1).getQuCategory());
         db.insert(Constant.TABBLE_NAME_ERROR, null, values);
     }
 

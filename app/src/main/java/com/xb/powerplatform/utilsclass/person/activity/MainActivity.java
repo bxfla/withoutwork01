@@ -45,8 +45,6 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-import static com.xb.powerplatform.SharedPreferencesHelper.saveData;
-
 public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener, UpAppView {
     private static boolean isExit = false;
     SharedPreferencesHelper preference;
@@ -265,7 +263,11 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setDataAndType(Uri.parse("file://" + apkfile.toString()), "application/vnd.android.package-archive");
         startActivity(i);
-        saveData(this,"upApp",version);//程序版本
+        SharedPreferences preferences=getSharedPreferences("user", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=preferences.edit();
+        String version1=version;
+        editor.putString("upApp", version1);
+        editor.commit();
     }
 
 }

@@ -2,8 +2,10 @@ package com.xb.powerplatform.utilsclass.person.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.xb.powerplatform.R;
@@ -31,11 +33,17 @@ public class RegisterActivity extends BaseActivity implements RegisterView {
     EditText etPassword;
     @Bind(R.id.brnRegister)
     Button brnRegister;
+    @Bind(R.id.et_password1)
+    EditText etPassword1;
+    @Bind(R.id.activity_register_)
+    LinearLayout activityRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
+        etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        etPassword1.setTransformationMethod(PasswordTransformationMethod.getInstance());
     }
 
     @Override
@@ -56,8 +64,8 @@ public class RegisterActivity extends BaseActivity implements RegisterView {
     @Override
     public void getRegisterData(register register) {
         Toast.makeText(this, register.getMsg(), Toast.LENGTH_SHORT).show();
-        if (register.getMsg().equals("注册成功！")){
-            Intent intent=new Intent(this,LoginActivity.class);
+        if (register.getMsg().equals("注册成功！")) {
+            Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
             finish();
         }
@@ -65,14 +73,18 @@ public class RegisterActivity extends BaseActivity implements RegisterView {
 
     @OnClick(R.id.brnRegister)
     public void onViewClicked() {
-        if (etPhone.getText().toString().length()!=0&&
-                etCarId.getText().toString().length()!=0&&
-                etPassword.getText().toString().length()!=0){
-            presenter = new RegisterPresenterImpl(this, this,etPhone.getText().toString(),
-                    etCarId.getText().toString(),etPassword.getText().toString());
-            presenter.register(etPhone.getText().toString(),
-                    etCarId.getText().toString(),etPassword.getText().toString());
-        }else {
+        if (etPhone.getText().toString().length() != 0 &&
+                etCarId.getText().toString().length() != 0 &&
+                etPassword.getText().toString().length() != 0) {
+            if (etPassword.getText().toString().equals(etPassword1.getText().toString())){
+                presenter = new RegisterPresenterImpl(this, this, etPhone.getText().toString(),
+                        etCarId.getText().toString(), etPassword.getText().toString());
+                presenter.register(etPhone.getText().toString(),
+                        etCarId.getText().toString(), etPassword.getText().toString());
+            }else {
+                Toast.makeText(this, "两次密码不一致", Toast.LENGTH_SHORT).show();
+            }
+        } else {
             Toast.makeText(this, "注册信息 不能为空", Toast.LENGTH_SHORT).show();
         }
 
