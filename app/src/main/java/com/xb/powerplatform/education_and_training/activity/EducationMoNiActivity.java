@@ -12,7 +12,6 @@ import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -23,9 +22,12 @@ import com.xb.powerplatform.R;
 import com.xb.powerplatform.education_and_training.adapter.EducationMoNiAdapter;
 import com.xb.powerplatform.education_and_training.bean.assess;
 import com.xb.powerplatform.education_and_training.myview.VoteSubmitViewPager;
+import com.xb.powerplatform.utilsclass.base.AlertDialogCallBack;
 import com.xb.powerplatform.utilsclass.base.BaseActivity;
+import com.xb.powerplatform.utilsclass.myViews.Header;
 import com.xb.powerplatform.utilsclass.myViews.StatusBarUtils;
 import com.xb.powerplatform.utilsclass.myViews.ViewPagerScroller;
+import com.xb.powerplatform.utilsclass.utils.AlertDialogUtil;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -41,8 +43,8 @@ public class EducationMoNiActivity extends BaseActivity {
 
     List<assess.BodyBean.ListBean> beanList = new ArrayList<assess.BodyBean.ListBean>();
     List<View> viewItems = new ArrayList<View>();
-    @Bind(R.id.left)
-    ImageView left;
+//    @Bind(R.id.left)
+//    ImageView left;
     @Bind(R.id.title)
     TextView title;
     @Bind(R.id.right)
@@ -64,6 +66,12 @@ public class EducationMoNiActivity extends BaseActivity {
     List<assess.BodyBean.RuleBean> listRb = new ArrayList<>();
     MyDatabaseHelper helper;
     SQLiteDatabase db;
+    @Bind(R.id.header)
+    Header header;
+    @Bind(R.id.left)
+    TextView left;
+    @Bind(R.id.activity_educationmo_ni)
+    LinearLayout activityEducationmoNi;
 
     //停止计时
     private Handler handlerStopTime = new Handler() {
@@ -151,24 +159,24 @@ public class EducationMoNiActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
-        helper= DbManager.getInstance(this);
+        helper = DbManager.getInstance(this);
         db = helper.getReadableDatabase();
         new StatusBarUtils().setWindowStatusBarColor(EducationMoNiActivity.this, R.color.color_bg_selected);
         Intent intent = getIntent();
         beanList = (List<assess.BodyBean.ListBean>) intent.getSerializableExtra("list");
-        String classId=intent.getStringExtra("classId");
-        int minute1= Integer.parseInt(intent.getStringExtra("erLength"));
-        minute=minute1;
+        String classId = intent.getStringExtra("classId");
+        int minute1 = Integer.parseInt(intent.getStringExtra("erLength"));
+        minute = minute1;
         title.setText(getResources().getString(R.string.moni_training));
         for (int i = 0; i < beanList.size(); i++) {
             viewItems.add(getLayoutInflater().inflate(
                     R.layout.vote_submit_viewpager_item, null));
         }
-        adapter = new EducationMoNiAdapter(EducationMoNiActivity.this, viewItems, beanList,classId);
+        adapter = new EducationMoNiAdapter(EducationMoNiActivity.this, viewItems, beanList, classId);
         voteSubmitViewpager.setAdapter(adapter);
         voteSubmitViewpager.getParent()
                 .requestDisallowInterceptTouchEvent(false);
-       // initViewPagerScroll();
+        // initViewPagerScroll();
     }
 
     @Override
@@ -186,14 +194,14 @@ public class EducationMoNiActivity extends BaseActivity {
 
     }
 
-    @OnClick(R.id.left)
-    public void onViewClicked() {
-        isPause = true;
-        showTimeOutDialog(true, "1");
-        Message msg = new Message();
-        msg.what = 0;
-        handlerStopTime.sendMessage(msg);
-    }
+//    @OnClick(R.id.left)
+//    public void onViewClicked() {
+//        isPause = true;
+//        showTimeOutDialog(true, "1");
+//        Message msg = new Message();
+//        msg.what = 0;
+//        handlerStopTime.sendMessage(msg);
+//    }
 
     /**
      * 设置ViewPager的滑动速度
@@ -360,4 +368,17 @@ public class EducationMoNiActivity extends BaseActivity {
     }
 
 
+    @OnClick(R.id.left)
+    public void onViewClicked() {
+        new AlertDialogUtil(this).showDialog(getResources().getString(R.string.sure_up_assess), new AlertDialogCallBack() {
+            @Override
+            public void confirm() {
+                adapter.upData();
+            }
+
+            @Override
+            public void cancel() {
+            }
+        });
+    }
 }

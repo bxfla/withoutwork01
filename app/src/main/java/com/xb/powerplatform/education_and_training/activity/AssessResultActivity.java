@@ -2,7 +2,6 @@ package com.xb.powerplatform.education_and_training.activity;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,6 +15,7 @@ import com.xb.powerplatform.education_and_training.bean.result;
 import com.xb.powerplatform.education_and_training.presenter.ResultPresenter;
 import com.xb.powerplatform.education_and_training.presenter.impl.ResultPresenterimpl;
 import com.xb.powerplatform.education_and_training.view.ResultView;
+import com.xb.powerplatform.utilsclass.base.BaseActivity;
 import com.xb.powerplatform.utilsclass.myViews.Header;
 import com.xb.powerplatform.utilsclass.myViews.StatusBarUtils;
 
@@ -25,7 +25,7 @@ import butterknife.OnClick;
 
 import static com.xb.powerplatform.SharedPreferencesHelper.saveData;
 
-public class AssessResultActivity extends AppCompatActivity implements ResultView {
+public class AssessResultActivity extends BaseActivity implements ResultView {
 
     String score, passnum;
     @Bind(R.id.header)
@@ -51,7 +51,6 @@ public class AssessResultActivity extends AppCompatActivity implements ResultVie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_assessresult);
         new StatusBarUtils().setWindowStatusBarColor(AssessResultActivity.this, R.color.color_bg_selected);
         ButterKnife.bind(this);
         helper = DbManager.getInstance(AssessResultActivity.this);
@@ -67,6 +66,21 @@ public class AssessResultActivity extends AppCompatActivity implements ResultVie
         String cred = preference.getData(this, "crednumber", "");
         presenter = new ResultPresenterimpl(this, this);
         presenter.getPresenteerData(classId, cred, score);
+    }
+
+    @Override
+    protected int provideContentViewId() {
+        return R.layout.activity_assessresult;
+    }
+
+    @Override
+    protected boolean isHasHeader() {
+        return true;
+    }
+
+    @Override
+    protected void rightClient() {
+
     }
 
     private void setImage() {

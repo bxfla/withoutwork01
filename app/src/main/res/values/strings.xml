@@ -105,6 +105,8 @@
     <string name="impact_assessment">效果评价</string>
 
     <!--教育培训-->
+    <string name="up_assess">交卷</string>
+    <string name="sure_up_assess">确定交卷？</string>
     <string name="education_and_training">培训考试</string>
     <string name="moni_training">模拟考试</string>
     <string name="zaixian_stydy">在线学习</string>

@@ -9,12 +9,12 @@
     tools:context="com.xb.powerplatform.education_and_training.activity.AssessResultActivity">
 
     <com.xb.powerplatform.utilsclass.myViews.Header
-        android:visibility="gone"
         android:id="@+id/header"
         style="@style/Heander"
         app:header_title="@string/result">
     </com.xb.powerplatform.utilsclass.myViews.Header>
     <RelativeLayout
+        android:visibility="gone"
         android:background="@color/color_bg_selected"
         android:layout_width="match_parent"
         android:layout_height="40dp"

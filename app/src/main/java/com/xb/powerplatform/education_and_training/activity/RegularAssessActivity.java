@@ -9,7 +9,6 @@ import android.os.Message;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -22,7 +21,10 @@ import com.xb.powerplatform.education_and_training.myview.VoteSubmitViewPager;
 import com.xb.powerplatform.education_and_training.presenter.RegulatrPresenter;
 import com.xb.powerplatform.education_and_training.presenter.impl.RegularPresenterimpl;
 import com.xb.powerplatform.education_and_training.view.RegalarView;
+import com.xb.powerplatform.utilsclass.base.AlertDialogCallBack;
 import com.xb.powerplatform.utilsclass.base.BaseActivity;
+import com.xb.powerplatform.utilsclass.myViews.Header;
+import com.xb.powerplatform.utilsclass.utils.AlertDialogUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +33,7 @@ import java.util.TimerTask;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class RegularAssessActivity extends BaseActivity implements RegalarView {
     List<RegularAssess.BodyBean.NewListBean> beanList = new ArrayList<RegularAssess.BodyBean.NewListBean>();
@@ -39,8 +42,8 @@ public class RegularAssessActivity extends BaseActivity implements RegalarView {
     SharedPreferencesHelper preference;
     RegulatrPresenter presenter;
 
-    @Bind(R.id.left)
-    ImageView left;
+    //    @Bind(R.id.left)
+//    ImageView left;
     @Bind(R.id.title)
     TextView title;
     @Bind(R.id.right)
@@ -58,7 +61,13 @@ public class RegularAssessActivity extends BaseActivity implements RegalarView {
     int second = 0;
     boolean isPause = false;
     int isFirst;
-    String classId=null;
+    String classId = null;
+    @Bind(R.id.header)
+    Header header;
+    @Bind(R.id.left)
+    TextView left;
+    @Bind(R.id.activity_regularassess)
+    LinearLayout activityRegularassess;
     //停止计时
     private Handler handlerStopTime = new Handler() {
 
@@ -143,7 +152,7 @@ public class RegularAssessActivity extends BaseActivity implements RegalarView {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
         preference = new SharedPreferencesHelper(this, "login");
-        classId= preference.getData(this,"classId","");
+        classId = preference.getData(this, "classId", "");
         presenter = new RegularPresenterimpl(this, this);
         presenter.getPresenteerData(classId);
 
@@ -170,23 +179,23 @@ public class RegularAssessActivity extends BaseActivity implements RegalarView {
     public void getViewData(RegularAssess assess) {
         //考试规则
         //beanRule.erLength=assess.getBody().getRule().erLength;//考试时长
-        minute=assess.getBody().getRule().erLength;
-        int num=assess.getBody().getRule().erPassMark;//及格分数
-        int erPassMark=assess.getBody().getRule().erPassMark;//及格分数
-        int erTotalScore=assess.getBody().getRule().erTotalScore;//满分
-        int erScoreRadioSafety=assess.getBody().getRule().erScoreRadioSafety;//安全知识单选分值
-        int erScoreRadioLaws=assess.getBody().getRule().erScoreRadioLaws;//法律法规单选分数
-        int erScoreRadioMajor=assess.getBody().getRule().erScoreRadioMajor;//专业知识单选分数
-        int erScoreMultiSafety=assess.getBody().getRule().erScoreMultiSafety;//多选安全知识分值
-        int erScoreMultiLaws=assess.getBody().getRule().erScoreMultiLaws;//多选法律法规分数
-        int erScoreMultiMajor=assess.getBody().getRule().erScoreMultiMajor;//多选专业知识分数
-        int erScoreJudgeSafety=assess.getBody().getRule().erScoreJudgeSafety;//判断安全知识分值
-        int erScoreJudgeLaws=assess.getBody().getRule().erScoreJudgeLaws;//判断法律法规分数
-        int erScoreJudgeMajor=assess.getBody().getRule().erScoreJudgeMajor;//判断专业知识分数
+        minute = assess.getBody().getRule().erLength;
+        int num = assess.getBody().getRule().erPassMark;//及格分数
+        int erPassMark = assess.getBody().getRule().erPassMark;//及格分数
+        int erTotalScore = assess.getBody().getRule().erTotalScore;//满分
+        int erScoreRadioSafety = assess.getBody().getRule().erScoreRadioSafety;//安全知识单选分值
+        int erScoreRadioLaws = assess.getBody().getRule().erScoreRadioLaws;//法律法规单选分数
+        int erScoreRadioMajor = assess.getBody().getRule().erScoreRadioMajor;//专业知识单选分数
+        int erScoreMultiSafety = assess.getBody().getRule().erScoreMultiSafety;//多选安全知识分值
+        int erScoreMultiLaws = assess.getBody().getRule().erScoreMultiLaws;//多选法律法规分数
+        int erScoreMultiMajor = assess.getBody().getRule().erScoreMultiMajor;//多选专业知识分数
+        int erScoreJudgeSafety = assess.getBody().getRule().erScoreJudgeSafety;//判断安全知识分值
+        int erScoreJudgeLaws = assess.getBody().getRule().erScoreJudgeLaws;//判断法律法规分数
+        int erScoreJudgeMajor = assess.getBody().getRule().erScoreJudgeMajor;//判断专业知识分数
         beanRule = new RegularAssess.BodyBean.RuleBean(
-                minute,erPassMark,erTotalScore,erScoreRadioSafety,erScoreRadioLaws,erScoreRadioMajor,
-                erScoreMultiSafety,erScoreMultiLaws,erScoreMultiMajor,erScoreJudgeSafety,
-                erScoreJudgeLaws,erScoreJudgeMajor
+                minute, erPassMark, erTotalScore, erScoreRadioSafety, erScoreRadioLaws, erScoreRadioMajor,
+                erScoreMultiSafety, erScoreMultiLaws, erScoreMultiMajor, erScoreJudgeSafety,
+                erScoreJudgeLaws, erScoreJudgeMajor
         );
 
         //考试题目
@@ -207,23 +216,23 @@ public class RegularAssessActivity extends BaseActivity implements RegalarView {
             bean.quCategory = assess.getBody().getNewList().get(i).getQuCategory();//0安全知识 1法律法规 2专业知识
             beanList.add(bean);
         }
-        Message message=new Message();
-        message.what=1;
+        Message message = new Message();
+        message.what = 1;
         handler.sendMessage(message);
     }
 
-    private Handler handler=new Handler(){
+    private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            int time=beanRule.erLength;
-            right.setText(String.valueOf(time-1));
+            int time = beanRule.erLength;
+            right.setText(String.valueOf(time - 1));
             for (int i = 0; i < beanList.size(); i++) {
                 viewItems.add(getLayoutInflater().inflate(
                         R.layout.vote_submit_viewpager_item, null));
             }
 
-            adapter = new RegularAssessAdapter(RegularAssessActivity.this, viewItems, beanList,beanRule);
+            adapter = new RegularAssessAdapter(RegularAssessActivity.this, viewItems, beanList, beanRule);
             voteSubmitViewpager.setAdapter(adapter);
             voteSubmitViewpager.getParent()
                     .requestDisallowInterceptTouchEvent(false);
@@ -376,4 +385,18 @@ public class RegularAssessActivity extends BaseActivity implements RegalarView {
         }
     }
 
+    @OnClick(R.id.left)
+    public void onViewClicked() {
+        new AlertDialogUtil(this).showDialog(getResources().getString(R.string.sure_up_assess), new AlertDialogCallBack() {
+            @Override
+            public void confirm() {
+                adapter.upData();
+            }
+
+            @Override
+            public void cancel() {
+
+            }
+        });
+    }
 }
