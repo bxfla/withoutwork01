@@ -1,7 +1,5 @@
 package com.xb.powerplatform.utilsclass.person.activity;
 
-import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
@@ -18,7 +16,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.xb.powerplatform.DB.Constant;
 import com.xb.powerplatform.DB.DbManager;
 import com.xb.powerplatform.DB.MyDatabaseHelper;
 import com.xb.powerplatform.R;
@@ -30,15 +27,9 @@ import com.xb.powerplatform.utilsclass.person.presenter.LoginPresenter;
 import com.xb.powerplatform.utilsclass.person.presenter.presenterImpl.LoginPresenterImpl;
 import com.xb.powerplatform.utilsclass.person.view.LoginView;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-import static com.xb.powerplatform.SharedPreferencesHelper.saveData;
 
 
 /**
@@ -64,16 +55,11 @@ public class LoginActivity extends BaseActivity implements LoginView {
     CheckBox chechBox;
 
     String name, password;
-    List<String> list = new ArrayList<>();
 
     private static boolean isExit = false;
     SharedPreferencesHelper preference;
-    //存储个人信息
-    List<Map<String, String>> dataList = new ArrayList<>();
-
     private MyDatabaseHelper helper;
     SQLiteDatabase db;
-    String wname,addredd,department;
 
     //推出程序
     Handler mHandler = new Handler() {
@@ -112,44 +98,16 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @Override
     public void setUser(User user) {
         if (String.valueOf(user.isSuccess()).equals("true")) {
-            if (user.getBody().getBmList().size() != 0) {
-                int line = user.getBody().getBmList().size();
-                for (int i = 0; i < line; i++) {
-                    wname=user.getBody().getBmList().get(0).getEnrolName();
-                    addredd=user.getBody().getBmList().get(0).getAddress();
-                    department=user.getBody().getBmList().get(0).getDepartment();
-                    String examState = user.getBody().getBmList().get(i).getExamState();
-                    if (examState.equals("2")) {
-                        list.add(user.getBody().getBmList().get(i).getClassName());
-                    }
-                    String cont = user.getBody().getExamClass().getClassId();
-                    if (cont != null) {
-                        saveData(this, "classId", user.getBody().getExamClass().getClassId());//考试ID
-                    } else {
-                    }
-                    String classId = user.getBody().getBmList().get(i).getClassId();
-                    String className = user.getBody().getBmList().get(i).getClassName();//题目
-                    String dwoStatic = "No";
-                    ContentValues values = new ContentValues();
-                    values.put(Constant.CLASSID, classId);
-                    values.put(Constant.CLASSNAME, className);
-                    values.put(Constant.DWOSTATIC, dwoStatic);
-                    db.insert(Constant.TABBLE_CLASS_NAME, null, values);
-                    values.clear();
-                }
-                preference.saveList("classold", list);
-            } else {
-            }
+            String cred = user.getBody().getUser().getCred();
+            String depart =user.getBody().getUser().getDepart();
+            String name =user.getBody().getUser().getName();
+            String company = user.getBody().getUser().getCompany();
+            preference.saveData(this,"cred",cred);
+            preference.saveData(this,"depart",depart);
+            preference.saveData(this,"name",name);
+            preference.saveData(this,"company",company);
             intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-            SharedPreferences preferences = getSharedPreferences("user", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
-            String read = user.getBody().getUser().getCred();
-            editor.putString("read", read);
-            editor.putString("wname", wname);
-            editor.putString("addredd", addredd);
-            editor.putString("department", department);
-            editor.commit();
             finish();
         } else {
             Toast.makeText(this, user.getMsg(), Toast.LENGTH_SHORT).show();
@@ -178,6 +136,11 @@ public class LoginActivity extends BaseActivity implements LoginView {
             chechBox.setChecked(true);
         }
         preference = new SharedPreferencesHelper(this, "login");
+        if (preference.getData(this,"cred","").length()!=0){
+            intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     @OnClick({R.id.btn_login,R.id.checkpwd})

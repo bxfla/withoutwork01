@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -33,8 +32,8 @@ public class OneSelectActivity extends BaseActivity {
 
     List<assess.BodyBean.ListBean> beanList = new ArrayList<>();
     List<View> viewItems = new ArrayList<View>();
-    @Bind(R.id.left)
-    ImageView left;
+    //    @Bind(R.id.left)
+//    ImageView left;
     @Bind(R.id.title)
     TextView title;
     @Bind(R.id.right)
@@ -51,12 +50,17 @@ public class OneSelectActivity extends BaseActivity {
     String classId = null;
     @Bind(R.id.header)
     Header header;
+    @Bind(R.id.left)
+    TextView left;
+    @Bind(R.id.activity_educationmo_ni)
+    LinearLayout activityEducationmoNi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_educationmo_ni);
         ButterKnife.bind(this);
+        left.setVisibility(View.GONE);
         title.setText(getResources().getString(R.string.onedelect));
         helper = DbManager.getInstance(OneSelectActivity.this);
         Intent intent = getIntent();

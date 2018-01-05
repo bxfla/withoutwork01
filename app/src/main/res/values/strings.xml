@@ -105,6 +105,7 @@
     <string name="impact_assessment">效果评价</string>
 
     <!--教育培训-->
+    <string name="no_assess">暂无试题</string>
     <string name="up_assess">交卷</string>
     <string name="sure_up_assess">确定交卷？</string>
     <string name="education_and_training">培训考试</string>

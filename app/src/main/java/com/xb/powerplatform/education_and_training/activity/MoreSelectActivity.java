@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -20,6 +19,7 @@ import com.xb.powerplatform.education_and_training.myview.VoteSubmitViewPager;
 import com.xb.powerplatform.education_and_training.util.BaseRequestAssessLisenter;
 import com.xb.powerplatform.thread.GetDataThread;
 import com.xb.powerplatform.utilsclass.base.Constant;
+import com.xb.powerplatform.utilsclass.myViews.Header;
 import com.xb.powerplatform.utilsclass.myViews.StatusBarUtils;
 import com.xb.powerplatform.utilsclass.utils.ProgressDialogUtil;
 
@@ -33,8 +33,8 @@ public class MoreSelectActivity extends AppCompatActivity {
 
     List<assess.BodyBean.ListBean> beanList = new ArrayList<assess.BodyBean.ListBean>();
     List<View> viewItems = new ArrayList<View>();
-    @Bind(R.id.left)
-    ImageView left;
+    //    @Bind(R.id.left)
+//    ImageView left;
     @Bind(R.id.title)
     TextView title;
     @Bind(R.id.right)
@@ -49,6 +49,12 @@ public class MoreSelectActivity extends AppCompatActivity {
 
     MyDatabaseHelper helper;
     String classId = null;
+    @Bind(R.id.header)
+    Header header;
+    @Bind(R.id.left)
+    TextView left;
+    @Bind(R.id.activity_educationmo_ni)
+    LinearLayout activityEducationmoNi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +62,7 @@ public class MoreSelectActivity extends AppCompatActivity {
         setContentView(R.layout.activity_educationmo_ni);
         ButterKnife.bind(this);
         new StatusBarUtils().setWindowStatusBarColor(MoreSelectActivity.this, R.color.color_bg_selected);
+        left.setVisibility(View.GONE);
         title.setText(getResources().getString(R.string.moselect));
         helper = DbManager.getInstance(MoreSelectActivity.this);
         Intent intent = getIntent();

@@ -74,14 +74,16 @@ public class Fragment1 extends Fragment implements UpAppView{
         presenter.upApp();
         view = inflater.inflate(R.layout.fragment1, container, false);
         ButterKnife.bind(this, view);
-        SharedPreferences preferences=getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
-        String read=preferences.getString("read", "");
-        String wname=preferences.getString("wname","");
+        preference = new SharedPreferencesHelper(getActivity(), "login");
+        String wname = preference.getData(getActivity(),"name","");
+        String read = preference.getData(getActivity(),"cred","");
         if (wname.length()!=0){
             tvName.setVisibility(View.VISIBLE);
             tvName.setText(wname);
         }
-        tvIdcard.setText(read);
+        if (read.length()!=0){
+            tvIdcard.setText(read);
+        }
         return view;
     }
 

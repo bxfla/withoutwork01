@@ -1,6 +1,5 @@
 package com.xb.powerplatform.education_and_training.adapter;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,7 +16,6 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.xb.powerplatform.DB.Constant;
 import com.xb.powerplatform.DB.DbManager;
 import com.xb.powerplatform.DB.MyDatabaseHelper;
 import com.xb.powerplatform.R;
@@ -363,9 +361,9 @@ public class EducationMoNiAdapter extends PagerAdapter {
                 answer = "F";
             }
             if (answer != null) {
-                if (!answer.equals(dataItems.get(mPosition1).getQuAnswer())) {
-                    addErrorDb(mPosition1);
-                }
+//                if (!answer.equals(dataItems.get(mPosition1).getQuAnswer())) {
+//                    addErrorDb(mPosition1);
+//                }
                 beanList.add(answer);
                 mContext.setCurrentView(mPosition);
             } else {
@@ -377,25 +375,25 @@ public class EducationMoNiAdapter extends PagerAdapter {
     }
 
     //想错题表中添加数据
-    private void addErrorDb(int mPosition1) {
-        errorHelper = DbManager.getInstance(mContext);
-        db = errorHelper.getReadableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(Constant.ID, dataItems.get(mPosition1).getId());
-        values.put(Constant.QUTYPE, dataItems.get(mPosition1).getQuType());
-        values.put(Constant.QUCONTENT, dataItems.get(mPosition1).getQuContent());
-        values.put(Constant.QUA, dataItems.get(mPosition1).getQuA());
-        values.put(Constant.QUB, dataItems.get(mPosition1).getQuB());
-        values.put(Constant.QUC, dataItems.get(mPosition1).getQuC());
-        values.put(Constant.QUD, dataItems.get(mPosition1).getQuD());
-        values.put(Constant.QUE, dataItems.get(mPosition1).getQuE());
-        values.put(Constant.QUF, dataItems.get(mPosition1).getQuF());
-        values.put(Constant.QUANSWER, dataItems.get(mPosition1).getQuAnswer());
-        values.put(Constant.QUANALYZE, dataItems.get(mPosition1).getQuAnalyze());
-        values.put(Constant.CLASSID, dataItems.get(mPosition1).getClasssId());
-        values.put(Constant.CLASSID, dataItems.get(mPosition1).getQuCategory());
-        db.insert(Constant.TABBLE_NAME_ERROR, null, values);
-    }
+//    private void addErrorDb(int mPosition1) {
+//        errorHelper = DbManager.getInstance(mContext);
+//        db = errorHelper.getReadableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put(Constant.ID, dataItems.get(mPosition1).getId());
+//        values.put(Constant.QUTYPE, dataItems.get(mPosition1).getQuType());
+//        values.put(Constant.QUCONTENT, dataItems.get(mPosition1).getQuContent());
+//        values.put(Constant.QUA, dataItems.get(mPosition1).getQuA());
+//        values.put(Constant.QUB, dataItems.get(mPosition1).getQuB());
+//        values.put(Constant.QUC, dataItems.get(mPosition1).getQuC());
+//        values.put(Constant.QUD, dataItems.get(mPosition1).getQuD());
+//        values.put(Constant.QUE, dataItems.get(mPosition1).getQuE());
+//        values.put(Constant.QUF, dataItems.get(mPosition1).getQuF());
+//        values.put(Constant.QUANSWER, dataItems.get(mPosition1).getQuAnswer());
+//        values.put(Constant.QUANALYZE, dataItems.get(mPosition1).getQuAnalyze());
+//        values.put(Constant.CLASSID, dataItems.get(mPosition1).getClasssId());
+//        values.put(Constant.CLASSID, dataItems.get(mPosition1).getQuCategory());
+//        db.insert(Constant.TABBLE_NAME_ERROR, null, values);
+//    }
 
     /**
      * @author 设置上一步按钮监听

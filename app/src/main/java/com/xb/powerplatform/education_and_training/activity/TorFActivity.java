@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -28,12 +27,13 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class TorFActivity extends AppCompatActivity {
     List<assess.BodyBean.ListBean> beanList = new ArrayList<assess.BodyBean.ListBean>();
     List<View> viewItems = new ArrayList<View>();
-    @Bind(R.id.left)
-    ImageView left;
+    //    @Bind(R.id.left)
+//    ImageView left;
     @Bind(R.id.title)
     TextView title;
     @Bind(R.id.right)
@@ -48,6 +48,10 @@ public class TorFActivity extends AppCompatActivity {
 
     MyDatabaseHelper helper;
     String classId = null;
+    @Bind(R.id.left)
+    TextView left;
+    @Bind(R.id.activity_educationmo_ni)
+    LinearLayout activityEducationmoNi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,7 @@ public class TorFActivity extends AppCompatActivity {
         setContentView(R.layout.activity_educationmo_ni);
         ButterKnife.bind(this);
         new StatusBarUtils().setWindowStatusBarColor(TorFActivity.this, R.color.color_bg_selected);
+        left.setVisibility(View.GONE);
         title.setText(getResources().getString(R.string.TorF));
         helper = DbManager.getInstance(TorFActivity.this);
         Intent intent = getIntent();
@@ -102,4 +107,7 @@ public class TorFActivity extends AppCompatActivity {
         voteSubmitViewpager.setCurrentItem(index);
     }
 
+    @OnClick(R.id.left)
+    public void onViewClicked() {
+    }
 }

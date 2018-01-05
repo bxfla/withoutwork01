@@ -1,8 +1,6 @@
 package com.xb.powerplatform.utilsclass.person.activity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -43,10 +41,6 @@ public class MyInformActivity extends BaseActivity {
     TextView tvcomp;
     @Bind(R.id.ll4)
     LinearLayout ll4;
-    @Bind(R.id.tvaddress)
-    TextView tvaddress;
-    @Bind(R.id.ll5)
-    LinearLayout ll5;
     @Bind(R.id.activity_myinform)
     LinearLayout activityMyinform;
 
@@ -56,24 +50,19 @@ public class MyInformActivity extends BaseActivity {
         ButterKnife.bind(this);
         preference = new SharedPreferencesHelper(this, "login");
         list = preference.getList("classold");
-        SharedPreferences preferences = getSharedPreferences("user", Context.MODE_PRIVATE);
-        String read = preferences.getString("read", "");
-        String wname = preferences.getString("wname", "");
-        String addredd = preferences.getString("addredd", "");
-        String department = preferences.getString("department", "");
+        preference = new SharedPreferencesHelper(this, "login");
+        String read = preference.getData(this,"cred","");
+        String wname = preference.getData(this,"name","");
+        String depart = preference.getData(this,"depart","");
         if (wname.length() != 0) {
-            ll1.setVisibility(View.VISIBLE);
             tvName.setText(wname);
         }
-        if (addredd.length() != 0) {
-            ll5.setVisibility(View.VISIBLE);
-            tvaddress.setText(addredd);
+        if (depart.length() != 0) {
+            tvcomp.setText(depart);
         }
-        if (department.length() != 0) {
-            ll2.setVisibility(View.VISIBLE);
-            tvcomp.setText(department);
+        if (read.length() != 0) {
+            tvIdcard.setText(read);
         }
-        tvIdcard.setText(read);
         if (list.size() != 0) {
             tvAssessLine.setText(list.get(0));
         } else {

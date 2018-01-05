@@ -1,5 +1,6 @@
 package com.xb.powerplatform.education_and_training.adapter;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +11,13 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.xb.powerplatform.DB.DbManager;
+import com.xb.powerplatform.DB.MyDatabaseHelper;
 import com.xb.powerplatform.R;
 import com.xb.powerplatform.education_and_training.activity.TorFActivity;
 import com.xb.powerplatform.education_and_training.bean.assess;
+import com.xb.powerplatform.education_and_training.util.AddErrorList;
+import com.xb.powerplatform.utilsclass.base.MyApplication;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,11 +42,12 @@ public class EducationTorFAdapter extends PagerAdapter {
     View convertView;
     // 传递过来的所有数据
     List<assess.BodyBean.ListBean> dataItems;
-    //答案集合
-    List<String> beanList =new ArrayList<>();
+
+    List<assess.BodyBean.ListBean> beanListE = new ArrayList<assess.BodyBean.ListBean>();
     String answer;
-    int code=0;
-    private float startX; // 声明记录手指落下位置的变量
+
+    MyDatabaseHelper errorHelper;
+    SQLiteDatabase db;
 
     public EducationTorFAdapter(TorFActivity context, List<View> viewItems, List<assess.BodyBean.ListBean> beanList) {
         mContext = context;
@@ -55,6 +61,8 @@ public class EducationTorFAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
         final ViewHolder holder = new ViewHolder();
+        errorHelper = DbManager.getInstance(mContext);
+        db = errorHelper.getReadableDatabase();
         convertView = viewItems.get(position);
         holder.questionType = (TextView) convertView.findViewById(R.id.activity_prepare_test_no);
         holder.question = (TextView) convertView.findViewById(R.id.activity_prepare_test_question);
@@ -130,6 +138,15 @@ public class EducationTorFAdapter extends PagerAdapter {
                 answer = String.valueOf("A");
                 if (!answer.equals(dataItems.get(position).getQuAnswer())) {
                     holder.ll_result.setVisibility(View.VISIBLE);
+//                    errorHelper = DbManager.getInstance(mContext);
+//                    SQLiteDatabase db = errorHelper.getReadableDatabase();
+//                    String sql = "select * from error";
+//                    Cursor cursor = DbManager.queryBySQL(db, sql, null);
+//                    beanListE = DbManager.cursorToPerson(cursor);
+//                    String con=dataItems.get(position).getQuContent();
+//                    addErrorDb(position);
+                    new AddErrorList(db,errorHelper,beanListE,dataItems,position,
+                            MyApplication.getContextObject()).AddErrorList();
                     holder.answer.setText(dataItems.get(position).getQuAnswer());
                     holder.result.setText(dataItems.get(position).getQuAnalyze());
                 }
@@ -141,12 +158,15 @@ public class EducationTorFAdapter extends PagerAdapter {
                 answer = String.valueOf("B");
                 if (!answer.equals(dataItems.get(position).getQuAnswer())) {
                     holder.ll_result.setVisibility(View.VISIBLE);
+                    new AddErrorList(db,errorHelper,beanListE,dataItems,position,
+                            MyApplication.getContextObject()).AddErrorList();
                     holder.answer.setText(dataItems.get(position).getQuAnswer());
                     holder.result.setText(dataItems.get(position).getQuAnalyze());
                 }
             }
         });
     }
+
 
     /**
      * @author 设置下一步按钮监听
