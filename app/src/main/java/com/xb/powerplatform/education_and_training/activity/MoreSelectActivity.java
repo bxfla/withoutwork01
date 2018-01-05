@@ -14,12 +14,11 @@ import com.xb.powerplatform.DB.DbManager;
 import com.xb.powerplatform.DB.MyDatabaseHelper;
 import com.xb.powerplatform.R;
 import com.xb.powerplatform.education_and_training.adapter.EducationMoreSelectAdapter;
-import com.xb.powerplatform.education_and_training.bean.assess;
+import com.xb.powerplatform.education_and_training.bean.Question;
 import com.xb.powerplatform.education_and_training.myview.VoteSubmitViewPager;
 import com.xb.powerplatform.education_and_training.util.BaseRequestAssessLisenter;
 import com.xb.powerplatform.thread.GetDataThread;
 import com.xb.powerplatform.utilsclass.base.Constant;
-import com.xb.powerplatform.utilsclass.myViews.Header;
 import com.xb.powerplatform.utilsclass.myViews.StatusBarUtils;
 import com.xb.powerplatform.utilsclass.utils.ProgressDialogUtil;
 
@@ -31,10 +30,10 @@ import butterknife.ButterKnife;
 
 public class MoreSelectActivity extends AppCompatActivity {
 
-    List<assess.BodyBean.ListBean> beanList = new ArrayList<assess.BodyBean.ListBean>();
+    List<Question.BodyBean.ListBean> beanList = new ArrayList<Question.BodyBean.ListBean>();
     List<View> viewItems = new ArrayList<View>();
-    //    @Bind(R.id.left)
-//    ImageView left;
+    @Bind(R.id.left)
+    TextView left;
     @Bind(R.id.title)
     TextView title;
     @Bind(R.id.right)
@@ -49,20 +48,14 @@ public class MoreSelectActivity extends AppCompatActivity {
 
     MyDatabaseHelper helper;
     String classId = null;
-    @Bind(R.id.header)
-    Header header;
-    @Bind(R.id.left)
-    TextView left;
-    @Bind(R.id.activity_educationmo_ni)
-    LinearLayout activityEducationmoNi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_educationmo_ni);
         ButterKnife.bind(this);
-        new StatusBarUtils().setWindowStatusBarColor(MoreSelectActivity.this, R.color.color_bg_selected);
         left.setVisibility(View.GONE);
+        new StatusBarUtils().setWindowStatusBarColor(MoreSelectActivity.this, R.color.color_bg_selected);
         title.setText(getResources().getString(R.string.moselect));
         helper = DbManager.getInstance(MoreSelectActivity.this);
         Intent intent = getIntent();
@@ -77,7 +70,7 @@ public class MoreSelectActivity extends AppCompatActivity {
         GetDataThread.getMoreSelectData(this, classId, helper, beanList, viewItems, new BaseRequestAssessLisenter() {
             @Override
             public void success(Object o, Object o2) {
-                beanList = (List<assess.BodyBean.ListBean>) o2;
+                beanList = (List<Question.BodyBean.ListBean>) o2;
                 viewItems = (List<View>) o;
                 Message message = new Message();
                 message.what = 1;

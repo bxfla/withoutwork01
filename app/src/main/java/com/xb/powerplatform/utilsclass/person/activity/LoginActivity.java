@@ -2,7 +2,6 @@ package com.xb.powerplatform.utilsclass.person.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -16,8 +15,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.xb.powerplatform.DB.DbManager;
-import com.xb.powerplatform.DB.MyDatabaseHelper;
 import com.xb.powerplatform.R;
 import com.xb.powerplatform.SharedPreferencesHelper;
 import com.xb.powerplatform.utilsclass.base.BaseActivity;
@@ -58,8 +55,6 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     private static boolean isExit = false;
     SharedPreferencesHelper preference;
-    private MyDatabaseHelper helper;
-    SQLiteDatabase db;
 
     //推出程序
     Handler mHandler = new Handler() {
@@ -122,9 +117,6 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
         etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
 
-        helper = DbManager.getInstance(LoginActivity.this);
-        db = helper.getReadableDatabase();
-
         //获取SharedPreferences对象
         pref = PreferenceManager.getDefaultSharedPreferences(this);
         boolean isRemember = pref.getBoolean("remember_password", false);
@@ -147,8 +139,6 @@ public class LoginActivity extends BaseActivity implements LoginView {
     public void onViewClicked(View view) {
         switch (view.getId()){
             case R.id.btn_login:
-                String sql = "delete from className";
-                db.execSQL(sql);
                 name = etPhone.getText().toString();
                 password = etPassword.getText().toString();
                 if (name.equals("") && password.equals("")) {
@@ -201,7 +191,6 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        db.close();
     }
 
 }

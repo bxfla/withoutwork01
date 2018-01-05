@@ -12,7 +12,7 @@ import com.xb.powerplatform.education_and_training.activity.ErrorActivity;
 import com.xb.powerplatform.education_and_training.activity.MoreSelectActivity;
 import com.xb.powerplatform.education_and_training.activity.OneSelectActivity;
 import com.xb.powerplatform.education_and_training.activity.TorFActivity;
-import com.xb.powerplatform.education_and_training.bean.assess;
+import com.xb.powerplatform.education_and_training.bean.Question;
 import com.xb.powerplatform.education_and_training.util.BaseRequestAssessLisenter;
 
 import java.util.List;
@@ -26,7 +26,7 @@ public class GetDataThread {
 
     //得到单选题
     public static void getOneSelectData(final OneSelectActivity oneSelectActivity, final String classId, final MyDatabaseHelper helper,
-                                     final List<assess.BodyBean.ListBean> beanList,
+                                     final List<Question.BodyBean.ListBean> beanList,
                                      final List<View> viewItems, final BaseRequestAssessLisenter baseRequestAssessLisenter){
 
         new Thread(new Runnable() {
@@ -54,7 +54,7 @@ public class GetDataThread {
                     String quAnalyze = cursor.getString(cursor.getColumnIndex(Constant.QUANALYZE));
                     String quCategory = cursor.getString(cursor.getColumnIndex(Constant.QUCATEGORY));
                     String classId = cursor.getString(cursor.getColumnIndex(Constant.CLASSID));
-                    assess.BodyBean.ListBean resultBean = new assess.BodyBean.ListBean
+                    Question.BodyBean.ListBean resultBean = new Question.BodyBean.ListBean
                             (ID, quType, quContent, quA, quB, quC, quD, quE, quF, quAnswer, quAnalyze,quCategory, classId);
                     beanList.add(resultBean);
                 }
@@ -74,7 +74,7 @@ public class GetDataThread {
 
     //得到判断题
     public static void getTorFData(final TorFActivity torFActivity, final String classId, final MyDatabaseHelper helper,
-                                   final List<assess.BodyBean.ListBean> beanList,
+                                   final List<Question.BodyBean.ListBean> beanList,
                                    final List<View> viewItems, final BaseRequestAssessLisenter baseRequestAssessLisenter){
 
         new Thread(new Runnable() {
@@ -102,7 +102,7 @@ public class GetDataThread {
                     String quAnalyze = cursor.getString(cursor.getColumnIndex(Constant.QUANALYZE));
                     String quCategory = cursor.getString(cursor.getColumnIndex(Constant.QUCATEGORY));
                     String classId = cursor.getString(cursor.getColumnIndex(Constant.CLASSID));
-                    assess.BodyBean.ListBean resultBean = new assess.BodyBean.ListBean
+                    Question.BodyBean.ListBean resultBean = new Question.BodyBean.ListBean
                             (ID, quType, quContent, quA, quB, quC, quD, quE, quF, quAnswer,quCategory, quAnalyze, classId);
                     beanList.add(resultBean);
                 }
@@ -123,7 +123,7 @@ public class GetDataThread {
 
     //得到判断题
     public static void getMoreSelectData(final MoreSelectActivity moreSelectActivity, final String classId, final MyDatabaseHelper helper,
-                                         final List<assess.BodyBean.ListBean> beanList,
+                                         final List<Question.BodyBean.ListBean> beanList,
                                          final List<View> viewItems, final BaseRequestAssessLisenter baseRequestAssessLisenter){
 
         new Thread(new Runnable() {
@@ -151,7 +151,7 @@ public class GetDataThread {
                     String quAnalyze = cursor.getString(cursor.getColumnIndex(Constant.QUANALYZE));
                     String quCategory = cursor.getString(cursor.getColumnIndex(Constant.QUCATEGORY));
                     String classId = cursor.getString(cursor.getColumnIndex(Constant.CLASSID));
-                    assess.BodyBean.ListBean resultBean = new assess.BodyBean.ListBean
+                    Question.BodyBean.ListBean resultBean = new Question.BodyBean.ListBean
                             (ID, quType, quContent, quA, quB, quC, quD, quE, quF, quAnswer, quAnalyze,quCategory, classId);
                     beanList.add(resultBean);
                 }
@@ -172,7 +172,7 @@ public class GetDataThread {
 
     //得到错题集
     public static void getErrorData(final ErrorActivity errorActivity, final String classId, final MyDatabaseHelper helper,
-                                    final List<assess.BodyBean.ListBean> beanList,
+                                    final List<Question.BodyBean.ListBean> beanList,
                                     final List<View> viewItems, final BaseRequestAssessLisenter baseRequestAssessLisenter){
 
         new Thread(new Runnable() {
@@ -199,7 +199,7 @@ public class GetDataThread {
                     String quAnalyze = cursor.getString(cursor.getColumnIndex(Constant.QUANALYZE));
                     String quCategory = cursor.getString(cursor.getColumnIndex(Constant.QUCATEGORY));
                     String classId = cursor.getString(cursor.getColumnIndex(Constant.CLASSID));
-                    assess.BodyBean.ListBean resultBean = new assess.BodyBean.ListBean
+                    Question.BodyBean.ListBean resultBean = new Question.BodyBean.ListBean
                             (ID, quType, quContent, quA, quB, quC, quD, quE, quF, quAnswer, quAnalyze,quCategory, classId);
                     beanList.add(resultBean);
                 }

@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.xb.powerplatform.DB.Constant;
 import com.xb.powerplatform.DB.DbManager;
 import com.xb.powerplatform.DB.MyDatabaseHelper;
-import com.xb.powerplatform.education_and_training.bean.assess;
+import com.xb.powerplatform.education_and_training.bean.Question;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,15 +18,15 @@ import java.util.List;
  */
 
 public class AddErrorList {
-    List<assess.BodyBean.ListBean> dataItems = new ArrayList<>();
-    List<assess.BodyBean.ListBean> beanListE = new ArrayList<assess.BodyBean.ListBean>();
+    List<Question.BodyBean.ListBean> dataItems = new ArrayList<>();
+    List<Question.BodyBean.ListBean> beanListE = new ArrayList<Question.BodyBean.ListBean>();
     MyDatabaseHelper errorHelper;
     SQLiteDatabase db;
     int position;
     Context context;
 
-    public AddErrorList(SQLiteDatabase db, MyDatabaseHelper errorHelper, List<assess.BodyBean.ListBean> beanListE,
-                        List<assess.BodyBean.ListBean> dataItems, int position, Context contextObject) {
+    public AddErrorList(SQLiteDatabase db, MyDatabaseHelper errorHelper, List<Question.BodyBean.ListBean> beanListE,
+                        List<Question.BodyBean.ListBean> dataItems, int position, Context contextObject) {
         this.errorHelper = errorHelper;
         this.db = db;
         this.dataItems = dataItems;
@@ -40,17 +40,21 @@ public class AddErrorList {
         Cursor cursor = DbManager.queryBySQL(db, sql, null);
         beanListE = DbManager.cursorToPerson(cursor);
         String con = dataItems.get(position).getQuContent();
-        for (int i=0;i<beanListE.size();i++){
-            if (!con.equals(beanListE.get(i).getQuContent())){
-                addErrorDb(position);
+        if (beanListE.size()==0){
+            addErrorDb(position);
+        }else {
+            for (int i=0;i<beanListE.size();i++){
+                if (!con.equals(beanListE.get(i).getQuContent())){
+                    addErrorDb(position);
+                }
             }
         }
     }
 
     //想错题表中添加数据
     private void addErrorDb(int mPosition1) {
-        errorHelper = DbManager.getInstance(context);
-        db = errorHelper.getReadableDatabase();
+//        errorHelper = DbManager.getInstance(context);
+//        db = errorHelper.getReadableDatabase();
         ContentValues values = new ContentValues();
         values.put(Constant.ID, dataItems.get(mPosition1).getId());
         values.put(Constant.QUTYPE, dataItems.get(mPosition1).getQuType());

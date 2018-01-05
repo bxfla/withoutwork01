@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.xb.powerplatform.DB.DbManager;
 import com.xb.powerplatform.DB.MyDatabaseHelper;
-import com.xb.powerplatform.education_and_training.bean.assess;
+import com.xb.powerplatform.education_and_training.bean.Question;
 import com.xb.powerplatform.utilsclass.base.BaseRequestBackLisenter;
 
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.List;
 public class DataThread {
 
 
-    public static void getDbData(List<assess.BodyBean.ListBean> beanList, final SQLiteDatabase db, MyDatabaseHelper helper, final BaseRequestBackLisenter baseRequestBackLisenter) {
+    public static void getDbData(List<Question.BodyBean.ListBean> beanList, final SQLiteDatabase db, MyDatabaseHelper helper, final BaseRequestBackLisenter baseRequestBackLisenter) {
 
         new Thread(new Runnable() {
             @Override

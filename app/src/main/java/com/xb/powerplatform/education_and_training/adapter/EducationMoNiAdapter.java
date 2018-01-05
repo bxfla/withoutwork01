@@ -21,7 +21,7 @@ import com.xb.powerplatform.DB.MyDatabaseHelper;
 import com.xb.powerplatform.R;
 import com.xb.powerplatform.education_and_training.activity.EducationMoNiActivity;
 import com.xb.powerplatform.education_and_training.activity.MoNiAssessResultActivity;
-import com.xb.powerplatform.education_and_training.bean.assess;
+import com.xb.powerplatform.education_and_training.bean.Question;
 import com.xb.powerplatform.utilsclass.base.MyApplication;
 
 import java.util.ArrayList;
@@ -44,20 +44,20 @@ public class EducationMoNiAdapter extends PagerAdapter {
     // 每个item的页面view
     View convertView;
     // 传递过来的所有数据
-    List<assess.BodyBean.ListBean> dataItems;
+    List<Question.BodyBean.ListBean> dataItems;
     //答案集合
     List<String> beanList = new ArrayList<>();
     String answer;
     int code = 0;
     private float startX; // 声明记录手指落下位置的变量
-    List<assess.BodyBean.RuleBean> listRb = new ArrayList<>();
+    List<Question.BodyBean.RuleBean> listRb = new ArrayList<>();
 
     MyDatabaseHelper errorHelper;
     SQLiteDatabase db;
     String classId;
     int erPassMark;
 
-    public EducationMoNiAdapter(EducationMoNiActivity context, List<View> viewItems, List<assess.BodyBean.ListBean> beanList
+    public EducationMoNiAdapter(EducationMoNiActivity context, List<View> viewItems, List<Question.BodyBean.ListBean> beanList
             , String classId) {
         mContext = context;
         this.viewItems = viewItems;
@@ -374,26 +374,6 @@ public class EducationMoNiAdapter extends PagerAdapter {
         }
     }
 
-    //想错题表中添加数据
-//    private void addErrorDb(int mPosition1) {
-//        errorHelper = DbManager.getInstance(mContext);
-//        db = errorHelper.getReadableDatabase();
-//        ContentValues values = new ContentValues();
-//        values.put(Constant.ID, dataItems.get(mPosition1).getId());
-//        values.put(Constant.QUTYPE, dataItems.get(mPosition1).getQuType());
-//        values.put(Constant.QUCONTENT, dataItems.get(mPosition1).getQuContent());
-//        values.put(Constant.QUA, dataItems.get(mPosition1).getQuA());
-//        values.put(Constant.QUB, dataItems.get(mPosition1).getQuB());
-//        values.put(Constant.QUC, dataItems.get(mPosition1).getQuC());
-//        values.put(Constant.QUD, dataItems.get(mPosition1).getQuD());
-//        values.put(Constant.QUE, dataItems.get(mPosition1).getQuE());
-//        values.put(Constant.QUF, dataItems.get(mPosition1).getQuF());
-//        values.put(Constant.QUANSWER, dataItems.get(mPosition1).getQuAnswer());
-//        values.put(Constant.QUANALYZE, dataItems.get(mPosition1).getQuAnalyze());
-//        values.put(Constant.CLASSID, dataItems.get(mPosition1).getClasssId());
-//        values.put(Constant.CLASSID, dataItems.get(mPosition1).getQuCategory());
-//        db.insert(Constant.TABBLE_NAME_ERROR, null, values);
-//    }
 
     /**
      * @author 设置上一步按钮监听

@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import com.xb.powerplatform.DB.DbManager;
 import com.xb.powerplatform.DB.MyDatabaseHelper;
 import com.xb.powerplatform.R;
-import com.xb.powerplatform.education_and_training.bean.assess;
+import com.xb.powerplatform.education_and_training.bean.Question;
 import com.xb.powerplatform.utilsclass.base.BaseActivity;
 import com.xb.powerplatform.utilsclass.myViews.Header;
 
@@ -38,7 +38,7 @@ public class EducationZaiXianActivity extends BaseActivity {
     LinearLayout activityEducationZaixian;
 
     MyDatabaseHelper helper;
-    List<assess.BodyBean.ListBean> beanList = new ArrayList<>();
+    List<Question.BodyBean.ListBean> beanList = new ArrayList<>();
     Intent intent;
     String classId;
 

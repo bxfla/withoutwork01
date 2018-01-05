@@ -18,7 +18,7 @@ import com.xb.powerplatform.DB.DbManager;
 import com.xb.powerplatform.DB.MyDatabaseHelper;
 import com.xb.powerplatform.R;
 import com.xb.powerplatform.education_and_training.activity.ErrorActivity;
-import com.xb.powerplatform.education_and_training.bean.assess;
+import com.xb.powerplatform.education_and_training.bean.Question;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +41,7 @@ public class EducationErrorAdapter extends PagerAdapter {
     // 每个item的页面view
     View convertView;
     // 传递过来的所有数据
-    List<assess.BodyBean.ListBean> dataItems;
+    List<Question.BodyBean.ListBean> dataItems;
     //答案集合
     List<String> beanList =new ArrayList<>();
     String answer;
@@ -49,7 +49,7 @@ public class EducationErrorAdapter extends PagerAdapter {
     private float startX; // 声明记录手指落下位置的变量
     private MyDatabaseHelper errorhelper;
 
-    public EducationErrorAdapter(ErrorActivity context, List<View> viewItems, List<assess.BodyBean.ListBean> beanList) {
+    public EducationErrorAdapter(ErrorActivity context, List<View> viewItems, List<Question.BodyBean.ListBean> beanList) {
         mContext = context;
         this.viewItems = viewItems;
         this.dataItems = beanList;

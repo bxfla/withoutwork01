@@ -15,7 +15,7 @@ import com.xb.powerplatform.DB.DbManager;
 import com.xb.powerplatform.DB.MyDatabaseHelper;
 import com.xb.powerplatform.R;
 import com.xb.powerplatform.education_and_training.activity.TorFActivity;
-import com.xb.powerplatform.education_and_training.bean.assess;
+import com.xb.powerplatform.education_and_training.bean.Question;
 import com.xb.powerplatform.education_and_training.util.AddErrorList;
 import com.xb.powerplatform.utilsclass.base.MyApplication;
 
@@ -41,15 +41,15 @@ public class EducationTorFAdapter extends PagerAdapter {
     // 每个item的页面view
     View convertView;
     // 传递过来的所有数据
-    List<assess.BodyBean.ListBean> dataItems;
+    List<Question.BodyBean.ListBean> dataItems;
 
-    List<assess.BodyBean.ListBean> beanListE = new ArrayList<assess.BodyBean.ListBean>();
+    List<Question.BodyBean.ListBean> beanListE = new ArrayList<Question.BodyBean.ListBean>();
     String answer;
 
     MyDatabaseHelper errorHelper;
     SQLiteDatabase db;
 
-    public EducationTorFAdapter(TorFActivity context, List<View> viewItems, List<assess.BodyBean.ListBean> beanList) {
+    public EducationTorFAdapter(TorFActivity context, List<View> viewItems, List<Question.BodyBean.ListBean> beanList) {
         mContext = context;
         this.viewItems = viewItems;
         this.dataItems = beanList;

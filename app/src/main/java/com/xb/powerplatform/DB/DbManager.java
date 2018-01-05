@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.xb.powerplatform.education_and_training.bean.ClassName;
-import com.xb.powerplatform.education_and_training.bean.assess;
+import com.xb.powerplatform.education_and_training.bean.Question;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +33,8 @@ public class DbManager {
     }
 
     //将考试cause转化成list
-    public static List<assess.BodyBean.ListBean> cursorToPerson(Cursor cursor){
-        List<assess.BodyBean.ListBean> list = new ArrayList<>();
+    public static List<Question.BodyBean.ListBean> cursorToPerson(Cursor cursor){
+        List<Question.BodyBean.ListBean> list = new ArrayList<>();
         while (cursor.moveToNext()){
             // 根据参数指定的字段来读取字段下标
             int index = cursor.getColumnIndex(Constant.ID);
@@ -53,7 +53,7 @@ public class DbManager {
             String quAnalyze = cursor.getString(cursor.getColumnIndex(Constant.QUANALYZE));
             String quCategory = cursor.getString(cursor.getColumnIndex(Constant.QUCATEGORY));
             String classId = cursor.getString(cursor.getColumnIndex(Constant.CLASSID));
-            assess.BodyBean.ListBean resultBean = new assess.BodyBean.ListBean
+            Question.BodyBean.ListBean resultBean = new Question.BodyBean.ListBean
                     (ID,quType,quContent,quA,quB,quC,quD,quE,quF,quAnswer,quAnalyze,quCategory,classId);
             list.add(resultBean);
         }
@@ -79,8 +79,8 @@ public class DbManager {
     }
 
     //将规则cause转化成list
-    public static List<assess.BodyBean.RuleBean> cursorTorule(Cursor cursor){
-        List<assess.BodyBean.RuleBean> list = new ArrayList<>();
+    public static List<Question.BodyBean.RuleBean> cursorTorule(Cursor cursor){
+        List<Question.BodyBean.RuleBean> list = new ArrayList<>();
         while (cursor.moveToNext()){
             int radioNum = cursor.getInt(cursor.getColumnIndex(Constant.RADIONUM));
             int multiNum = cursor.getInt(cursor.getColumnIndex(Constant.MULTINUM));
@@ -97,7 +97,7 @@ public class DbManager {
             int erScoreJudgeLaws = cursor.getInt(cursor.getColumnIndex(Constant.ERSCOREJUDGELAWS));
             int erScoreJudgeMajor = cursor.getInt(cursor.getColumnIndex(Constant.ERSCOREJUDGEMAJOR));
             String classId = cursor.getString(cursor.getColumnIndex(Constant.CLASSID));
-            assess.BodyBean.RuleBean resultBean = new assess.BodyBean.RuleBean
+            Question.BodyBean.RuleBean resultBean = new Question.BodyBean.RuleBean
                     (radioNum,multiNum,judgeNum,classId,erLength,erPassMark,erScoreRadioSafety,erScoreRadioLaws
                     ,erScoreRadioMajor,erScoreMultiSafety,erScoreMultiLaws,erScoreMultiMajor,erScoreJudgeSafety
                     ,erScoreJudgeLaws,erScoreJudgeMajor);
@@ -116,7 +116,7 @@ public class DbManager {
     }
 
     //当前页码数据的集合
-    public static List<assess.BodyBean.ListBean> getListByCurrentPage(SQLiteDatabase db, String table_name, int currentPage, int pageSize){
+    public static List<Question.BodyBean.ListBean> getListByCurrentPage(SQLiteDatabase db, String table_name, int currentPage, int pageSize){
         int index = (currentPage-1)*pageSize; // 获取当前页码第一条数据的下标
         Cursor cursor = null;
         if (db!=null){

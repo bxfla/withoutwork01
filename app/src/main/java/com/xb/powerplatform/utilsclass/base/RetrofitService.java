@@ -1,5 +1,6 @@
 package com.xb.powerplatform.utilsclass.base;
 
+import com.xb.powerplatform.education_and_training.bean.Question;
 import com.xb.powerplatform.education_and_training.bean.RegularAssess;
 import com.xb.powerplatform.education_and_training.bean.assess;
 import com.xb.powerplatform.education_and_training.bean.result;
@@ -43,7 +44,7 @@ public interface RetrofitService {
      * 获取试题
      */
     @GET("downLoadByType")
-    Observable<assess> getAssessData(@Query("classId") String classId);
+    Observable<Question> getAssessData(@Query("classId") String classId);
 
     /**
      * 获取正式考试试题
@@ -74,5 +75,12 @@ public interface RetrofitService {
     @POST("resetPwd")
     Observable<checkPwd> checkPwd(@Query("num") String num,
                                   @Query("cred") String cred, @Query("pwd") String pwd);
+
+    /**
+     * 报名班级
+     * @return
+     */
+    @POST("getEnrolInfo")
+    Observable<assess> getClass(@Query("idcard") String idcard);
 
 }

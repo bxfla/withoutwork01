@@ -20,7 +20,7 @@ import com.xb.powerplatform.DB.DbManager;
 import com.xb.powerplatform.DB.MyDatabaseHelper;
 import com.xb.powerplatform.R;
 import com.xb.powerplatform.education_and_training.adapter.EducationMoNiAdapter;
-import com.xb.powerplatform.education_and_training.bean.assess;
+import com.xb.powerplatform.education_and_training.bean.Question;
 import com.xb.powerplatform.education_and_training.myview.VoteSubmitViewPager;
 import com.xb.powerplatform.utilsclass.base.AlertDialogCallBack;
 import com.xb.powerplatform.utilsclass.base.BaseActivity;
@@ -41,7 +41,7 @@ import butterknife.OnClick;
 
 public class EducationMoNiActivity extends BaseActivity {
 
-    List<assess.BodyBean.ListBean> beanList = new ArrayList<assess.BodyBean.ListBean>();
+    List<Question.BodyBean.ListBean> beanList = new ArrayList<Question.BodyBean.ListBean>();
     List<View> viewItems = new ArrayList<View>();
 //    @Bind(R.id.left)
 //    ImageView left;
@@ -63,7 +63,7 @@ public class EducationMoNiActivity extends BaseActivity {
     boolean isPause = false;
     int isFirst;
 
-    List<assess.BodyBean.RuleBean> listRb = new ArrayList<>();
+    List<Question.BodyBean.ListBean> listRb = new ArrayList<>();
     MyDatabaseHelper helper;
     SQLiteDatabase db;
     @Bind(R.id.header)
@@ -163,7 +163,7 @@ public class EducationMoNiActivity extends BaseActivity {
         db = helper.getReadableDatabase();
         new StatusBarUtils().setWindowStatusBarColor(EducationMoNiActivity.this, R.color.color_bg_selected);
         Intent intent = getIntent();
-        beanList = (List<assess.BodyBean.ListBean>) intent.getSerializableExtra("list");
+        beanList = (List<Question.BodyBean.ListBean>) intent.getSerializableExtra("list");
         String classId = intent.getStringExtra("classId");
         int minute1 = Integer.parseInt(intent.getStringExtra("erLength"));
         minute = minute1;
@@ -370,7 +370,7 @@ public class EducationMoNiActivity extends BaseActivity {
 
     @OnClick(R.id.left)
     public void onViewClicked() {
-        new AlertDialogUtil(this).showDialog(getResources().getString(R.string.sure_up_assess), new AlertDialogCallBack() {
+        new AlertDialogUtil(this).showDialog(getResources().getString(R.string.up_assess), new AlertDialogCallBack() {
             @Override
             public void confirm() {
                 adapter.upData();
@@ -378,6 +378,7 @@ public class EducationMoNiActivity extends BaseActivity {
 
             @Override
             public void cancel() {
+
             }
         });
     }

@@ -22,9 +22,13 @@ import com.xb.powerplatform.R;
 import com.xb.powerplatform.SharedPreferencesHelper;
 import com.xb.powerplatform.education_and_training.adapter.TestNormalAdapter;
 import com.xb.powerplatform.education_and_training.bean.ClassName;
+import com.xb.powerplatform.education_and_training.bean.Question;
 import com.xb.powerplatform.education_and_training.bean.assess;
+import com.xb.powerplatform.education_and_training.presenter.ClassPresenter;
 import com.xb.powerplatform.education_and_training.presenter.IPresenter;
+import com.xb.powerplatform.education_and_training.presenter.impl.ClassPresenterimpl;
 import com.xb.powerplatform.education_and_training.presenter.impl.Presenterimpl;
+import com.xb.powerplatform.education_and_training.view.ClassView;
 import com.xb.powerplatform.education_and_training.view.IView;
 import com.xb.powerplatform.utilsclass.base.AlertDialogCallBack;
 import com.xb.powerplatform.utilsclass.myViews.StatusBarUtils;
@@ -40,8 +44,8 @@ import butterknife.OnClick;
 
 import static com.xb.powerplatform.R.string.no_question;
 
-public class EducationActivity extends AppCompatActivity implements IView {
-
+public class EducationActivity extends AppCompatActivity implements ClassView ,IView{
+//implements IView
     //教育培训
     @Bind(R.id.rellPagerView)
     RollPagerView rellPagerView;
@@ -59,10 +63,10 @@ public class EducationActivity extends AppCompatActivity implements IView {
     TextView right;
     private MyDatabaseHelper helper;
     SQLiteDatabase db;
-    List<assess.BodyBean.ListBean> beanListR = new ArrayList<assess.BodyBean.ListBean>();
-    List<assess.BodyBean.ListBean> beanListM = new ArrayList<assess.BodyBean.ListBean>();
-    List<assess.BodyBean.ListBean> beanListJ = new ArrayList<assess.BodyBean.ListBean>();
-    List<assess.BodyBean.ListBean> beanList = new ArrayList<assess.BodyBean.ListBean>();
+    List<Question.BodyBean.ListBean> beanListR = new ArrayList<Question.BodyBean.ListBean>();
+    List<Question.BodyBean.ListBean> beanListM = new ArrayList<Question.BodyBean.ListBean>();
+    List<Question.BodyBean.ListBean> beanListJ = new ArrayList<Question.BodyBean.ListBean>();
+    List<Question.BodyBean.ListBean> beanList = new ArrayList<Question.BodyBean.ListBean>();
     List<ClassName> classNamesbeanList = new ArrayList<ClassName>();
     List<ClassName> dwoClassNamesbeanList = new ArrayList<ClassName>();
 
@@ -75,13 +79,15 @@ public class EducationActivity extends AppCompatActivity implements IView {
     List<String> listNamed = new ArrayList<>();
     List<String> listIdd = new ArrayList<>();
 
-    List<assess.BodyBean.RuleBean> listrule = new ArrayList<>();
-    List<assess.BodyBean.RuleBean> listRb = new ArrayList<>();
+    List<Question.BodyBean.RuleBean> listrule = new ArrayList<>();
+    List<Question.BodyBean.RuleBean> listRb = new ArrayList<>();
     SharedPreferencesHelper preference;
     private String classId;
     String classId1;
     int erLength;
     private AlertDialogUtil alertDialogUtil;
+
+    ClassPresenter classPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +95,9 @@ public class EducationActivity extends AppCompatActivity implements IView {
         setContentView(R.layout.activity_education);
         ButterKnife.bind(this);
         new StatusBarUtils().setWindowStatusBarColor(EducationActivity.this, R.color.color_bg_selected);
+
+        classPresenter= new ClassPresenterimpl(this, this);
+        classPresenter.getPresenteerData(preference.getData(this,"cred",""));
 
         helper = DbManager.getInstance(EducationActivity.this);
         db = helper.getReadableDatabase();
@@ -165,13 +174,6 @@ public class EducationActivity extends AppCompatActivity implements IView {
         }
     }
 
-    //查询数据库获得试题
-    private void getClassNameData() {
-        Cursor cursor;
-        String sql = "select * from className";
-        cursor = DbManager.queryBySQL(db, sql, null);
-        classNamesbeanList = DbManager.cursorToClassName(cursor);
-    }
 
     //获取已经下载的班级
     private void getDwoClassNameData() {
@@ -212,11 +214,10 @@ public class EducationActivity extends AppCompatActivity implements IView {
                     intent = new Intent(EducationActivity.this, EducationZaiXianActivity.class);
                     intent.putExtra("classId", classId);
                     startActivity(intent);
-                }
-//                } else {
+                } else {
 //                    alertDialogUtil= new AlertDialogUtil(this);
 //                    alertDialogUtil.showSmallDialog(getResources().getString(R.string.first_download));
-//                }
+                }
                 break;
             case R.id.btn3:
                 classId1 = preference.getData(this, "classId", "");
@@ -266,8 +267,6 @@ public class EducationActivity extends AppCompatActivity implements IView {
                 }
                 break;
             case R.id.right:
-                //将下载个人信息
-                getGetList();
                 //list转数组
                 final String[] arrName = (String[]) listName.toArray(new String[listName.size()]);
                 final String[] arrId = (String[]) listId.toArray(new String[listId.size()]);
@@ -311,7 +310,7 @@ public class EducationActivity extends AppCompatActivity implements IView {
     }
 
     @Override
-    public void getViewData(assess assess) {
+    public void getViewData(Question assess) {
         int num = assess.getBody().getList().size();
         if (num != 0) {
             for (int i = 0; i < assess.getBody().getList().size(); i++) {
@@ -350,15 +349,6 @@ public class EducationActivity extends AppCompatActivity implements IView {
             int judgeNum=assess.getBody().getRule().getJudgeNum();
             int erLength=assess.getBody().getRule().getErLength();
             int erPassMark=assess.getBody().getRule().getErPassMark();//及格分数
-            int erScoreRadioSafety=assess.getBody().getRule().getErScoreRadioSafety();//安全知识单选分值
-            int erScoreRadioLaws=assess.getBody().getRule().getErScoreRadioLaws();//法律法规单选分数
-            int erScoreRadioMajor=assess.getBody().getRule().getErScoreRadioMajor();//专业知识单选分数
-            int erScoreMultiSafety=assess.getBody().getRule().getErScoreMultiSafety();//多选安全知识分值
-            int erScoreMultiLaws=assess.getBody().getRule().getErScoreMultiLaws();//多选法律法规分数
-            int erScoreMultiMajor=assess.getBody().getRule().getErScoreMultiMajor();//多选专业知识分数
-            int erScoreJudgeSafety=assess.getBody().getRule().getErScoreJudgeSafety();//判断安全知识分值
-            int erScoreJudgeLaws=assess.getBody().getRule().getErScoreJudgeLaws();//判断法律法规分数
-            int erScoreJudgeMajor=assess.getBody().getRule().getErScoreJudgeMajor();//判断专业知识分数
             values.put(Constant.RADIONUM, radioNum);
             values.put(Constant.MULTINUM, multiNum);
             values.put(Constant.JUDGENUM, judgeNum);
@@ -366,6 +356,40 @@ public class EducationActivity extends AppCompatActivity implements IView {
 
             values.put(Constant.ERLENGTH, erLength);
             values.put(Constant.ERPASSMARK, erPassMark);
+
+            db.insert(Constant.TABBLE_NAME_RULE, null, values);
+            values.clear();
+
+            Toast.makeText(this, getResources().getString(R.string.download_ok), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, getResources().getString(no_question), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        db.close();
+    }
+
+    @Override
+    public void getClassViewData(assess assess) {
+        List<assess.BodyBean.BmListBean> list=new ArrayList<>();
+        list=assess.getBody().getBmList();
+        ContentValues values = new ContentValues();
+        for (int k=0;k<list.size();k++){
+            listName.add(list.get(k).getClassName());
+            listId.add(list.get(k).getClassId());
+            int erScoreRadioSafety=assess.getBody().getBmList().get(k).getExamRule().getErScoreRadioSafety();//安全知识单选分值
+            int erScoreRadioLaws=assess.getBody().getBmList().get(k).getExamRule().getErScoreRadioLaws();//法律法规单选分数
+            int erScoreRadioMajor=assess.getBody().getBmList().get(k).getExamRule().getErScoreRadioMajor();//专业知识单选分数
+            int erScoreMultiSafety=assess.getBody().getBmList().get(k).getExamRule().getErScoreMultiSafety();//多选安全知识分值
+            int erScoreMultiLaws=assess.getBody().getBmList().get(k).getExamRule().getErScoreMultiLaws();//多选法律法规分数
+            int erScoreMultiMajor=assess.getBody().getBmList().get(k).getExamRule().getErScoreMultiMajor();//多选专业知识分数
+            int erScoreJudgeSafety=assess.getBody().getBmList().get(k).getExamRule().getErScoreJudgeSafety();//判断安全知识分值
+            int erScoreJudgeLaws=assess.getBody().getBmList().get(k).getExamRule().getErScoreJudgeLaws();//判断法律法规分数
+            int erScoreJudgeMajor=assess.getBody().getBmList().get(k).getExamRule().getErScoreJudgeMajor();//判断专业知识分数
+
             values.put(Constant.ERSCORERADIOSAFETY, erScoreRadioSafety);
             values.put(Constant.ERSCORERADIOLAWS, erScoreRadioLaws);
             values.put(Constant.ERSCORERADIOMAJOR, erScoreRadioMajor);
@@ -378,28 +402,6 @@ public class EducationActivity extends AppCompatActivity implements IView {
 
             db.insert(Constant.TABBLE_NAME_RULE, null, values);
             values.clear();
-
-            Toast.makeText(this, getResources().getString(R.string.download_ok), Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, getResources().getString(no_question), Toast.LENGTH_SHORT).show();
         }
-    }
-
-    public void getGetList() {
-        getClassNameData();
-        listName.clear();
-        listId.clear();
-        if (classNamesbeanList.size() != 0) {
-            for (int i = 0; i < classNamesbeanList.size(); i++) {
-                listName.add(classNamesbeanList.get(i).getClassName());
-                listId.add(classNamesbeanList.get(i).getClassId());
-            }
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        db.close();
     }
 }

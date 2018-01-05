@@ -2,8 +2,8 @@ package com.xb.powerplatform.education_and_training.model.impl;
 
 import android.content.Context;
 
-import com.xb.powerplatform.education_and_training.bean.Question;
-import com.xb.powerplatform.education_and_training.model.IModel;
+import com.xb.powerplatform.education_and_training.bean.assess;
+import com.xb.powerplatform.education_and_training.model.ClassModel;
 import com.xb.powerplatform.utilsclass.base.BaseModeBackLisenter;
 import com.xb.powerplatform.utilsclass.base.BaseRequestBackLisenter;
 import com.xb.powerplatform.utilsclass.base.Constant;
@@ -16,14 +16,14 @@ import com.xb.powerplatform.utilsclass.utils.HttpUtils;
  *
  */
 
-public class Modelimpl implements IModel{
+public class ClassModelimpl implements ClassModel {
 
     @Override
     public void getModelData(String httpTag, Context context, String id, final BaseModeBackLisenter baseModeBackLisenter) {
-        HttpUtils.initlist(HttpUtils.getService(RetrofitService.class).getAssessData(id)
-                ,new MySubscriberbean(httpTag,context, Constant.DOWNLOAD, new BaseRequestBackLisenter<Question>() {
+        HttpUtils.initlist(HttpUtils.getService(RetrofitService.class).getClass(id)
+                ,new MySubscriberbean(httpTag,context, Constant.DOWNLOAD, new BaseRequestBackLisenter<assess>() {
                     @Override
-                    public void success(Question assesses) {
+                    public void success(assess assesses) {
                         baseModeBackLisenter.success(assesses);
                     }
 

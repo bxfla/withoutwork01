@@ -1,6 +1,5 @@
 package com.xb.powerplatform.education_and_training.adapter;
 
-import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
@@ -14,13 +13,15 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.xb.powerplatform.DB.Constant;
 import com.xb.powerplatform.DB.DbManager;
 import com.xb.powerplatform.DB.MyDatabaseHelper;
 import com.xb.powerplatform.R;
 import com.xb.powerplatform.education_and_training.activity.MoreSelectActivity;
-import com.xb.powerplatform.education_and_training.bean.assess;
+import com.xb.powerplatform.education_and_training.bean.Question;
+import com.xb.powerplatform.education_and_training.util.AddErrorList;
+import com.xb.powerplatform.utilsclass.base.MyApplication;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.xb.powerplatform.R.id.btn;
@@ -41,12 +42,13 @@ public class EducationMoreSelectAdapter extends PagerAdapter {
     // 每个item的页面view
     View convertView;
     // 传递过来的所有数据
-    List<assess.BodyBean.ListBean> dataItems;
+    List<Question.BodyBean.ListBean> dataItems;
     String answer,answer1,answer2,answer3,answer4;
     MyDatabaseHelper errorHelper;
     SQLiteDatabase db;
+    List<Question.BodyBean.ListBean> beanListE=new ArrayList<>();
 
-    public EducationMoreSelectAdapter(MoreSelectActivity context, List<View> viewItems, List<assess.BodyBean.ListBean> beanList) {
+    public EducationMoreSelectAdapter(MoreSelectActivity context, List<View> viewItems, List<Question.BodyBean.ListBean> beanList) {
         mContext = context;
         this.viewItems = viewItems;
         this.dataItems = beanList;
@@ -58,6 +60,8 @@ public class EducationMoreSelectAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
         final ViewHolder holder = new ViewHolder();
+        errorHelper = DbManager.getInstance(mContext);
+        db = errorHelper.getReadableDatabase();
         convertView = viewItems.get(position);
         holder.questionType = (TextView) convertView.findViewById(R.id.activity_prepare_test_no);
         holder.question = (TextView) convertView.findViewById(R.id.activity_prepare_test_question);
@@ -259,7 +263,7 @@ public class EducationMoreSelectAdapter extends PagerAdapter {
                 }
                 if (!answer.equals(dataItems.get(position).getQuAnswer())) {
                     viewHolder.ll_result.setVisibility(View.VISIBLE);
-                    addErrorDb(position);
+                    new AddErrorList(db,errorHelper,beanListE,dataItems,position, MyApplication.getContextObject()).AddErrorList();
                     viewHolder.answer.setText(dataItems.get(position).getQuAnswer());
                     viewHolder.result.setText(dataItems.get(position).getQuAnalyze());
                 }else {
@@ -272,26 +276,6 @@ public class EducationMoreSelectAdapter extends PagerAdapter {
         });
     }
 
-    //想错题表中添加数据
-    private void addErrorDb(int mPosition1) {
-        errorHelper = DbManager.getInstance(mContext);
-        db = errorHelper.getReadableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(Constant.ID, dataItems.get(mPosition1).getId());
-        values.put(Constant.QUTYPE, dataItems.get(mPosition1).getQuType());
-        values.put(Constant.QUCONTENT, dataItems.get(mPosition1).getQuContent());
-        values.put(Constant.QUA, dataItems.get(mPosition1).getQuA());
-        values.put(Constant.QUB, dataItems.get(mPosition1).getQuB());
-        values.put(Constant.QUC, dataItems.get(mPosition1).getQuC());
-        values.put(Constant.QUD, dataItems.get(mPosition1).getQuD());
-        values.put(Constant.QUE, dataItems.get(mPosition1).getQuE());
-        values.put(Constant.QUF, dataItems.get(mPosition1).getQuF());
-        values.put(Constant.QUANSWER, dataItems.get(mPosition1).getQuAnswer());
-        values.put(Constant.QUANALYZE, dataItems.get(mPosition1).getQuAnalyze());
-        values.put(Constant.CLASSID, dataItems.get(mPosition1).getClasssId());
-        values.put(Constant.CLASSID, dataItems.get(mPosition1).getQuCategory());
-        db.insert(Constant.TABBLE_NAME_ERROR, null, values);
-    }
 
 
     /**

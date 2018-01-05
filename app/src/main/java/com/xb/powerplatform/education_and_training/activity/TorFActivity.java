@@ -14,7 +14,7 @@ import com.xb.powerplatform.DB.DbManager;
 import com.xb.powerplatform.DB.MyDatabaseHelper;
 import com.xb.powerplatform.R;
 import com.xb.powerplatform.education_and_training.adapter.EducationTorFAdapter;
-import com.xb.powerplatform.education_and_training.bean.assess;
+import com.xb.powerplatform.education_and_training.bean.Question;
 import com.xb.powerplatform.education_and_training.myview.VoteSubmitViewPager;
 import com.xb.powerplatform.education_and_training.util.BaseRequestAssessLisenter;
 import com.xb.powerplatform.thread.GetDataThread;
@@ -30,7 +30,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class TorFActivity extends AppCompatActivity {
-    List<assess.BodyBean.ListBean> beanList = new ArrayList<assess.BodyBean.ListBean>();
+    List<Question.BodyBean.ListBean> beanList = new ArrayList<Question.BodyBean.ListBean>();
     List<View> viewItems = new ArrayList<View>();
     //    @Bind(R.id.left)
 //    ImageView left;
@@ -74,7 +74,7 @@ public class TorFActivity extends AppCompatActivity {
         GetDataThread.getTorFData(this, classId, helper, beanList, viewItems, new BaseRequestAssessLisenter() {
             @Override
             public void success(Object o, Object o2) {
-                beanList = (List<assess.BodyBean.ListBean>) o2;
+                beanList = (List<Question.BodyBean.ListBean>) o2;
                 viewItems = (List<View>) o;
                 Message message = new Message();
                 message.what = 1;

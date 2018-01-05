@@ -13,7 +13,7 @@ import com.xb.powerplatform.DB.DbManager;
 import com.xb.powerplatform.DB.MyDatabaseHelper;
 import com.xb.powerplatform.R;
 import com.xb.powerplatform.education_and_training.adapter.EducationOneSelectAdapter;
-import com.xb.powerplatform.education_and_training.bean.assess;
+import com.xb.powerplatform.education_and_training.bean.Question;
 import com.xb.powerplatform.education_and_training.myview.VoteSubmitViewPager;
 import com.xb.powerplatform.education_and_training.util.BaseRequestAssessLisenter;
 import com.xb.powerplatform.thread.GetDataThread;
@@ -30,10 +30,10 @@ import butterknife.ButterKnife;
 
 public class OneSelectActivity extends BaseActivity {
 
-    List<assess.BodyBean.ListBean> beanList = new ArrayList<>();
+    List<Question.BodyBean.ListBean> beanList = new ArrayList<>();
     List<View> viewItems = new ArrayList<View>();
-    //    @Bind(R.id.left)
-//    ImageView left;
+    @Bind(R.id.left)
+    TextView left;
     @Bind(R.id.title)
     TextView title;
     @Bind(R.id.right)
@@ -50,10 +50,6 @@ public class OneSelectActivity extends BaseActivity {
     String classId = null;
     @Bind(R.id.header)
     Header header;
-    @Bind(R.id.left)
-    TextView left;
-    @Bind(R.id.activity_educationmo_ni)
-    LinearLayout activityEducationmoNi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +86,7 @@ public class OneSelectActivity extends BaseActivity {
         GetDataThread.getOneSelectData(this, classId, helper, beanList, viewItems, new BaseRequestAssessLisenter() {
             @Override
             public void success(Object o, Object o2) {
-                beanList = (List<assess.BodyBean.ListBean>) o2;
+                beanList = (List<Question.BodyBean.ListBean>) o2;
                 viewItems = (List<View>) o;
                 Message message = new Message();
                 message.what = 1;
