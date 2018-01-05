@@ -154,8 +154,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     public void setUser(upApp upapp) {
         version=upapp.getVersion();
         SharedPreferences preferences=getSharedPreferences("userup", Context.MODE_PRIVATE);
-        //String version1=preferences.getString("version", "");
-        String version1="app-release1.0.3.apk";
+        String version1=preferences.getString("version", "");
+        //String version1="app-release1.0.3.apk";
         if (version1.length()==0){
             SharedPreferences preferences1=getSharedPreferences("userup", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor=preferences1.edit();
