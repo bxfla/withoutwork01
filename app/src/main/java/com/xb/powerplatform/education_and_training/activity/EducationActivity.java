@@ -97,7 +97,6 @@ public class EducationActivity extends AppCompatActivity implements ClassView ,I
         new StatusBarUtils().setWindowStatusBarColor(EducationActivity.this, R.color.color_bg_selected);
 
         classPresenter= new ClassPresenterimpl(this, this);
-        classPresenter.getPresenteerData(preference.getData(this,"cred",""));
 
         helper = DbManager.getInstance(EducationActivity.this);
         db = helper.getReadableDatabase();
@@ -267,6 +266,7 @@ public class EducationActivity extends AppCompatActivity implements ClassView ,I
                 }
                 break;
             case R.id.right:
+                classPresenter.getPresenteerData(preference.getData(this,"cred",""));
                 //list转数组
                 final String[] arrName = (String[]) listName.toArray(new String[listName.size()]);
                 final String[] arrId = (String[]) listId.toArray(new String[listId.size()]);
@@ -374,6 +374,8 @@ public class EducationActivity extends AppCompatActivity implements ClassView ,I
 
     @Override
     public void getClassViewData(assess assess) {
+        String classId=assess.getBody().getExamClass().getClassId();
+        preference.saveData(this,"classId",classId);
         List<assess.BodyBean.BmListBean> list=new ArrayList<>();
         list=assess.getBody().getBmList();
         ContentValues values = new ContentValues();

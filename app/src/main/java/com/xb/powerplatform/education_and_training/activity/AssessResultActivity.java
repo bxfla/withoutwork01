@@ -63,7 +63,7 @@ public class AssessResultActivity extends BaseActivity implements ResultView {
         setImage();
         preference = new SharedPreferencesHelper(this, "login");
         classId = preference.getData(this, "classId", "");
-        String cred = preference.getData(this, "crednumber", "");
+        String cred = preference.getData(this, "cred", "");
         presenter = new ResultPresenterimpl(this, this);
         presenter.getPresenteerData(classId, cred, score);
     }

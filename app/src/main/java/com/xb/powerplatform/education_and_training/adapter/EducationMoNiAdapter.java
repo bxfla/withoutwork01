@@ -431,49 +431,58 @@ public class EducationMoNiAdapter extends PagerAdapter {
             if (dataItems.get(i).getQuType().equals("0")) {
                 if (dataItems.get(i).getQuCategory().equals("0")) {
                     if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                        code += radioSafety;
+                        //code += radioSafety;
+                        code += 1;
                     }
                 }
                 if (dataItems.get(i).getQuCategory().equals("1")) {
                     if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                        code += radioLaws;
+                        //code += radioLaws;
+                        code += 1;
                     }
                 }
                 if (dataItems.get(i).getQuCategory().equals("2")) {
                     if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                        code += radioMajor;
+                        //code += radioMajor;
+                        code += 1;
                     }
                 }
             } else if (dataItems.get(i).getQuType().equals("1")) {
                 if (dataItems.get(i).getQuCategory().equals("0")) {
                     if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                        code += multiSafety;
+                        //code += multiSafety;
+                        code += 1;
                     }
                 }
                 if (dataItems.get(i).getQuCategory().equals("1")) {
                     if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                        code += multiLaws;
+                        //code += multiLaws;
+                        code += 1;
                     }
                 }
                 if (dataItems.get(i).getQuCategory().equals("2")) {
                     if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                        code += multiMajor;
+                        //code += multiMajor;
+                        code += 1;
                     }
                 }
             } else if (dataItems.get(i).getQuType().equals("2")) {
                 if (dataItems.get(i).getQuCategory().equals("0")) {
                     if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                        code += judgeSafety;
+                        //code += judgeSafety;
+                        code += 1;
                     }
                 }
                 if (dataItems.get(i).getQuCategory().equals("1")) {
                     if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                        code += judgeLaws;
+                        //code += judgeLaws;
+                        code += 1;
                     }
                 }
                 if (dataItems.get(i).getQuCategory().equals("2")) {
                     if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
-                        code += judgeMajor;
+                        //code += judgeMajor;
+                        code += 1;
                     }
                 }
             }
