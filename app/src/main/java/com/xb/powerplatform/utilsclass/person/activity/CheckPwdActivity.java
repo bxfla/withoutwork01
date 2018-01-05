@@ -67,7 +67,7 @@ public class CheckPwdActivity extends BaseActivity implements CheckPwdView {
         if (etName.getText().toString().length() != 0 &&
                 etIdcard.getText().toString().length() != 0 &&
                 etNewPwd.getText().toString().length() != 0) {
-            if (etNewPwd.equals(etNewPwd1)){
+            if (etNewPwd.getText().toString().equals(etNewPwd1.getText().toString())){
                 presenter = new CheckPwdPresenterImpl(this, this, etName.getText().toString(),
                         etIdcard.getText().toString(), etNewPwd.getText().toString());
                 presenter.CheckPwd(etName.getText().toString(),

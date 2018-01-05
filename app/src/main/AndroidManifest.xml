@@ -71,6 +71,7 @@
         <activity android:name=".utilsclass.person.activity.MyInformActivity" />
         <activity android:name=".utilsclass.person.activity.AssessLineActivity" />
         <activity android:name=".utilsclass.person.activity.CheckPwdActivity"></activity>
+        <activity android:name=".utilsclass.person.activity.textActivity"></activity>
     </application>
 
 </manifest>

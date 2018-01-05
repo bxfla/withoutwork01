@@ -11,9 +11,11 @@ import android.os.Message;
 import android.preference.PreferenceManager;
 import android.text.method.PasswordTransformationMethod;
 import android.view.KeyEvent;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xb.powerplatform.DB.Constant;
@@ -43,6 +45,8 @@ import static com.xb.powerplatform.SharedPreferencesHelper.saveData;
  * 登录activity
  */
 public class LoginActivity extends BaseActivity implements LoginView {
+    @Bind(R.id.checkpwd)
+    TextView checkpwd;
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
 
@@ -59,8 +63,8 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @Bind(R.id.chechBox)
     CheckBox chechBox;
 
-    String name,password;
-    List<String> list=new ArrayList<>();
+    String name, password;
+    List<String> list = new ArrayList<>();
 
     private static boolean isExit = false;
     SharedPreferencesHelper preference;
@@ -69,6 +73,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     private MyDatabaseHelper helper;
     SQLiteDatabase db;
+    String wname,addredd,department;
 
     //推出程序
     Handler mHandler = new Handler() {
@@ -106,22 +111,25 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @Override
     public void setUser(User user) {
-        if (String.valueOf(user.isSuccess()).equals("true")){
-            if (user.getBody().getBmList().size()!=0){
-                int line=user.getBody().getBmList().size();
-                for (int i=0;i<line;i++){
-                    String examState=user.getBody().getBmList().get(i).getExamState();
-                    if (examState.equals("2")){
+        if (String.valueOf(user.isSuccess()).equals("true")) {
+            if (user.getBody().getBmList().size() != 0) {
+                int line = user.getBody().getBmList().size();
+                for (int i = 0; i < line; i++) {
+                    wname=user.getBody().getBmList().get(0).getEnrolName();
+                    addredd=user.getBody().getBmList().get(0).getAddress();
+                    department=user.getBody().getBmList().get(0).getDepartment();
+                    String examState = user.getBody().getBmList().get(i).getExamState();
+                    if (examState.equals("2")) {
                         list.add(user.getBody().getBmList().get(i).getClassName());
                     }
-                    String cont=user.getBody().getExamClass().getClassId();
-                    if (cont!=null){
-                        saveData(this,"classId",user.getBody().getExamClass().getClassId());//考试ID
-                    }else {
+                    String cont = user.getBody().getExamClass().getClassId();
+                    if (cont != null) {
+                        saveData(this, "classId", user.getBody().getExamClass().getClassId());//考试ID
+                    } else {
                     }
                     String classId = user.getBody().getBmList().get(i).getClassId();
                     String className = user.getBody().getBmList().get(i).getClassName();//题目
-                    String dwoStatic="No";
+                    String dwoStatic = "No";
                     ContentValues values = new ContentValues();
                     values.put(Constant.CLASSID, classId);
                     values.put(Constant.CLASSNAME, className);
@@ -129,18 +137,21 @@ public class LoginActivity extends BaseActivity implements LoginView {
                     db.insert(Constant.TABBLE_CLASS_NAME, null, values);
                     values.clear();
                 }
-                preference.saveList("classold",list);
-            }else {
+                preference.saveList("classold", list);
+            } else {
             }
             intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-            SharedPreferences preferences=getSharedPreferences("user", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor=preferences.edit();
-            String read=user.getBody().getUser().getCred();
+            SharedPreferences preferences = getSharedPreferences("user", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            String read = user.getBody().getUser().getCred();
             editor.putString("read", read);
+            editor.putString("wname", wname);
+            editor.putString("addredd", addredd);
+            editor.putString("department", department);
             editor.commit();
             finish();
-        }else {
+        } else {
             Toast.makeText(this, user.getMsg(), Toast.LENGTH_SHORT).show();
         }
     }
@@ -157,11 +168,11 @@ public class LoginActivity extends BaseActivity implements LoginView {
         db = helper.getReadableDatabase();
 
         //获取SharedPreferences对象
-        pref= PreferenceManager.getDefaultSharedPreferences(this);
-        boolean isRemember=pref.getBoolean("remember_password", false);
-        if(isRemember){
-            name=pref.getString("name", name);
-            password=pref.getString("password", "password1");
+        pref = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean isRemember = pref.getBoolean("remember_password", false);
+        if (isRemember) {
+            name = pref.getString("name", name);
+            password = pref.getString("password", "password1");
             etPhone.setText(name);
             etPassword.setText(password);
             chechBox.setChecked(true);
@@ -169,26 +180,35 @@ public class LoginActivity extends BaseActivity implements LoginView {
         preference = new SharedPreferencesHelper(this, "login");
     }
 
-    @OnClick(R.id.btn_login)
-    public void onViewClicked() {
-        String sql = "delete from className";
-        db.execSQL(sql);
-        name=etPhone.getText().toString();
-        password=etPassword.getText().toString();
-        if(name.equals("")&&password.equals("")){
-            Toast.makeText(this, "登录信息不能为空", Toast.LENGTH_SHORT).show();
-        }else {
-            editor=pref.edit();
-            if(chechBox.isChecked()){
-                editor.putBoolean("remember_password", true);
-                editor.putString("name", name);
-                editor.putString("password", password);
-            }else{
-                editor.clear();
-            }
-            editor.commit();//提交数据
-            loginPresenter.login(etPhone.getText().toString(), etPassword.getText().toString());
+    @OnClick({R.id.btn_login,R.id.checkpwd})
+    public void onViewClicked(View view) {
+        switch (view.getId()){
+            case R.id.btn_login:
+                String sql = "delete from className";
+                db.execSQL(sql);
+                name = etPhone.getText().toString();
+                password = etPassword.getText().toString();
+                if (name.equals("") && password.equals("")) {
+                    Toast.makeText(this, "登录信息不能为空", Toast.LENGTH_SHORT).show();
+                } else {
+                    editor = pref.edit();
+                    if (chechBox.isChecked()) {
+                        editor.putBoolean("remember_password", true);
+                        editor.putString("name", name);
+                        editor.putString("password", password);
+                    } else {
+                        editor.clear();
+                    }
+                    editor.commit();//提交数据
+                    loginPresenter.login(etPhone.getText().toString(), etPassword.getText().toString());
+                }
+                break;
+            case R.id.checkpwd:
+                Intent intent=new Intent(this,CheckPwdActivity.class);
+                startActivity(intent);
+                finish();
         }
+
     }
 
     //推出程序
@@ -220,4 +240,5 @@ public class LoginActivity extends BaseActivity implements LoginView {
         super.onDestroy();
         db.close();
     }
+
 }

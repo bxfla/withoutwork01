@@ -38,20 +38,45 @@ public class MyInformActivity extends BaseActivity {
     @Bind(R.id.ll3)
     LinearLayout ll3;
     SharedPreferencesHelper preference;
-    List<String> list=new ArrayList<>();
+    List<String> list = new ArrayList<>();
+    @Bind(R.id.tvcomp)
+    TextView tvcomp;
+    @Bind(R.id.ll4)
+    LinearLayout ll4;
+    @Bind(R.id.tvaddress)
+    TextView tvaddress;
+    @Bind(R.id.ll5)
+    LinearLayout ll5;
+    @Bind(R.id.activity_myinform)
+    LinearLayout activityMyinform;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
         preference = new SharedPreferencesHelper(this, "login");
-        list=preference.getList("classold");
-        SharedPreferences preferences=getSharedPreferences("user", Context.MODE_PRIVATE);
-        String read=preferences.getString("read", "");
+        list = preference.getList("classold");
+        SharedPreferences preferences = getSharedPreferences("user", Context.MODE_PRIVATE);
+        String read = preferences.getString("read", "");
+        String wname = preferences.getString("wname", "");
+        String addredd = preferences.getString("addredd", "");
+        String department = preferences.getString("department", "");
+        if (wname.length() != 0) {
+            ll1.setVisibility(View.VISIBLE);
+            tvName.setText(wname);
+        }
+        if (addredd.length() != 0) {
+            ll5.setVisibility(View.VISIBLE);
+            tvaddress.setText(addredd);
+        }
+        if (department.length() != 0) {
+            ll2.setVisibility(View.VISIBLE);
+            tvcomp.setText(department);
+        }
         tvIdcard.setText(read);
-        if (list.size()!=0){
+        if (list.size() != 0) {
             tvAssessLine.setText(list.get(0));
-        }else {
+        } else {
             tvAssessLine.setText("暂无考试记录");
         }
     }
@@ -71,16 +96,16 @@ public class MyInformActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.ll1, R.id.ll2, R.id.ll3})
+    @OnClick({R.id.ll1, R.id.ll2, R.id.ll4})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll1:
                 break;
             case R.id.ll2:
                 break;
-            case R.id.ll3:
-                if (list.size()!=0){
-                    Intent intent = new Intent(MyInformActivity.this,AssessLineActivity.class);
+            case R.id.ll4:
+                if (list.size() != 0) {
+                    Intent intent = new Intent(MyInformActivity.this, AssessLineActivity.class);
                     intent.putExtra("list", (Serializable) list);
                     startActivity(intent);
                 }

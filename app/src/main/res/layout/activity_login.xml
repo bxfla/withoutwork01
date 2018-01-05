@@ -66,11 +66,20 @@
              android:layout_marginRight="10dp"
              android:layout_gravity="center_vertical"/>
          <TextView
-             android:layout_width="match_parent"
+             android:layout_width="0dp"
+             android:layout_weight="1"
              android:layout_height="match_parent"
              android:textColor="@color/color_bg_selected"
              android:textSize="17dp"
              android:text="@string/remimber_password"
+             android:gravity="center_vertical"/>
+         <TextView
+             android:id="@+id/checkpwd"
+             android:layout_width="80dp"
+             android:layout_height="match_parent"
+             android:textColor="@color/color_bg_selected"
+             android:textSize="17dp"
+             android:text="@string/check_pwd"
              android:gravity="center_vertical"/>
       </LinearLayout>
    </LinearLayout>

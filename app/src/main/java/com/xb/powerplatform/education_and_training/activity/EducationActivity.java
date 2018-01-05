@@ -26,6 +26,7 @@ import com.xb.powerplatform.education_and_training.bean.assess;
 import com.xb.powerplatform.education_and_training.presenter.IPresenter;
 import com.xb.powerplatform.education_and_training.presenter.impl.Presenterimpl;
 import com.xb.powerplatform.education_and_training.view.IView;
+import com.xb.powerplatform.utilsclass.base.AlertDialogCallBack;
 import com.xb.powerplatform.utilsclass.myViews.StatusBarUtils;
 import com.xb.powerplatform.utilsclass.utils.AlertDialogUtil;
 
@@ -220,8 +221,19 @@ public class EducationActivity extends AppCompatActivity implements IView {
             case R.id.btn3:
                 classId1 = preference.getData(this, "classId", "");
                 if (!classId1.equals("")) {
-                    intent = new Intent(EducationActivity.this, RegularAssessActivity.class);
-                    startActivity(intent);
+                    new AlertDialogUtil(this).showDialog("是否开启考试", new AlertDialogCallBack() {
+                        @Override
+                        public void confirm() {
+                            intent = new Intent(EducationActivity.this, RegularAssessActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+
+                        @Override
+                        public void cancel() {
+                        }
+                    });
+
                 } else {
                     alertDialogUtil= new AlertDialogUtil(this);
                     alertDialogUtil.showSmallDialog(getResources().getString(no_question));

@@ -76,6 +76,11 @@ public class Fragment1 extends Fragment implements UpAppView{
         ButterKnife.bind(this, view);
         SharedPreferences preferences=getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
         String read=preferences.getString("read", "");
+        String wname=preferences.getString("wname","");
+        if (wname.length()!=0){
+            tvName.setVisibility(View.VISIBLE);
+            tvName.setText(wname);
+        }
         tvIdcard.setText(read);
         return view;
     }

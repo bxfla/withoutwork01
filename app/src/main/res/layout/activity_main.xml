@@ -10,6 +10,7 @@
     <com.xb.powerplatform.utilsclass.myViews.Header
         android:id="@+id/header"
         app:header_is_left_iv_visiable="false"
+        app:header_is_right_iv_visiable="true"
         app:header_title="@string/app_name"
         style="@style/Heander">
     </com.xb.powerplatform.utilsclass.myViews.Header>

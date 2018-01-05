@@ -1,6 +1,5 @@
 package com.xb.powerplatform.education_and_training.activity;
 
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -82,25 +81,24 @@ public class AssessResultActivity extends AppCompatActivity implements ResultVie
 
     @Override
     public void getViewData(result result) {
-        //删除下载考试目录
-        String sql = "delete from dwoClassName where classid='" + classId + "'";
-        db.execSQL(sql);
-        String sql1 = "delete from moni where classid='" + classId + "'";
-        db.execSQL(sql1);
-        saveData(this, "classId", "");//考试ID
-        Toast.makeText(this, result.getMsg(), Toast.LENGTH_SHORT).show();
+        if (String.valueOf(result.isSuccess()).equals("false")){
+            Toast.makeText(this, result.getMsg(), Toast.LENGTH_SHORT).show();
+        }else {
+            //删除下载考试目录
+            String sql = "delete from dwoClassName where classid='" + classId + "'";
+            db.execSQL(sql);
+            String sql1 = "delete from moni where classid='" + classId + "'";
+            db.execSQL(sql1);
+            saveData(this, "classId", "");//考试ID
+        }
     }
 
     @OnClick(R.id.left)
     public void onViewClicked() {
-        Intent intent=new Intent(AssessResultActivity.this,EducationActivity.class);
-        startActivity(intent);
         finish();
     }
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        Intent intent=new Intent(AssessResultActivity.this,EducationActivity.class);
-        startActivity(intent);
         finish();
         return super.onKeyDown(keyCode, event);
     }
