@@ -4,6 +4,7 @@ import com.xb.powerplatform.education_and_training.bean.Question;
 import com.xb.powerplatform.education_and_training.bean.RegularAssess;
 import com.xb.powerplatform.education_and_training.bean.assess;
 import com.xb.powerplatform.education_and_training.bean.result;
+import com.xb.powerplatform.utilsclass.person.entity.AssessList;
 import com.xb.powerplatform.utilsclass.person.entity.User;
 import com.xb.powerplatform.utilsclass.person.entity.checkPwd;
 import com.xb.powerplatform.utilsclass.person.entity.register;
@@ -82,5 +83,14 @@ public interface RetrofitService {
      */
     @GET("getEnrolInfo")
     Observable<assess> getClass(@Query("idcard") String idcard);
+
+    /**
+     * 获取考试记录
+     * @return
+     */
+    @GET("getTrainInfo")
+    Observable<AssessList> getAssessList(@Query("idcard") String idcard);
+
+
 
 }

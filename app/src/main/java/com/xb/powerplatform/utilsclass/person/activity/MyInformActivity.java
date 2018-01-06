@@ -2,6 +2,8 @@ package com.xb.powerplatform.utilsclass.person.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -10,6 +12,10 @@ import com.xb.powerplatform.R;
 import com.xb.powerplatform.SharedPreferencesHelper;
 import com.xb.powerplatform.utilsclass.base.BaseActivity;
 import com.xb.powerplatform.utilsclass.myViews.Header;
+import com.xb.powerplatform.utilsclass.person.entity.AssessList;
+import com.xb.powerplatform.utilsclass.person.presenter.AssessListPresenter;
+import com.xb.powerplatform.utilsclass.person.presenter.presenterImpl.AssessListPresenterImpl;
+import com.xb.powerplatform.utilsclass.person.view.AssessListView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,7 +25,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MyInformActivity extends BaseActivity {
+public class MyInformActivity extends BaseActivity implements AssessListView{
 
     @Bind(R.id.header)
     Header header;
@@ -36,7 +42,6 @@ public class MyInformActivity extends BaseActivity {
     @Bind(R.id.ll3)
     LinearLayout ll3;
     SharedPreferencesHelper preference;
-    List<String> list = new ArrayList<>();
     @Bind(R.id.tvcomp)
     TextView tvcomp;
     @Bind(R.id.ll4)
@@ -44,12 +49,17 @@ public class MyInformActivity extends BaseActivity {
     @Bind(R.id.activity_myinform)
     LinearLayout activityMyinform;
 
+    List<String>beanList=new ArrayList<>();
+    List<String>beanList1=new ArrayList<>();
+
+    AssessListPresenter presenter;
+    String className;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
         preference = new SharedPreferencesHelper(this, "login");
-        list = preference.getList("classold");
         preference = new SharedPreferencesHelper(this, "login");
         String read = preference.getData(this,"cred","");
         String wname = preference.getData(this,"name","");
@@ -63,11 +73,13 @@ public class MyInformActivity extends BaseActivity {
         if (read.length() != 0) {
             tvIdcard.setText(read);
         }
-        if (list.size() != 0) {
-            tvAssessLine.setText(list.get(0));
+        if (beanList.size() != 0) {
+            tvAssessLine.setText(beanList.get(0));
         } else {
             tvAssessLine.setText("暂无考试记录");
         }
+        presenter=new AssessListPresenterImpl(this,this);
+        presenter.getAssessList(preference.getData(this,"cred",""));
     }
 
     @Override
@@ -93,12 +105,35 @@ public class MyInformActivity extends BaseActivity {
             case R.id.ll2:
                 break;
             case R.id.ll4:
-                if (list.size() != 0) {
+                if (beanList.size() != 0) {
                     Intent intent = new Intent(MyInformActivity.this, AssessLineActivity.class);
-                    intent.putExtra("list", (Serializable) list);
+                    intent.putExtra("list", (Serializable) beanList);
+                    intent.putExtra("list1", (Serializable) beanList1);
                     startActivity(intent);
                 }
                 break;
         }
     }
+
+    @Override
+    public void getAssessList(AssessList assessList) {
+        if (assessList.getBody().getScoreList().size()!=0){
+            for (int i=0;i<assessList.getBody().getScoreList().size();i++){
+                beanList.add(assessList.getBody().getScoreList().get(i).getClassName());
+                beanList1.add(assessList.getBody().getScoreList().get(i).getScore());
+            }
+            className=assessList.getBody().getScoreList().get(0).getClassName();
+            Message message=new Message();
+            message.what=1;
+            handler.sendMessage(message);
+        }
+    }
+
+    private Handler handler=new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            tvAssessLine.setText(className);
+        }
+    };
 }

@@ -25,18 +25,20 @@ public class AssessLineActivity extends BaseActivity {
     @Bind(R.id.recycleView)
     RecyclerView recycleView;
     AssessLineAdapter adapter;
-    List<String>list=new ArrayList<>();
+    List<String>beanList=new ArrayList<>();
+    List<String>beanList1=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
         Intent intent=getIntent();
-        list=intent.getStringArrayListExtra("list");
+        beanList=intent.getStringArrayListExtra("list");
+        beanList1=intent.getStringArrayListExtra("list1");
         LinearLayoutManager manager = new LinearLayoutManager(MyApplication.getContextObject());
         recycleView.setLayoutManager(manager);
         recycleView.addItemDecoration(new DividerItemDecoration(getResources().getColor(R.color.line)
                 , 2, LinearLayoutManager.VERTICAL));
-        adapter=new AssessLineAdapter(this,list);
+        adapter=new AssessLineAdapter(this,beanList,beanList1);
         recycleView.setAdapter(adapter);
     }
 

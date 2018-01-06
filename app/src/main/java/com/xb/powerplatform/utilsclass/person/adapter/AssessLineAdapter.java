@@ -1,7 +1,6 @@
 package com.xb.powerplatform.utilsclass.person.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,13 +8,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.xb.powerplatform.R;
-import com.xb.powerplatform.moring_paper.activity.MoringPaperXQActivity;
-import com.xb.powerplatform.utilsclass.base.MyApplication;
+import com.xb.powerplatform.utilsclass.person.activity.AssessLineActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 /**
  * Created by dell on 2018/1/3.
@@ -24,16 +20,22 @@ import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 public class AssessLineAdapter extends RecyclerView.Adapter<AssessLineAdapter.ViewHolder> {
     Context context;
     List<String>mList=new ArrayList<>();
+    List<String>mList1=new ArrayList<>();
+
+    public AssessLineAdapter(AssessLineActivity assessLineActivity, List<String> beanList, List<String> beanList1) {
+        this.mList=beanList;
+        this.mList1=beanList1;
+        this.context=assessLineActivity;
+    }
+
     static class ViewHolder extends RecyclerView.ViewHolder{
         TextView textView;
+        TextView textView1;
         public ViewHolder(View itemView) {
             super(itemView);
             textView= (TextView) itemView.findViewById(R.id.textView);
+            textView1= (TextView) itemView.findViewById(R.id.textView1);
         }
-    }
-    public AssessLineAdapter(Context context, List<String> mList){
-         this.mList=mList;
-        this.context=context;
     }
 
     @Override
@@ -41,21 +43,13 @@ public class AssessLineAdapter extends RecyclerView.Adapter<AssessLineAdapter.Vi
         View view= LayoutInflater.from(context)
                 .inflate(R.layout.adapter_acceptance,parent,false);
         final ViewHolder holder=new ViewHolder(view);
-        holder.textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int position=holder.getAdapterPosition();
-                Intent intent=new Intent(MyApplication.getContextObject(), MoringPaperXQActivity.class);
-                intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
-                MyApplication.getContextObject().startActivity(intent);
-            }
-        });
         return holder;
     }
 
     @Override
     public void onBindViewHolder(AssessLineAdapter.ViewHolder holder, int position) {
         holder.textView.setText(mList.get(position));
+        holder.textView1.setText(mList1.get(position)+"分");
     }
 
     @Override
