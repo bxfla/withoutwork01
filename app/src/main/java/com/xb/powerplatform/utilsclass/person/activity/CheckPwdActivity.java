@@ -85,15 +85,10 @@ public class CheckPwdActivity extends BaseActivity implements CheckPwdView {
         if (String.valueOf(checkpwd.isSuccess()).equals("true")) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
-            Looper.loop();
-            Toast toast = Toast.makeText(CheckPwdActivity.this, "修改成功", Toast.LENGTH_LONG);
-            showmytoast.showToast(toast, 1000);
-            Looper.prepare();
+            Toast.makeText(this, "修改成功", Toast.LENGTH_SHORT).show();
         } else {
-            Looper.loop();
-            Toast toast = Toast.makeText(CheckPwdActivity.this, "修改失败", Toast.LENGTH_LONG);
-            showmytoast.showToast(toast, 1000);
-            Looper.prepare();
+            Toast.makeText(this, "修改失败", Toast.LENGTH_SHORT).show();
         }
+        Looper.loop();
     }
 }
