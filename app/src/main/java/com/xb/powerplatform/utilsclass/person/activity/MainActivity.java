@@ -1,8 +1,6 @@
 package com.xb.powerplatform.utilsclass.person.activity;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -18,6 +16,7 @@ import android.widget.Toast;
 
 import com.xb.powerplatform.R;
 import com.xb.powerplatform.SharedPreferencesHelper;
+import com.xb.powerplatform.utilsclass.base.AlertDialogCallBack;
 import com.xb.powerplatform.utilsclass.base.BaseActivity;
 import com.xb.powerplatform.utilsclass.base.Constant;
 import com.xb.powerplatform.utilsclass.myViews.Header;
@@ -30,6 +29,7 @@ import com.xb.powerplatform.utilsclass.person.fragment.Fragment1;
 import com.xb.powerplatform.utilsclass.person.presenter.UpAppPresenter;
 import com.xb.powerplatform.utilsclass.person.presenter.presenterImpl.UpAppPresenterImpl;
 import com.xb.powerplatform.utilsclass.person.view.UpAppView;
+import com.xb.powerplatform.utilsclass.utils.AlertDialogUtil;
 import com.xb.powerplatform.utilsclass.utils.ProgressDialogUtil;
 
 import java.io.File;
@@ -166,24 +166,37 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             if (version1.equals(upapp.getVersion())){
                 //
             }else {
-                //util.showDialog(getResources().getString(R.string.or_upApp),new AlertDialogCallBack alertDialogCallBack );
-                final AlertDialog.Builder diolag=new AlertDialog.Builder(MainActivity.this);
-                diolag.setTitle(getResources().getString(R.string.title_tips));
-                diolag.setMessage(getResources().getString(R.string.or_upApp));
-                diolag.setCancelable(false);
-                diolag.setPositiveButton(getResources().getString(R.string.title_tips_confim), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        ProgressDialogUtil.startLoad(MainActivity.this, Constant.GETDATA);
-                        downloadApk();
-                    }
-                });
-                diolag.setNegativeButton(getResources().getString(R.string.camera_cancel), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                });
-                diolag.show();
+                new AlertDialogUtil(this).showDialog(getResources().getString(R.string.or_upApp),
+                        new AlertDialogCallBack() {
+                            @Override
+                            public void confirm() {
+                                ProgressDialogUtil.startLoad(MainActivity.this, Constant.GETDATA);
+                                downloadApk();
+                            }
+
+                            @Override
+                            public void cancel() {
+
+                            }
+                        });
+//                //util.showDialog(getResources().getString(R.string.or_upApp),new AlertDialogCallBack alertDialogCallBack );
+//                final AlertDialog.Builder diolag=new AlertDialog.Builder(MainActivity.this);
+//                diolag.setTitle(getResources().getString(R.string.title_tips));
+//                diolag.setMessage(getResources().getString(R.string.or_upApp));
+//                diolag.setCancelable(false);
+//                diolag.setPositiveButton(getResources().getString(R.string.title_tips_confim), new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        ProgressDialogUtil.startLoad(MainActivity.this, Constant.GETDATA);
+//                        downloadApk();
+//                    }
+//                });
+//                diolag.setNegativeButton(getResources().getString(R.string.camera_cancel), new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                    }
+//                });
+//                diolag.show();
             }
         }
     }
