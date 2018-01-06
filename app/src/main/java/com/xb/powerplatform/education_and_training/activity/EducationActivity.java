@@ -44,7 +44,7 @@ import butterknife.OnClick;
 
 import static com.xb.powerplatform.R.string.no_question;
 
-public class EducationActivity extends AppCompatActivity implements ClassView ,IView{
+public class EducationActivity extends AppCompatActivity implements ClassView, IView {
     //implements IView
     //教育培训
     @Bind(R.id.rellPagerView)
@@ -96,7 +96,7 @@ public class EducationActivity extends AppCompatActivity implements ClassView ,I
         ButterKnife.bind(this);
         new StatusBarUtils().setWindowStatusBarColor(EducationActivity.this, R.color.color_bg_selected);
 
-        classPresenter= new ClassPresenterimpl(this, this);
+        classPresenter = new ClassPresenterimpl(this, this);
 
         helper = DbManager.getInstance(EducationActivity.this);
         db = helper.getReadableDatabase();
@@ -116,9 +116,9 @@ public class EducationActivity extends AppCompatActivity implements ClassView ,I
         presenter = new Presenterimpl(this, this);
 
         getDwoClassNameData();
-        if (listNamed.size()!=0){
+        if (listNamed.size() != 0) {
             title.setText(listNamed.get(0));
-            classId=listIdd.get(0);
+            classId = listIdd.get(0);
         }
     }
 
@@ -132,44 +132,44 @@ public class EducationActivity extends AppCompatActivity implements ClassView ,I
         String sql1 = "select * from rule where classid='" + classId + "'";
         cursor = DbManager.queryBySQL(db, sql1, null);
         listrule = DbManager.cursorTorule(cursor);
-        if (listrule.size()==0){
-            alertDialogUtil= new AlertDialogUtil(this);
+        if (listrule.size() == 0) {
+            alertDialogUtil = new AlertDialogUtil(this);
             alertDialogUtil.showSmallDialog(getResources().getString(R.string.first_download));
-        }else {
-            int raNum=listrule.get(0).getRadioNum();
-            int muNum=listrule.get(0).getMultiNum();
-            int juNum=listrule.get(0).getJudgeNum();
+        } else {
+            int raNum = listrule.get(0).getRadioNum();
+            int muNum = listrule.get(0).getMultiNum();
+            int juNum = listrule.get(0).getJudgeNum();
 
-            String sqlR = "select * from moni where classid='" + classId + "' and quType='0' order by random() limit '"+raNum+"'";// order by random() limit 100
+            String sqlR = "select * from moni where classid='" + classId + "' and quType='0' order by random() limit '" + raNum + "'";// order by random() limit 100
             cursor = DbManager.queryBySQL(db, sqlR, null);
             beanListR = DbManager.cursorToPerson(cursor);
 
-            String sqlM = "select * from moni where classid='" + classId + "' and quType='1' order by random() limit '"+muNum+"'";// order by random() limit 100
+            String sqlM = "select * from moni where classid='" + classId + "' and quType='1' order by random() limit '" + muNum + "'";// order by random() limit 100
             cursor = DbManager.queryBySQL(db, sqlM, null);
             beanListM = DbManager.cursorToPerson(cursor);
 
-            String sqlJ = "select * from moni where classid='" + classId + "' and quType='2' order by random() limit '"+juNum+"'";// order by random() limit 100
+            String sqlJ = "select * from moni where classid='" + classId + "' and quType='2' order by random() limit '" + juNum + "'";// order by random() limit 100
             cursor = DbManager.queryBySQL(db, sqlJ, null);
             beanListJ = DbManager.cursorToPerson(cursor);
 
-            for (int i=0;i<beanListR.size();i++){
+            for (int i = 0; i < beanListR.size(); i++) {
                 beanList.add(beanListR.get(i));
             }
-            for (int i=0;i<beanListM.size();i++){
+            for (int i = 0; i < beanListM.size(); i++) {
                 beanList.add(beanListM.get(i));
             }
-            for (int i=0;i<beanListJ.size();i++){
+            for (int i = 0; i < beanListJ.size(); i++) {
                 beanList.add(beanListJ.get(i));
             }
         }
         String sqlerLength = "select * from rule where classid='" + classId + "'";
         cursor = DbManager.queryBySQL(db, sqlerLength, null);
         listRb = DbManager.cursorTorule(cursor);
-        if (listRb.size()==0){
+        if (listRb.size() == 0) {
 //            alertDialogUtil= new AlertDialogUtil(this);
 //            alertDialogUtil.showSmallDialog(getResources().getString(R.string.first_download));
-        }else {
-            erLength=listRb.get(0).getErLength();
+        } else {
+            erLength = listRb.get(0).getErLength();
         }
     }
 
@@ -235,7 +235,7 @@ public class EducationActivity extends AppCompatActivity implements ClassView ,I
                     });
 
                 } else {
-                    alertDialogUtil= new AlertDialogUtil(this);
+                    alertDialogUtil = new AlertDialogUtil(this);
                     alertDialogUtil.showSmallDialog(getResources().getString(no_question));
                 }
                 break;
@@ -245,7 +245,7 @@ public class EducationActivity extends AppCompatActivity implements ClassView ,I
             case R.id.title:
                 getDwoClassNameData();
                 if (listNamed.size() == 0) {
-                    alertDialogUtil= new AlertDialogUtil(this);
+                    alertDialogUtil = new AlertDialogUtil(this);
                     alertDialogUtil.showSmallDialog(getResources().getString(R.string.first_download));
                 } else {
                     final String[] arrName = (String[]) listNamed.toArray(new String[listNamed.size()]);
@@ -260,13 +260,13 @@ public class EducationActivity extends AppCompatActivity implements ClassView ,I
                                                             int which) {
                                             dialog.dismiss();
                                             title.setText(arrName[which]);
-                                            classId=arrId[which];
+                                            classId = arrId[which];
                                         }
                                     }).show();
                 }
                 break;
             case R.id.right:
-                classPresenter.getPresenteerData(preference.getData(this,"cred",""));
+                classPresenter.getPresenteerData(preference.getData(this, "cred", ""));
                 break;
         }
     }
@@ -305,22 +305,22 @@ public class EducationActivity extends AppCompatActivity implements ClassView ,I
                 db.insert(Constant.TABBLE_NAME, null, values);
                 values.clear();
             }
-            ContentValues values = new ContentValues();
-            int radioNum=assess.getBody().getRule().getRadioNum();
-            int multiNum=assess.getBody().getRule().getMultiNum();
-            int judgeNum=assess.getBody().getRule().getJudgeNum();
-            int erLength=assess.getBody().getRule().getErLength();
-            int erPassMark=assess.getBody().getRule().getErPassMark();//及格分数
-            values.put(Constant.RADIONUM, radioNum);
-            values.put(Constant.MULTINUM, multiNum);
-            values.put(Constant.JUDGENUM, judgeNum);
-            values.put(Constant.CLASSID, classId);
-
-            values.put(Constant.ERLENGTH, erLength);
-            values.put(Constant.ERPASSMARK, erPassMark);
-
-            db.insert(Constant.TABBLE_NAME_RULE, null, values);
-            values.clear();
+//            ContentValues values = new ContentValues();
+//            int radioNum=assess.getBody().getRule().getRadioNum();
+//            int multiNum=assess.getBody().getRule().getMultiNum();
+//            int judgeNum=assess.getBody().getRule().getJudgeNum();
+//            int erLength=assess.getBody().getRule().getErLength();
+//            int erPassMark=assess.getBody().getRule().getErPassMark();//及格分数
+//            values.put(Constant.RADIONUM, radioNum);
+//            values.put(Constant.MULTINUM, multiNum);
+//            values.put(Constant.JUDGENUM, judgeNum);
+//            values.put(Constant.CLASSID, classId);
+//
+//            values.put(Constant.ERLENGTH, erLength);
+//            values.put(Constant.ERPASSMARK, erPassMark);
+//
+//            db.insert(Constant.TABBLE_NAME_RULE, null, values);
+//            values.clear();
 
             Toast.makeText(this, getResources().getString(R.string.download_ok), Toast.LENGTH_SHORT).show();
         } else {
@@ -338,26 +338,39 @@ public class EducationActivity extends AppCompatActivity implements ClassView ,I
     public void getClassViewData(assess assess) {
         listName.clear();
         listId.clear();
-        if (assess.getBody().getBmList().size()!=0){
-            classId=assess.getBody().getExamClass().getClassId();
-            if (classId!=null){
-                preference.saveData(this,"classId",classId);
+        if (assess.getBody().getBmList().size() != 0) {
+            classId = assess.getBody().getExamClass().getClassId();
+            if (classId != null) {
+                preference.saveData(this, "classId", classId);
             }
-            List<assess.BodyBean.BmListBean> list=new ArrayList<>();
-            list=assess.getBody().getBmList();
+            List<assess.BodyBean.BmListBean> list = new ArrayList<>();
+            list = assess.getBody().getBmList();
             ContentValues values = new ContentValues();
-            for (int k=0;k<list.size();k++){
+            for (int k = 0; k < list.size(); k++) {
                 listName.add(list.get(k).getClassName());
                 listId.add(list.get(k).getClassId());
-                int erScoreRadioSafety=assess.getBody().getBmList().get(k).getExamRule().getErScoreRadioSafety();//安全知识单选分值
-                int erScoreRadioLaws=assess.getBody().getBmList().get(k).getExamRule().getErScoreRadioLaws();//法律法规单选分数
-                int erScoreRadioMajor=assess.getBody().getBmList().get(k).getExamRule().getErScoreRadioMajor();//专业知识单选分数
-                int erScoreMultiSafety=assess.getBody().getBmList().get(k).getExamRule().getErScoreMultiSafety();//多选安全知识分值
-                int erScoreMultiLaws=assess.getBody().getBmList().get(k).getExamRule().getErScoreMultiLaws();//多选法律法规分数
-                int erScoreMultiMajor=assess.getBody().getBmList().get(k).getExamRule().getErScoreMultiMajor();//多选专业知识分数
-                int erScoreJudgeSafety=assess.getBody().getBmList().get(k).getExamRule().getErScoreJudgeSafety();//判断安全知识分值
-                int erScoreJudgeLaws=assess.getBody().getBmList().get(k).getExamRule().getErScoreJudgeLaws();//判断法律法规分数
-                int erScoreJudgeMajor=assess.getBody().getBmList().get(k).getExamRule().getErScoreJudgeMajor();//判断专业知识分数
+                int erScoreRadioSafety = assess.getBody().getBmList().get(k).getExamRule().getErScoreRadioSafety();//安全知识单选分值
+                int erScoreRadioLaws = assess.getBody().getBmList().get(k).getExamRule().getErScoreRadioLaws();//法律法规单选分数
+                int erScoreRadioMajor = assess.getBody().getBmList().get(k).getExamRule().getErScoreRadioMajor();//专业知识单选分数
+                int erScoreMultiSafety = assess.getBody().getBmList().get(k).getExamRule().getErScoreMultiSafety();//多选安全知识分值
+                int erScoreMultiLaws = assess.getBody().getBmList().get(k).getExamRule().getErScoreMultiLaws();//多选法律法规分数
+                int erScoreMultiMajor = assess.getBody().getBmList().get(k).getExamRule().getErScoreMultiMajor();//多选专业知识分数
+                int erScoreJudgeSafety = assess.getBody().getBmList().get(k).getExamRule().getErScoreJudgeSafety();//判断安全知识分值
+                int erScoreJudgeLaws = assess.getBody().getBmList().get(k).getExamRule().getErScoreJudgeLaws();//判断法律法规分数
+                int erScoreJudgeMajor = assess.getBody().getBmList().get(k).getExamRule().getErScoreJudgeMajor();//判断专业知识分数
+                String classId = assess.getBody().getBmList().get(k).getClassId();
+
+                int radioNum = assess.getBody().getBmList().get(k).getExamRule().getRadioNum();
+                int multiNum = assess.getBody().getBmList().get(k).getExamRule().getMultiNum();
+                int judgeNum = assess.getBody().getBmList().get(k).getExamRule().getJudgeNum();
+                int erLength = assess.getBody().getBmList().get(k).getExamRule().getErLength();
+                int erPassMark = assess.getBody().getBmList().get(k).getExamRule().getErPassMark();//及格分数
+                values.put(Constant.CLASSID, classId);
+                values.put(Constant.RADIONUM, radioNum);
+                values.put(Constant.MULTINUM, multiNum);
+                values.put(Constant.JUDGENUM, judgeNum);
+                values.put(Constant.ERLENGTH, erLength);
+                values.put(Constant.ERPASSMARK, erPassMark);
 
                 values.put(Constant.ERSCORERADIOSAFETY, erScoreRadioSafety);
                 values.put(Constant.ERSCORERADIOLAWS, erScoreRadioLaws);
@@ -376,7 +389,7 @@ public class EducationActivity extends AppCompatActivity implements ClassView ,I
             final String[] arrName = (String[]) listName.toArray(new String[listName.size()]);
             final String[] arrId = (String[]) listId.toArray(new String[listId.size()]);
             if (listName.size() == 0) {
-                alertDialogUtil= new AlertDialogUtil(this);
+                alertDialogUtil = new AlertDialogUtil(this);
                 alertDialogUtil.showSmallDialog(getResources().getString(no_question));
             } else {
                 //dialog
@@ -390,13 +403,13 @@ public class EducationActivity extends AppCompatActivity implements ClassView ,I
                                                         int which) {
                                         dialog.dismiss();
                                         title.setText(arrName[which]);
-                                        classId=arrId[which];
+                                        classId = arrId[which];
                                         getDwoClassNameData();
                                         if (listNamed.contains(arrName[which])) {
-                                            alertDialogUtil= new AlertDialogUtil(EducationActivity.this);
+                                            alertDialogUtil = new AlertDialogUtil(EducationActivity.this);
                                             alertDialogUtil.showSmallDialog(getResources().getString(R.string.download_old));
                                         } else {
-                                            classId=arrId[which];
+                                            classId = arrId[which];
                                             String dwoStatic = "Yes";
                                             ContentValues values = new ContentValues();
                                             values.put(Constant.CLASSID, arrId[which]);
@@ -410,7 +423,7 @@ public class EducationActivity extends AppCompatActivity implements ClassView ,I
                                     }
                                 }).show();
             }
-        }else {
+        } else {
             new AlertDialogUtil(this).showSmallDialog(getResources().getString(R.string.no_assess));
         }
 

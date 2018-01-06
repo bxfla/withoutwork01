@@ -28,7 +28,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
         //创建考试规则表
         String sql_rule = "create table "+Constant.TABBLE_NAME_RULE
-                +"("+Constant.ID+","+Constant.CLASSID +","+Constant.RADIONUM+","+Constant.MULTINUM
+                +"("+Constant.ID+","+Constant.CLASSID+","+Constant.RADIONUM+","+Constant.MULTINUM
                 +","+Constant.JUDGENUM+","+Constant.ERLENGTH+","+Constant.ERPASSMARK
                 +","+Constant.ERSCORERADIOSAFETY+","+Constant.ERSCORERADIOLAWS +","+Constant.ERSCORERADIOMAJOR
                 +","+Constant.ERSCOREMULTISAFETY+","+Constant.ERSCOREMULTILAWS+","+Constant.ERSCOREMULTIMAJOR
