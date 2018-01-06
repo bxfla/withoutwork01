@@ -78,7 +78,7 @@ public class Question implements Serializable {
             this.list = list;
         }
 
-        public static class RuleBean implements Serializable{
+        public static class RuleBean implements Serializable {
             /**
              * id : 266a80d7c0ea4ac68dd7af4754a0528d
              * isNewRecord : false
@@ -158,25 +158,47 @@ public class Question implements Serializable {
             private int judgeNum;
             private String classId;
 
-            public RuleBean(int radioNum, int multiNum, int judgeNum, String classId, int erLength, int erPassMark,
+//            public RuleBean(int radioNum, int multiNum, int judgeNum, String classId, int erLength, int erPassMark,
+//                            int erScoreRadioSafety, int erScoreRadioLaws, int erScoreRadioMajor,
+//                            int erScoreMultiSafety, int erScoreMultiLaws, int erScoreMultiMajor,
+//                            int erScoreJudgeSafety, int erScoreJudgeLaws, int erScoreJudgeMajor) {
+//                this.radioNum = radioNum;
+//                this.multiNum = multiNum;
+//                this.judgeNum = judgeNum;
+//                this.classId = classId;
+//                this.erLength = erLength;
+//                this.erPassMark = erPassMark;
+//                this.erScoreRadioSafety = erScoreRadioSafety;
+//                this.erScoreRadioLaws = erScoreRadioLaws;
+//                this.erScoreRadioMajor = erScoreRadioMajor;
+//                this.erScoreMultiSafety = erScoreMultiSafety;
+//                this.erScoreMultiLaws = erScoreMultiLaws;
+//                this.erScoreMultiMajor = erScoreMultiMajor;
+//                this.erScoreJudgeSafety = erScoreJudgeSafety;
+//                this.erScoreJudgeLaws = erScoreJudgeLaws;
+//                this.erScoreJudgeMajor = erScoreJudgeMajor;
+//            }
+
+            public RuleBean(String classId, int radioNum, int multiNum, int judgeNum,
+                            int erLength, int erPassMark,
                             int erScoreRadioSafety, int erScoreRadioLaws, int erScoreRadioMajor,
                             int erScoreMultiSafety, int erScoreMultiLaws, int erScoreMultiMajor,
                             int erScoreJudgeSafety, int erScoreJudgeLaws, int erScoreJudgeMajor) {
-                this.radioNum=radioNum;
-                this.multiNum=multiNum;
-                this.judgeNum=judgeNum;
-                this.classId=classId;
-                this.erLength=erLength;
-                this.erPassMark=erPassMark;
-                this.erScoreRadioSafety=erScoreRadioSafety;
-                this.erScoreRadioLaws=erScoreRadioLaws;
-                this.erScoreRadioMajor=erScoreRadioMajor;
-                this.erScoreMultiSafety=erScoreMultiSafety;
-                this.erScoreMultiLaws=erScoreMultiLaws;
-                this.erScoreMultiMajor=erScoreMultiMajor;
-                this.erScoreJudgeSafety=erScoreJudgeSafety;
-                this.erScoreJudgeLaws=erScoreJudgeLaws;
-                this.erScoreJudgeMajor=erScoreJudgeMajor;
+                this.erLength = erLength;
+                this.erPassMark = erPassMark;
+                this.classId = classId;
+                this.radioNum = radioNum;
+                this.multiNum = multiNum;
+                this.judgeNum = judgeNum;
+                this.erScoreRadioSafety = erScoreRadioSafety;
+                this.erScoreRadioLaws = erScoreRadioLaws;
+                this.erScoreRadioMajor = erScoreRadioMajor;
+                this.erScoreMultiSafety = erScoreMultiSafety;
+                this.erScoreMultiLaws = erScoreMultiLaws;
+                this.erScoreMultiMajor = erScoreMultiMajor;
+                this.erScoreJudgeSafety = erScoreJudgeSafety;
+                this.erScoreJudgeLaws = erScoreJudgeLaws;
+                this.erScoreJudgeMajor = erScoreJudgeMajor;
             }
 
 
@@ -477,7 +499,7 @@ public class Question implements Serializable {
             }
         }
 
-        public static class ListBean implements Serializable{
+        public static class ListBean implements Serializable {
             /**
              * id : 3b9f5a7844254bfb8a7b5f835fc2fdfb
              * isNewRecord : false
@@ -545,8 +567,8 @@ public class Question implements Serializable {
                 this.quF = quF;
                 this.quAnswer = quAnswer;
                 this.quAnalyze = quAnalyze;
-                this.quCategory=quCategory;
-                this.classsId=classId;
+                this.quCategory = quCategory;
+                this.classsId = classId;
             }
 
             public String getId() {

@@ -98,9 +98,13 @@ public class DbManager {
             int erScoreJudgeMajor = cursor.getInt(cursor.getColumnIndex(Constant.ERSCOREJUDGEMAJOR));
             String classId = cursor.getString(cursor.getColumnIndex(Constant.CLASSID));
             Question.BodyBean.RuleBean resultBean = new Question.BodyBean.RuleBean
-                    (radioNum,multiNum,judgeNum,classId,erLength,erPassMark,erScoreRadioSafety,erScoreRadioLaws
+                    (classId,radioNum,multiNum,judgeNum,erLength,erPassMark,erScoreRadioSafety,erScoreRadioLaws
                     ,erScoreRadioMajor,erScoreMultiSafety,erScoreMultiLaws,erScoreMultiMajor,erScoreJudgeSafety
                     ,erScoreJudgeLaws,erScoreJudgeMajor);
+//            Question.BodyBean.RuleBean resultBean = new Question.BodyBean.RuleBean
+//                    (radioNum,multiNum,judgeNum,classId,erLength,erPassMark,erScoreRadioSafety,erScoreRadioLaws
+//                            ,erScoreRadioMajor,erScoreMultiSafety,erScoreMultiLaws,erScoreMultiMajor,erScoreJudgeSafety
+//                            ,erScoreJudgeLaws,erScoreJudgeMajor);
             list.add(resultBean);
         }
         return list;

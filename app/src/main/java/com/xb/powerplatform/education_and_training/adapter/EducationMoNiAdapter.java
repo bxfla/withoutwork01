@@ -407,14 +407,11 @@ public class EducationMoNiAdapter extends PagerAdapter {
 
     //启动得分activity
     public void upData() {
-        String sql1 = "select * from rule where classid='" + classId + "'";
-        Cursor cursor;
         errorHelper = DbManager.getInstance(mContext);
         db = errorHelper.getReadableDatabase();
+        Cursor cursor;
+        String sql1 = "select * from rule where classid='" + classId + "'";
         cursor = DbManager.queryBySQL(db, sql1, null);
-//        if (listRb.size()==0){
-//            code=0;
-//        }else {
         listRb = DbManager.cursorTorule(cursor);
         int radioSafety = listRb.get(0).getErScoreRadioSafety();//单选安全知识分数
         int radioLaws = listRb.get(0).getErScoreRadioLaws();//单选法律法规分数
@@ -426,7 +423,6 @@ public class EducationMoNiAdapter extends PagerAdapter {
         int judgeLaws = listRb.get(0).getErScoreJudgeLaws();
         int judgeMajor = listRb.get(0).getErScoreJudgeMajor();
         erPassMark = listRb.get(0).getErPassMark();
-        int erLength = listRb.get(0).getErLength();
         for (int i = 0; i < beanList.size(); i++) {
             if (dataItems.get(i).getQuType().equals("0")) {
                 if (dataItems.get(i).getQuCategory().equals("0")) {
@@ -438,7 +434,6 @@ public class EducationMoNiAdapter extends PagerAdapter {
                 if (dataItems.get(i).getQuCategory().equals("1")) {
                     if (beanList.get(i).equals(dataItems.get(i).getQuAnswer())) {
                         code += radioLaws;
-                        code += 1;
                     }
                 }
                 if (dataItems.get(i).getQuCategory().equals("2")) {

@@ -338,74 +338,81 @@ public class EducationActivity extends AppCompatActivity implements ClassView ,I
     public void getClassViewData(assess assess) {
         listName.clear();
         listId.clear();
-        classId=assess.getBody().getExamClass().getClassId();
-        preference.saveData(this,"classId",classId);
-        List<assess.BodyBean.BmListBean> list=new ArrayList<>();
-        list=assess.getBody().getBmList();
-        ContentValues values = new ContentValues();
-        for (int k=0;k<list.size();k++){
-            listName.add(list.get(k).getClassName());
-            listId.add(list.get(k).getClassId());
-            int erScoreRadioSafety=assess.getBody().getBmList().get(k).getExamRule().getErScoreRadioSafety();//安全知识单选分值
-            int erScoreRadioLaws=assess.getBody().getBmList().get(k).getExamRule().getErScoreRadioLaws();//法律法规单选分数
-            int erScoreRadioMajor=assess.getBody().getBmList().get(k).getExamRule().getErScoreRadioMajor();//专业知识单选分数
-            int erScoreMultiSafety=assess.getBody().getBmList().get(k).getExamRule().getErScoreMultiSafety();//多选安全知识分值
-            int erScoreMultiLaws=assess.getBody().getBmList().get(k).getExamRule().getErScoreMultiLaws();//多选法律法规分数
-            int erScoreMultiMajor=assess.getBody().getBmList().get(k).getExamRule().getErScoreMultiMajor();//多选专业知识分数
-            int erScoreJudgeSafety=assess.getBody().getBmList().get(k).getExamRule().getErScoreJudgeSafety();//判断安全知识分值
-            int erScoreJudgeLaws=assess.getBody().getBmList().get(k).getExamRule().getErScoreJudgeLaws();//判断法律法规分数
-            int erScoreJudgeMajor=assess.getBody().getBmList().get(k).getExamRule().getErScoreJudgeMajor();//判断专业知识分数
+        if (assess.getBody().getBmList().size()!=0){
+            classId=assess.getBody().getExamClass().getClassId();
+            if (classId!=null){
+                preference.saveData(this,"classId",classId);
+            }
+            List<assess.BodyBean.BmListBean> list=new ArrayList<>();
+            list=assess.getBody().getBmList();
+            ContentValues values = new ContentValues();
+            for (int k=0;k<list.size();k++){
+                listName.add(list.get(k).getClassName());
+                listId.add(list.get(k).getClassId());
+                int erScoreRadioSafety=assess.getBody().getBmList().get(k).getExamRule().getErScoreRadioSafety();//安全知识单选分值
+                int erScoreRadioLaws=assess.getBody().getBmList().get(k).getExamRule().getErScoreRadioLaws();//法律法规单选分数
+                int erScoreRadioMajor=assess.getBody().getBmList().get(k).getExamRule().getErScoreRadioMajor();//专业知识单选分数
+                int erScoreMultiSafety=assess.getBody().getBmList().get(k).getExamRule().getErScoreMultiSafety();//多选安全知识分值
+                int erScoreMultiLaws=assess.getBody().getBmList().get(k).getExamRule().getErScoreMultiLaws();//多选法律法规分数
+                int erScoreMultiMajor=assess.getBody().getBmList().get(k).getExamRule().getErScoreMultiMajor();//多选专业知识分数
+                int erScoreJudgeSafety=assess.getBody().getBmList().get(k).getExamRule().getErScoreJudgeSafety();//判断安全知识分值
+                int erScoreJudgeLaws=assess.getBody().getBmList().get(k).getExamRule().getErScoreJudgeLaws();//判断法律法规分数
+                int erScoreJudgeMajor=assess.getBody().getBmList().get(k).getExamRule().getErScoreJudgeMajor();//判断专业知识分数
 
-            values.put(Constant.ERSCORERADIOSAFETY, erScoreRadioSafety);
-            values.put(Constant.ERSCORERADIOLAWS, erScoreRadioLaws);
-            values.put(Constant.ERSCORERADIOMAJOR, erScoreRadioMajor);
-            values.put(Constant.ERSCOREMULTISAFETY, erScoreMultiSafety);
-            values.put(Constant.ERSCOREMULTILAWS, erScoreMultiLaws);
-            values.put(Constant.ERSCOREMULTIMAJOR, erScoreMultiMajor);
-            values.put(Constant.ERSCOREJUDGESAFETY, erScoreJudgeSafety);
-            values.put(Constant.ERSCOREJUDGELAWS, erScoreJudgeLaws);
-            values.put(Constant.ERSCOREJUDGEMAJOR, erScoreJudgeMajor);
+                values.put(Constant.ERSCORERADIOSAFETY, erScoreRadioSafety);
+                values.put(Constant.ERSCORERADIOLAWS, erScoreRadioLaws);
+                values.put(Constant.ERSCORERADIOMAJOR, erScoreRadioMajor);
+                values.put(Constant.ERSCOREMULTISAFETY, erScoreMultiSafety);
+                values.put(Constant.ERSCOREMULTILAWS, erScoreMultiLaws);
+                values.put(Constant.ERSCOREMULTIMAJOR, erScoreMultiMajor);
+                values.put(Constant.ERSCOREJUDGESAFETY, erScoreJudgeSafety);
+                values.put(Constant.ERSCOREJUDGELAWS, erScoreJudgeLaws);
+                values.put(Constant.ERSCOREJUDGEMAJOR, erScoreJudgeMajor);
 
-            db.insert(Constant.TABBLE_NAME_RULE, null, values);
-            values.clear();
-        }
-        //list转数组
-        final String[] arrName = (String[]) listName.toArray(new String[listName.size()]);
-        final String[] arrId = (String[]) listId.toArray(new String[listId.size()]);
-        if (listName.size() == 0) {
-            alertDialogUtil= new AlertDialogUtil(this);
-            alertDialogUtil.showSmallDialog(getResources().getString(no_question));
-        } else {
-            //dialog
-            new AlertDialog.Builder(this)
-                    .setTitle(getResources().getString(R.string.pelease_select))
-                    .setIcon(android.R.drawable.ic_dialog_info)
-                    .setSingleChoiceItems(arrName,
-                            0, new DialogInterface.OnClickListener() {
+                db.insert(Constant.TABBLE_NAME_RULE, null, values);
+                values.clear();
+            }
+            //list转数组
+            final String[] arrName = (String[]) listName.toArray(new String[listName.size()]);
+            final String[] arrId = (String[]) listId.toArray(new String[listId.size()]);
+            if (listName.size() == 0) {
+                alertDialogUtil= new AlertDialogUtil(this);
+                alertDialogUtil.showSmallDialog(getResources().getString(no_question));
+            } else {
+                //dialog
+                new AlertDialog.Builder(this)
+                        .setTitle(getResources().getString(R.string.pelease_select))
+                        .setIcon(android.R.drawable.ic_dialog_info)
+                        .setSingleChoiceItems(arrName,
+                                0, new DialogInterface.OnClickListener() {
 
-                                public void onClick(DialogInterface dialog,
-                                                    int which) {
-                                    dialog.dismiss();
-                                    title.setText(arrName[which]);
-                                    classId=arrId[which];
-                                    getDwoClassNameData();
-                                    if (listNamed.contains(arrName[which])) {
-                                        alertDialogUtil= new AlertDialogUtil(EducationActivity.this);
-                                        alertDialogUtil.showSmallDialog(getResources().getString(R.string.download_old));
-                                    } else {
+                                    public void onClick(DialogInterface dialog,
+                                                        int which) {
+                                        dialog.dismiss();
+                                        title.setText(arrName[which]);
                                         classId=arrId[which];
-                                        String dwoStatic = "Yes";
-                                        ContentValues values = new ContentValues();
-                                        values.put(Constant.CLASSID, arrId[which]);
-                                        values.put(Constant.CLASSNAME, arrName[which]);
-                                        values.put(Constant.DWOSTATIC, dwoStatic);
-                                        db.insert(Constant.TABBLE_DOW_CLASS_NAME, null, values);
-                                        values.clear();
-                                        //下载试题
-                                        presenter.getPresenteerData(arrId[which]);
+                                        getDwoClassNameData();
+                                        if (listNamed.contains(arrName[which])) {
+                                            alertDialogUtil= new AlertDialogUtil(EducationActivity.this);
+                                            alertDialogUtil.showSmallDialog(getResources().getString(R.string.download_old));
+                                        } else {
+                                            classId=arrId[which];
+                                            String dwoStatic = "Yes";
+                                            ContentValues values = new ContentValues();
+                                            values.put(Constant.CLASSID, arrId[which]);
+                                            values.put(Constant.CLASSNAME, arrName[which]);
+                                            values.put(Constant.DWOSTATIC, dwoStatic);
+                                            db.insert(Constant.TABBLE_DOW_CLASS_NAME, null, values);
+                                            values.clear();
+                                            //下载试题
+                                            presenter.getPresenteerData(arrId[which]);
+                                        }
                                     }
-                                }
-                            }).show();
+                                }).show();
+            }
+        }else {
+            new AlertDialogUtil(this).showSmallDialog(getResources().getString(R.string.no_assess));
         }
+
     }
 }

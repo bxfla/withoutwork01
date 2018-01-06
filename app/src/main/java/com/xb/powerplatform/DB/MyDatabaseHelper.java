@@ -28,15 +28,19 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
         //创建考试规则表
         String sql_rule = "create table "+Constant.TABBLE_NAME_RULE
-                +"("+Constant.ID+","+Constant.RADIONUM+","+Constant.MULTINUM
-                +","+Constant.JUDGENUM+","+Constant.CLASSID+","+Constant.ERLENGTH+","+Constant.ERPASSMARK
-                +","+Constant.ERRADIONUMSAFETY+","+Constant.ERRADIONUMLAWS+","+Constant.ERRADIONUMMAJOR
-                +","+Constant.ERMULTINUMSAFETY+","+Constant.ERMULTINUMLAWS+","+Constant.ERMULTINUMMAJOR
-                +","+Constant.ERJUDGENUMSAFETY+","+Constant.ERJUDGENUMLAWS+","+Constant.ERJUDGENUMMAJOR
-                +","+Constant.ERSCORERADIOSAFETY+","+Constant.ERSCORERADIOLAWS+","+Constant.ERSCORERADIOMAJOR
+                +"("+Constant.ID+","+Constant.CLASSID +","+Constant.RADIONUM+","+Constant.MULTINUM
+                +","+Constant.JUDGENUM+","+Constant.ERLENGTH+","+Constant.ERPASSMARK
+                +","+Constant.ERSCORERADIOSAFETY+","+Constant.ERSCORERADIOLAWS +","+Constant.ERSCORERADIOMAJOR
                 +","+Constant.ERSCOREMULTISAFETY+","+Constant.ERSCOREMULTILAWS+","+Constant.ERSCOREMULTIMAJOR
                 +","+Constant.ERSCOREJUDGESAFETY+","+Constant.ERSCOREJUDGELAWS+","+Constant.ERSCOREJUDGEMAJOR+")";
-        Log.i("xyz",sql);
+
+//        "+Constant.RADIONUM+","+Constant.MULTINUM
+//                +","+Constant.JUDGENUM+","+Constant.CLASSID+","+Constant.ERLENGTH+","+Constant.ERPASSMARK
+//                +","+Constant.ERRADIONUMSAFETY+","+Constant.ERRADIONUMLAWS+","+Constant.ERRADIONUMMAJOR
+//                +","+Constant.ERMULTINUMSAFETY+","+Constant.ERMULTINUMLAWS+","+Constant.ERMULTINUMMAJOR
+//                +","+Constant.ERJUDGENUMSAFETY+","+Constant.ERJUDGENUMLAWS+","+Constant.ERJUDGENUMMAJOR
+//                +",
+        Log.i("xyz",sql_rule);
         db.execSQL(sql_rule);
 
         //创建错题表
