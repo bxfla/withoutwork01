@@ -336,6 +336,8 @@ public class EducationActivity extends AppCompatActivity implements ClassView ,I
 
     @Override
     public void getClassViewData(assess assess) {
+        listName.clear();
+        listId.clear();
         classId=assess.getBody().getExamClass().getClassId();
         preference.saveData(this,"classId",classId);
         List<assess.BodyBean.BmListBean> list=new ArrayList<>();
