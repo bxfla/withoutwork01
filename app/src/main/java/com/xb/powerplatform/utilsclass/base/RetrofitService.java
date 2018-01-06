@@ -80,7 +80,7 @@ public interface RetrofitService {
      * 报名班级
      * @return
      */
-    @POST("getEnrolInfo")
+    @GET("getEnrolInfo")
     Observable<assess> getClass(@Query("idcard") String idcard);
 
 }

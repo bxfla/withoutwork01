@@ -45,7 +45,7 @@ import butterknife.OnClick;
 import static com.xb.powerplatform.R.string.no_question;
 
 public class EducationActivity extends AppCompatActivity implements ClassView ,IView{
-//implements IView
+    //implements IView
     //教育培训
     @Bind(R.id.rellPagerView)
     RollPagerView rellPagerView;
@@ -267,44 +267,6 @@ public class EducationActivity extends AppCompatActivity implements ClassView ,I
                 break;
             case R.id.right:
                 classPresenter.getPresenteerData(preference.getData(this,"cred",""));
-                //list转数组
-                final String[] arrName = (String[]) listName.toArray(new String[listName.size()]);
-                final String[] arrId = (String[]) listId.toArray(new String[listId.size()]);
-                if (listName.size() == 0) {
-                    alertDialogUtil= new AlertDialogUtil(this);
-                    alertDialogUtil.showSmallDialog(getResources().getString(no_question));
-                } else {
-                    //dialog
-                    new AlertDialog.Builder(this)
-                            .setTitle(getResources().getString(R.string.pelease_select))
-                            .setIcon(android.R.drawable.ic_dialog_info)
-                            .setSingleChoiceItems(arrName,
-                                    0, new DialogInterface.OnClickListener() {
-
-                                        public void onClick(DialogInterface dialog,
-                                                            int which) {
-                                            dialog.dismiss();
-                                            title.setText(arrName[which]);
-                                            classId=arrId[which];
-                                            getDwoClassNameData();
-                                            if (listNamed.contains(arrName[which])) {
-                                                alertDialogUtil= new AlertDialogUtil(EducationActivity.this);
-                                                alertDialogUtil.showSmallDialog(getResources().getString(R.string.download_old));
-                                            } else {
-                                                classId=arrId[which];
-                                                String dwoStatic = "Yes";
-                                                ContentValues values = new ContentValues();
-                                                values.put(Constant.CLASSID, arrId[which]);
-                                                values.put(Constant.CLASSNAME, arrName[which]);
-                                                values.put(Constant.DWOSTATIC, dwoStatic);
-                                                db.insert(Constant.TABBLE_DOW_CLASS_NAME, null, values);
-                                                values.clear();
-                                                //下载试题
-                                                presenter.getPresenteerData(arrId[which]);
-                                            }
-                                        }
-                                    }).show();
-                }
                 break;
         }
     }
@@ -374,7 +336,7 @@ public class EducationActivity extends AppCompatActivity implements ClassView ,I
 
     @Override
     public void getClassViewData(assess assess) {
-        String classId=assess.getBody().getExamClass().getClassId();
+        classId=assess.getBody().getExamClass().getClassId();
         preference.saveData(this,"classId",classId);
         List<assess.BodyBean.BmListBean> list=new ArrayList<>();
         list=assess.getBody().getBmList();
@@ -404,6 +366,44 @@ public class EducationActivity extends AppCompatActivity implements ClassView ,I
 
             db.insert(Constant.TABBLE_NAME_RULE, null, values);
             values.clear();
+        }
+        //list转数组
+        final String[] arrName = (String[]) listName.toArray(new String[listName.size()]);
+        final String[] arrId = (String[]) listId.toArray(new String[listId.size()]);
+        if (listName.size() == 0) {
+            alertDialogUtil= new AlertDialogUtil(this);
+            alertDialogUtil.showSmallDialog(getResources().getString(no_question));
+        } else {
+            //dialog
+            new AlertDialog.Builder(this)
+                    .setTitle(getResources().getString(R.string.pelease_select))
+                    .setIcon(android.R.drawable.ic_dialog_info)
+                    .setSingleChoiceItems(arrName,
+                            0, new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog,
+                                                    int which) {
+                                    dialog.dismiss();
+                                    title.setText(arrName[which]);
+                                    classId=arrId[which];
+                                    getDwoClassNameData();
+                                    if (listNamed.contains(arrName[which])) {
+                                        alertDialogUtil= new AlertDialogUtil(EducationActivity.this);
+                                        alertDialogUtil.showSmallDialog(getResources().getString(R.string.download_old));
+                                    } else {
+                                        classId=arrId[which];
+                                        String dwoStatic = "Yes";
+                                        ContentValues values = new ContentValues();
+                                        values.put(Constant.CLASSID, arrId[which]);
+                                        values.put(Constant.CLASSNAME, arrName[which]);
+                                        values.put(Constant.DWOSTATIC, dwoStatic);
+                                        db.insert(Constant.TABBLE_DOW_CLASS_NAME, null, values);
+                                        values.clear();
+                                        //下载试题
+                                        presenter.getPresenteerData(arrId[which]);
+                                    }
+                                }
+                            }).show();
         }
     }
 }

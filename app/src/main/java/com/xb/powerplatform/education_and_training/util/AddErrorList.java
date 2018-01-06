@@ -24,6 +24,7 @@ public class AddErrorList {
     SQLiteDatabase db;
     int position;
     Context context;
+    List<String> list=new ArrayList<>();
 
     public AddErrorList(SQLiteDatabase db, MyDatabaseHelper errorHelper, List<Question.BodyBean.ListBean> beanListE,
                         List<Question.BodyBean.ListBean> dataItems, int position, Context contextObject) {
@@ -39,14 +40,14 @@ public class AddErrorList {
         String sql = "select * from error";
         Cursor cursor = DbManager.queryBySQL(db, sql, null);
         beanListE = DbManager.cursorToPerson(cursor);
-        String con = dataItems.get(position).getQuContent();
         if (beanListE.size()==0){
             addErrorDb(position);
         }else {
             for (int i=0;i<beanListE.size();i++){
-                if (!con.equals(beanListE.get(i).getQuContent())){
-                    addErrorDb(position);
-                }
+                list.add(beanListE.get(i).getQuContent());
+            }
+            if (list.indexOf(dataItems.get(position).getQuContent())==-1){
+                addErrorDb(position);
             }
         }
     }
