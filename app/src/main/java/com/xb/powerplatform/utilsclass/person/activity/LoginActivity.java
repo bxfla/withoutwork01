@@ -97,10 +97,14 @@ public class LoginActivity extends BaseActivity implements LoginView {
             String depart =user.getBody().getUser().getDepart();
             String name =user.getBody().getUser().getName();
             String company = user.getBody().getUser().getCompany();
+            if (depart!=null){
+                preference.saveData(this,"depart",depart);
+            }
+            if (company!=null){
+                preference.saveData(this,"company",company);
+            }
             preference.saveData(this,"cred",cred);
-            preference.saveData(this,"depart",depart);
             preference.saveData(this,"name",name);
-            preference.saveData(this,"company",company);
             intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();

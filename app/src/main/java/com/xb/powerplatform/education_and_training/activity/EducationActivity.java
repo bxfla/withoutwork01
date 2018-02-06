@@ -75,6 +75,7 @@ public class EducationActivity extends AppCompatActivity implements ClassView, I
 
     List<String> listName = new ArrayList<>();
     List<String> listId = new ArrayList<>();
+    List<String> listType = new ArrayList<>();
 
     List<String> listNamed = new ArrayList<>();
     List<String> listIdd = new ArrayList<>();
@@ -201,11 +202,10 @@ public class EducationActivity extends AppCompatActivity implements ClassView, I
                     intent.putExtra("erLength", String.valueOf(erLength));
                     intent.putExtra("list", (Serializable) beanList);
                     startActivity(intent);
+                } else {
+                    alertDialogUtil= new AlertDialogUtil(this);
+                    alertDialogUtil.showSmallDialog(getResources().getString(R.string.first_download));
                 }
-//                } else {
-//                    alertDialogUtil= new AlertDialogUtil(this);
-//                    alertDialogUtil.showSmallDialog(getResources().getString(R.string.first_download));
-//                }
                 break;
             case R.id.btn2:
                 getData();
@@ -214,8 +214,8 @@ public class EducationActivity extends AppCompatActivity implements ClassView, I
                     intent.putExtra("classId", classId);
                     startActivity(intent);
                 } else {
-//                    alertDialogUtil= new AlertDialogUtil(this);
-//                    alertDialogUtil.showSmallDialog(getResources().getString(R.string.first_download));
+                    alertDialogUtil= new AlertDialogUtil(this);
+                    alertDialogUtil.showSmallDialog(getResources().getString(R.string.first_download));
                 }
                 break;
             case R.id.btn3:
@@ -305,23 +305,6 @@ public class EducationActivity extends AppCompatActivity implements ClassView, I
                 db.insert(Constant.TABBLE_NAME, null, values);
                 values.clear();
             }
-//            ContentValues values = new ContentValues();
-//            int radioNum=assess.getBody().getRule().getRadioNum();
-//            int multiNum=assess.getBody().getRule().getMultiNum();
-//            int judgeNum=assess.getBody().getRule().getJudgeNum();
-//            int erLength=assess.getBody().getRule().getErLength();
-//            int erPassMark=assess.getBody().getRule().getErPassMark();//及格分数
-//            values.put(Constant.RADIONUM, radioNum);
-//            values.put(Constant.MULTINUM, multiNum);
-//            values.put(Constant.JUDGENUM, judgeNum);
-//            values.put(Constant.CLASSID, classId);
-//
-//            values.put(Constant.ERLENGTH, erLength);
-//            values.put(Constant.ERPASSMARK, erPassMark);
-//
-//            db.insert(Constant.TABBLE_NAME_RULE, null, values);
-//            values.clear();
-
             Toast.makeText(this, getResources().getString(R.string.download_ok), Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, getResources().getString(no_question), Toast.LENGTH_SHORT).show();
@@ -338,6 +321,7 @@ public class EducationActivity extends AppCompatActivity implements ClassView, I
     public void getClassViewData(assess assess) {
         listName.clear();
         listId.clear();
+        listType.clear();
         if (assess.getBody().getBmList().size() != 0) {
             classId = assess.getBody().getExamClass().getClassId();
             if (classId != null) {
@@ -349,6 +333,7 @@ public class EducationActivity extends AppCompatActivity implements ClassView, I
             for (int k = 0; k < list.size(); k++) {
                 listName.add(list.get(k).getClassName());
                 listId.add(list.get(k).getClassId());
+                listType.add(list.get(k).getClassType());
                 int erScoreRadioSafety = assess.getBody().getBmList().get(k).getExamRule().getErScoreRadioSafety();//安全知识单选分值
                 int erScoreRadioLaws = assess.getBody().getBmList().get(k).getExamRule().getErScoreRadioLaws();//法律法规单选分数
                 int erScoreRadioMajor = assess.getBody().getBmList().get(k).getExamRule().getErScoreRadioMajor();//专业知识单选分数
@@ -388,6 +373,7 @@ public class EducationActivity extends AppCompatActivity implements ClassView, I
             //list转数组
             final String[] arrName = (String[]) listName.toArray(new String[listName.size()]);
             final String[] arrId = (String[]) listId.toArray(new String[listId.size()]);
+            final String[] arrType = (String[]) listType.toArray(new String[listType.size()]);
             if (listName.size() == 0) {
                 alertDialogUtil = new AlertDialogUtil(this);
                 alertDialogUtil.showSmallDialog(getResources().getString(no_question));
@@ -402,23 +388,29 @@ public class EducationActivity extends AppCompatActivity implements ClassView, I
                                     public void onClick(DialogInterface dialog,
                                                         int which) {
                                         dialog.dismiss();
-                                        title.setText(arrName[which]);
-                                        classId = arrId[which];
                                         getDwoClassNameData();
                                         if (listNamed.contains(arrName[which])) {
                                             alertDialogUtil = new AlertDialogUtil(EducationActivity.this);
                                             alertDialogUtil.showSmallDialog(getResources().getString(R.string.download_old));
-                                        } else {
+                                            title.setText(arrName[which]);
                                             classId = arrId[which];
-                                            String dwoStatic = "Yes";
-                                            ContentValues values = new ContentValues();
-                                            values.put(Constant.CLASSID, arrId[which]);
-                                            values.put(Constant.CLASSNAME, arrName[which]);
-                                            values.put(Constant.DWOSTATIC, dwoStatic);
-                                            db.insert(Constant.TABBLE_DOW_CLASS_NAME, null, values);
-                                            values.clear();
-                                            //下载试题
-                                            presenter.getPresenteerData(arrId[which]);
+                                        } else {
+                                            if (!"0".equals(arrType[which])){
+                                                new AlertDialogUtil(EducationActivity.this).showSmallDialog("手机不支持循环考试和闯关竞赛");
+                                            }else {
+                                                classId = arrId[which];
+                                                String dwoStatic = "Yes";
+                                                ContentValues values = new ContentValues();
+                                                values.put(Constant.CLASSID, arrId[which]);
+                                                values.put(Constant.CLASSNAME, arrName[which]);
+                                                values.put(Constant.DWOSTATIC, dwoStatic);
+                                                title.setText(arrName[which]);
+                                                classId = arrId[which];
+                                                db.insert(Constant.TABBLE_DOW_CLASS_NAME, null, values);
+                                                values.clear();
+                                                //下载试题
+                                                presenter.getPresenteerData(arrId[which]);
+                                            }
                                         }
                                     }
                                 }).show();
